@@ -1,0 +1,10 @@
+# python internals
+*.ipynb_checkpoints
+*__pycache__*
+
+# local development
+*.img*
+*.envi*
+*.hdr*
+*.nc*
+/ignore
