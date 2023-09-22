@@ -5,6 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 _________________________________________________________________________
 
+## 2023-09-22
+
+> ### Summary
+>
+> Updated contribute.md and added `user contributed` directory
+>
+> ### Added
+>
+> - Added `user_contributed` directory
+
 ## 2023-09-20
 
 > ### Summary
