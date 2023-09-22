@@ -1,5 +1,7 @@
 # Contributing to this Repository
 
+> Please submit a pull request early in the development phase, outlining the changes you intend to make or features you intend to add. This allows us to offer feedback early on, ensuring your contribution can be added to the repository before you invest a significant amount of time.
+
 We want your help! Even if you're not a coder! There are several ways you can contribute to this repository:
 
 - Report an [Issue](https://github.com/nasa/VITALS/issues) or make a recommendation
@@ -16,7 +18,7 @@ If you've found a problem with the repository, we want to know about it! Please 
 
 To contribute a solution to an issue or make a change to files within the repository we've created a typical outline of how to do that below. If you want to make a simple change, like correcting a typo within a markdown document or other documentation, there's a great video explaining how to do that without leaving the GitHub website [here](https://www.youtube.com/watch?v=PHoScPeMWHI). To make a more complex change to a notebook, code, or other file follow the instructions below.  
 
-1. Please create an issue or comment on an existing issue describing the changes you intend to make.  
+1. Please create an [Issue](https://github.com/nasa/VITALS/issues) or comment on an existing issue describing the changes you intend to make.  
 2. Create a [fork](https://docs.github.com/en/get-started/quickstart/contributing-to-projects#about-forking) of this repository. This will create your own copy of the repository. When working from your fork, you can do whatever you want, you won't mess up anyone else's work so you're safe to try things out. Worst case scenario you can delete your fork and recreate it.  
 3. Clone your fork to your local computer or cloud workspace using your preferred command line interface after navigating to the directory you want to place the repository in:
 
@@ -39,7 +41,7 @@ To contribute a solution to an issue or make a change to files within the reposi
     - You can use to following to view the remote repositories:
 
     ```
-    git remove -v
+    git remote -v
     ```
 
     - `upstream`, which refers to the original repository  
@@ -49,7 +51,7 @@ To contribute a solution to an issue or make a change to files within the reposi
     - Create a new branch named appropriately for the feature you want to work on:
 
     ```
-    git checkout -b feature-name
+    git checkout -b new-branch-name
     ```
 
     - Often, updates to an `upstream` repository will occur while you are developing changes on your personal fork. You can pull the latest changes from `upstream`
@@ -81,11 +83,11 @@ To contribute a solution to an issue or make a change to files within the reposi
 
 5. To submit your contribution, make a pull request to the `dev` branch our repository on the GitHub page. There will be a green Pull Request button.  
 
-    - Please submit a pull request early in the development phase, outlining the changes you intend to make or features you intend to add. This allows us to offer feedback early on, ensuring your contribution can be added to the repository before you invest a significant amount of time.
+    - **Please submit a pull request early in the development phase, outlining the changes you intend to make or features you intend to add. This allows us to offer feedback early on, ensuring your contribution can be added to the repository before you invest a significant amount of time.**
 
 ## Adding New Notebooks or Example Workflows
 
-In the spirit of open science, we want to minimize barriers to sharing code and examples. We have added a `user_contributed` directory to the repository for anyone to share examples of their work in notebook or code form. Documentation and descriptions do not need to be as thorough as the examples we've created, but we ask that you provide as much as possible. Follow the [instructions](#adding-new-notebooks-or-example-workflows) above, placing your new notebook or module in a suitably named directory within the `user_contributed` directory. Be sure to remove any large datasets, indicating where users can retrieve them.
+In the spirit of open science, we want to minimize barriers to sharing code and examples. We have added a `user_contributed` directory to the repository for anyone to share examples of their work in notebook or code form. Documentation and descriptions do not need to be as thorough as the examples we've created, but we ask that you provide as much as possible. Follow the [instructions](#updating-code-documentation-notebooks-or-other-files) above, placing your new notebook or module in a suitably named directory within the `user_contributed` directory. Be sure to remove any large datasets and indicate where users can retrieve them.
 
 ## Attribution
 
