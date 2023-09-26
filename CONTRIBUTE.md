@@ -38,7 +38,7 @@ To contribute a solution to an issue or make a change to files within the reposi
     git remote add upstream original-repository-url
     ```
 
-    - You can use to following to view the remote repositories:
+    - You can use the following to view the remote repositories:
 
     ```
     git remote -v
