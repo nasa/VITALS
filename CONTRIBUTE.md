@@ -60,6 +60,12 @@ To contribute a solution to an issue or make a change to files within the reposi
     git pull upstream dev
     ```
 
+    - You can check the status of your local copy of the repository to see what changes have been made using:
+
+    ```
+    git status
+    ```
+
     - Commit locally as you progress using `git add` and `git commit`.` For example, updating a readme.md file:
 
     ```
@@ -67,7 +73,7 @@ To contribute a solution to an issue or make a change to files within the reposi
     git commit -m "updated readme file"
     ```
 
-    - You can check the status of your local copy of the repository to see what pending changes have not been added or committed using:
+    - You can check the status of your local copy of the repository again to see what pending changes have not been added or committed using:
 
     ```
     git status
@@ -76,7 +82,7 @@ To contribute a solution to an issue or make a change to files within the reposi
     - After making some changes, push your changes back to your fork on GitHub:
 
     ```git
-    git push origin feature-name
+    git push origin branch-name
     ```
 
     - Enter username and password, depending on your settings, you may need to use a [Personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
