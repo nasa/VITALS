@@ -8,7 +8,7 @@ We want your help! Even if you're not a coder! There are several ways you can co
 - Update code, documentation, notebooks or other files (even fixing typos)
 - Propose a new notebook
 
-In the sections below we outline how to approach each of these types of contributions. If you're new to GitHub, you can [sign up here](https://github.com/). There are a bunch of great resources on the [Github Quickstart page](https://docs.github.com/en/get-started/quickstart). The [GitHub Cheatsheet](https://training.github.com/downloads/github-git-cheat-sheet/) is also quite helpful, even for experienced users. Please reach out to [lpdaac@usgs.gov](lpdaac@usgs.gov) with questions or concerns.  
+In the sections below we outline how to approach each of these types of contributions. If you're new to GitHub, you can [sign up here](https://github.com/). There are a bunch of great resources on the [GitHub Quickstart page](https://docs.github.com/en/get-started/quickstart). The [GitHub Cheatsheet](https://training.github.com/downloads/github-git-cheat-sheet/) is also quite helpful, even for experienced users. Please reach out to [lpdaac@usgs.gov](lpdaac@usgs.gov) with questions or concerns.  
 
 ## Report an Issue or Make a Recommendation
 
@@ -91,4 +91,4 @@ In the spirit of open science, we want to minimize barriers to sharing code and 
 
 ## Attribution
 
-These contributing guidelines are adapted from the NASA Transform to Open Science github, available at <https://github.com/nasa/Transform-to-Open-Science/blob/main/CONTRIBUTING.md>.
+These contributing guidelines are adapted from the NASA Transform to Open Science GitHub, available at <https://github.com/nasa/Transform-to-Open-Science/blob/main/CONTRIBUTING.md>.
