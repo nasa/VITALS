@@ -87,7 +87,7 @@ To contribute a solution to an issue or make a change to files within the reposi
 
     - Enter username and password, depending on your settings, you may need to use a [Personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
 
-5. To submit your contribution, navigate to your forked repository GitHub page and make a pull request using the `Compare &pull request` green botton. Make sure to select the `base repository` and its `dev` branch. Alse select your forked repository as `head repository` and make sure `compare` shows your branch name. You can add your comments and press `Create pull request` green button. Our team will be notified and will review your suggested revisions.
+5. To submit your contribution, navigate to your forked repository GitHub page and make a pull request using the `Compare &pull request` green button. Make sure to select the `base repository` and its `dev` branch. Also select your forked repository as `head repository` and make sure `compare` shows your branch name. You can add your comments and press `Create pull request` green button. Our team will be notified and will review your suggested revisions.
 
     - **Please submit a pull request early in the development phase, outlining the changes you intend to make or features you intend to add. This allows us to offer feedback early on, ensuring your contribution can be added to the repository before you invest a significant amount of time.**
 
