@@ -8,7 +8,7 @@ We want your help! Even if you're not a coder! There are several ways you can co
 - Update code, documentation, notebooks or other files (even fixing typos)
 - Propose a new notebook
 
-In the sections below we outline how to approach each of these types of contributions. If you're new to GitHub, you can [sign up here](https://github.com/). There are a bunch of great resources on the [Github Quickstart page](https://docs.github.com/en/get-started/quickstart). The [GitHub Cheatsheet](https://training.github.com/downloads/github-git-cheat-sheet/) is also quite helpful, even for experienced users. Please reach out to [lpdaac@usgs.gov](lpdaac@usgs.gov) with questions or concerns.  
+In the sections below we outline how to approach each of these types of contributions. If you're new to GitHub, you can [sign up here](https://github.com/). There are a bunch of great resources on the [GitHub Quickstart page](https://docs.github.com/en/get-started/quickstart). The [GitHub Cheatsheet](https://training.github.com/downloads/github-git-cheat-sheet/) is also quite helpful, even for experienced users. Please reach out to [lpdaac@usgs.gov](lpdaac@usgs.gov) with questions or concerns.  
 
 ## Report an Issue or Make a Recommendation
 
@@ -60,6 +60,12 @@ To contribute a solution to an issue or make a change to files within the reposi
     git pull upstream dev
     ```
 
+    - You can check the status of your local copy of the repository to see what changes have been made using:
+
+    ```
+    git status
+    ```
+
     - Commit locally as you progress using `git add` and `git commit`.` For example, updating a readme.md file:
 
     ```
@@ -67,7 +73,7 @@ To contribute a solution to an issue or make a change to files within the reposi
     git commit -m "updated readme file"
     ```
 
-    - You can check the status of your local copy of the repository to see what pending changes have not been added or committed using:
+    - You can check the status of your local copy of the repository again to see what pending changes have not been added or committed using:
 
     ```
     git status
@@ -76,12 +82,12 @@ To contribute a solution to an issue or make a change to files within the reposi
     - After making some changes, push your changes back to your fork on GitHub:
 
     ```git
-    git push origin feature-name
+    git push origin branch-name
     ```
 
     - Enter username and password, depending on your settings, you may need to use a [Personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
 
-5. To submit your contribution, make a pull request to the `dev` branch our repository on the GitHub page. There will be a green Pull Request button.  
+5. To submit your contribution, navigate to your forked repository GitHub page and make a pull request using the `Compare &pull request` green button. Make sure to select the `base repository` and its `dev` branch. Also select your forked repository as `head repository` and make sure `compare` shows your branch name. You can add your comments and press `Create pull request` green button. Our team will be notified and will review your suggested revisions.
 
     - **Please submit a pull request early in the development phase, outlining the changes you intend to make or features you intend to add. This allows us to offer feedback early on, ensuring your contribution can be added to the repository before you invest a significant amount of time.**
 
@@ -91,4 +97,4 @@ In the spirit of open science, we want to minimize barriers to sharing code and 
 
 ## Attribution
 
-These contributing guidelines are adapted from the NASA Transform to Open Science github, available at <https://github.com/nasa/Transform-to-Open-Science/blob/main/CONTRIBUTING.md>.
+These contributing guidelines are adapted from the NASA Transform to Open Science GitHub, available at <https://github.com/nasa/Transform-to-Open-Science/blob/main/CONTRIBUTING.md>.
