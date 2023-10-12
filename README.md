@@ -1,6 +1,6 @@
 > **_Fall 2023 ECOSTRESS Science and Application Team Meeting:_**  This workshop is hosted by NASA’s Land Processes Distributed Activate Archive [LP DAAC](https://lpdaac.usgs.gov/) and JPL with support from NASA [Openscapes](https://nasa-openscapes.github.io/) project. Hands-on exercises will be executed from a [Jupyter Lab instance in 2i2c](https://openscapes.2i2c.cloud/). Your GitHub username is used to enable you access to a cloud environment during the workshop. Please pass along your Github Username to get access if you have not already. 
 
-To open a JupyterHub and clone the repository: [https://tinyurl.com/yckery74](https://tinyurl.com/yckery74).
+> To open a JupyterHub and clone the repository: [https://tinyurl.com/yckery74](https://tinyurl.com/yckery74).
 
 # VITALS
 
