@@ -41,8 +41,7 @@ If you're having trouble creating a compatible Python Environment or having an i
 For Windows:
 
 ```cmd
-mamba create -n lpdaac_vitals -c conda-forge --yes python=3.11 fiona=1.8.22 gdal hvplot geoviews rioxarray rasterio jupyter geopandas earthaccess jupyter_bokeh h5py 
-h5netcdf spectral scikit-image
+mamba create -n lpdaac_vitals -c conda-forge --yes python=3.11 fiona=1.8.22 gdal hvplot geoviews rioxarray rasterio jupyter geopandas earthaccess jupyter_bokeh h5py h5netcdf spectral scikit-image
 ```
 
 For MacOSX:
