@@ -5,6 +5,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 _________________________________________________________________________
 
+## 2023-10-10
+
+> ### Summary
+>
+> - Improved Finding Concurrent Data Notebook text/instructions
+> - Renamed contribute.md
+> - added repo description
+>
+> ### Added
+>
+> - Repository description
+>
+
 ## 2023-09-28
 
 > ### Summary
