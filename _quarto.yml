@@ -38,7 +38,7 @@ website:
       - text: "Welcome"
         href: index.qmd
       - text: "Schedule"
-        href: docs/schedule.qmd
+        href: schedule.qmd
       - text: "Set Up Instruction"
         href: setup/setup_instructions.md
       - section: "Tutorials"            
