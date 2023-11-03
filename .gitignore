@@ -9,3 +9,5 @@
 *.hdr*
 *.nc*
 /ignore
+/.quarto/
+/_site/
