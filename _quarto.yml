@@ -1,0 +1,62 @@
+project:
+  type: website
+  output-dir: docs
+
+execute:
+  freeze: true  # never re-execute computational content during project render, needed for .qmd and .rmd since quarto does not render .ipynb by default
+
+website:
+  page-navigation: true
+  search: 
+    location: navbar
+    type: overlay
+  page-footer: 
+    left: "VSWIR Imaging and Thermal Applications, Learning, and Science."
+    right: img/lp_jpl.png 
+
+  title: "VITALS"
+  site-url: https://nasa.github.io/VITALS/
+  repo-url: https://github.com/nasa/VITALS/
+
+  sidebar:
+    title: "VITALS"
+    logo: img/lp_jpl.png 
+    pinned: true
+    align: left
+    tools: 
+      - icon: globe
+        href: https://nasa.github.io/VITALS/
+        text: "VITALS Website"
+      - icon: github
+        href: https://github.com/nasa/VITALS
+        text: "VITALS Repository"
+        
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - text: "Welcome"
+        href: index.qmd
+      - text: "Schedule"
+        href: docs/schedule.qmd
+      - text: "Set Up Instruction"
+        href: setup/setup_instructions.md
+      - section: "Tutorials"            
+        contents: 
+          - text: "01-Finding Concurrent ECOSTRESS and EMIT Data"
+            href: python/01_Finding_Concurrent_Data.ipynb
+          - text: "02-Carpinteria Salt Marsh Analysis"
+            href: python/ECOSTRESS-EMIT_Carpinteria_Workshop.ipynb
+      - section: "Contributing"
+        contents:
+          - href: CONTRIBUTING.md
+          - href: CODE_OF_CONDUCT.md
+format:
+  html:
+    theme:
+      light: cosmo
+    code-background: true
+    code-copy: true
+    css: styles.css
+    toc: true
+

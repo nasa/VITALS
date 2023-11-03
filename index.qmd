@@ -1,0 +1,37 @@
+---
+title: "Space Station Synergies: Applying ECOSTRESS and EMIT ecological problems for Scientific Insight"
+---
+
+<p align="left">
+  <img src="img/ISS.jpg" />
+</p>
+
+## Description: 
+The International Space Station is a critical asset for the Earth science community -- both for advancing critical science and applications priorities, and as a platform for technology demonstrations/pathfinders.  These benefits have been particularly significant in recent years, with the installation and operation of instruments such as ECOSTRESS, a multispectral thermal instrument, and EMIT, a visible to short wave infrared imaging spectrometer with best-in-class signal to noise - both acquiring data at field-scale (<70-m).  With both sensors mounted on the ISS, there is an unprecedented opportunity to demonstrate the compounded benefits of working with both datasets.  In this workshop we highlight the power of these tools when used together, through the use of open source tools and services, cloud compute resources to effectively combine data from ECOSTRESS and EMIT to perform scientific analyses and apply data to real world issues. 
+
+
+## Learning Outcomes: 
+Imaging Spectroscopy and thermal measurements 101, the electromagnetic spectrum and sensor specific considerations
+How to access EMIT and ECOSTRESS data
+Data Preprocessing and Exploratory Analysis
+How to manipulate, combine, and visualize EMIT and ECOSTRESS data
+Participants will learn the basics of thermal and visible to shortwave infrared (VSWIR) imaging spectroscopy, including how the measurements are different and why they complement each other.  Participants will learn how to find and access both EMIT and ECOSTRESS data through available tools and open data use resources managed by the LP DAAC using a cloud environment accessed with their own computer.  We will provide examples of integrated analysis that have relevance to applied sciences. Tutorial examples may include vignettes related to agriculture, aquatic heat waves and algal blooms, methane emissions and flaring, and forest health, wildfire risk and stress. 
+
+## Learning Focus: 
+Practical Skills for Science
+
+
+## Knowledge & Career Level: 
+Beginner, Intermediate
+
+
+## Target Audience:
+- Earth and Planetary Surface Processes
+- Hydrology
+- Global Environmental Change
+- Ocean Sciences
+- Science and Society
+- Biogeosciences
+
+
+
