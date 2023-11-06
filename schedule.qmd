@@ -1,0 +1,29 @@
+---
+title: Schedule 
+---
+
+**Space Station Synergies AGU Workshop take place on December 10, 2023.**   
+
+This workshop is hosted by NASA’s Land Processes Distributed Activate Archive [LP DAAC](https://lpdaac.usgs.gov/) and NASA Jet Propulsion Laboratory [JPL](https://www.jpl.nasa.gov/) with support from the NASA [Openscapes](https://nasa-openscapes.github.io/) project.  
+Hands-on exercises will be executed from a [Jupyter Hub on the 2i2c cloud instance](https://openscapes.2i2c.cloud/). Your GitHub username is used to enable access to the cloud instance during the workshop. Please pass along your Github Username to get access if you have not already.
+
+> To open the JupyterHub and clone the VITALS repository automatically you can use the following link: [https://tinyurl.com/yckery74](https://tinyurl.com/yckery74).
+>
+> If you have cloned the repository using this link before, make sure the older one is deleted and then click on the link to get the most updated content. 
+
+ 
+## Workshop Schedule 
+
+| Time | Description | Leads/Instructors |  
+|------|---------------------|-------------| 
+|8-8:30 AM | Introduction, overview, learning objectives <br> ECOSTRESS Overview <br> EMIT Overview | Dana Chadwick & Madeleine Pascolini-Campbell |  
+|8:30-9:50 AM |  | |  
+|10-10:30 AM | Introduction to cloud computing environment |  Aaron Friesz & Cole Krehbiel |  
+|10:30- 11:15 AM | Finding Concurrent Data <br> - Find and Download the data used for all of the notebooks | Erik Bolch |  
+|11:15 - 12PM | Introduction to EMIT and ECOSTRESS Data | Erik Bolch |  
+|12PM | Lunch Break |  |  
+|1 - 1:15 PM | CWC/EWT from EMIT Reflectance | Erik Bolch |   
+|1:30 - 2:45 PM | Use Case 1: ET and CWC for Fire/Burn Severity| Marie Johnson |  
+|3 - 4:15 PM | ET and CWC for Agricultural Application | Claire Villanueva-Weeks |  
+|4:30 - 5 PM| Discussion, feedback, resources to take home | All |  
+
