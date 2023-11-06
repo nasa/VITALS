@@ -44,7 +44,7 @@ website:
       - section: "Tutorials"            
         contents: 
           - text: "01-Finding Concurrent ECOSTRESS and EMIT Data"
-            href: python/01_Finding_Concurrent_Data.html
+            href: python/01_Finding_Concurrent_Data.ipynb
           - text: "02-Carpinteria Salt Marsh Analysis"
             href: python/ECOSTRESS-EMIT_Carpinteria_Workshop.ipynb
       - section: "Contributing"
