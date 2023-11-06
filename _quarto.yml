@@ -12,7 +12,6 @@ website:
     type: overlay
   page-footer: 
     left: "VSWIR Imaging and Thermal Applications, Learning, and Science."
-    right: img/lp_jpl.png 
 
   title: "VITALS"
   site-url: https://nasa.github.io/VITALS/
