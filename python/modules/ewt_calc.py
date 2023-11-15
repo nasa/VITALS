@@ -25,16 +25,16 @@ from modules.emit_tools import emit_xarray, ortho_xr
 def calc_ewt(
     filepath: str,
     outdir: str,
-    #wl: np.array,
     n_cpu: int = (cpu_count() - 1),
     ewt_detection_limit: float = 0.5,
+    return_cwc: bool = False,
 ) -> None:
     """
     This function will calculate the equivalent water thickness (EWT) or canopy water content (CWC) from an EMIT .nc reflectance
     file using `ray` for parallelization,orthorectify if necessary, and write a cloud-optimized geotiff output.
     """
     # Get number of rows to break up in parallel
-    emit_ds = xr.open_dataset(filepath, decode_coords='all')
+    emit_ds = xr.open_dataset(filepath, decode_coords="all")
 
     # Conditionals to manage emit_xarray vs normal emit file - #TODO the orthorectified attr needs some improvement in emit_tools.py
     if "spatial_ref" in list(emit_ds.variables.keys()):
@@ -49,13 +49,16 @@ def calc_ewt(
     # Get number of rows
     n_rows = emit_ds["reflectance"].shape[0]
 
-    # Get Wavelength centers
-    wvl = emit_ds["wavelengths"].data
-    #wvl = wl
+    # Get Wavelength centers - convert to float64
+    # scipy.optimize.least_squares function is extremely sensitive to the dtypes of objective function arguments
+    # Here float64 performs better: less iterations, lower value of the cost function.
+    # Also, jacobian estimates get more accurate and lead to better convergence w/ higher precision
+    wvl = np.float64(emit_ds["wavelengths"].data)
+
     # Initialize Ray Cluster
     # init_rfl = np.nan_to_num(emit_ds.reflectance.data[0,0,:].copy(),nan=-9999)
     # res_0, abs_co_w = invert_liquid_water(init_rfl, wvl, return_abs_co=True)
-    
+
     ray.init(num_cpus=n_cpu)
 
     # Set up Line Breaks for parallel
@@ -63,7 +66,7 @@ def calc_ewt(
     line_breaks = [
         (line_breaks[n], line_breaks[n + 1]) for n in range(len(line_breaks) - 1)
     ]
-    
+
     # Calculate EWT Results by Line
     result_list = [
         run_lines.remote(
@@ -125,10 +128,12 @@ def calc_ewt(
 
     # Create output cog
     ds_cwc.rio.to_raster(
-        raster_path=f"{outdir}{filepath.split('/')[-1].split('.')[0]}_cwc.tif", driver="COG"
+        raster_path=f"{outdir}{filepath.split('/')[-1].split('.')[0]}_cwc.tif",
+        driver="COG",
     )
 
-    #return cwc
+    if return_cwc == True:
+        return ds_cwc
 
 
 @ray.remote
@@ -202,13 +207,12 @@ def invert_liquid_water(
 
     # load imaginary part of liquid water refractive index and calculate wavelength dependent absorption coefficient
     # __file__ should live at isofit/isofit/inversion/
-    
-    
+
     data_dir_path = "../data/"
-    path_k = os.path.join(data_dir_path,"k_liquid_water_ice.csv")
-    
-    #isofit_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    #path_k = os.path.join(isofit_path, "data", "iop", "k_liquid_water_ice.xlsx")
+    path_k = os.path.join(data_dir_path, "k_liquid_water_ice.csv")
+
+    # isofit_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    # path_k = os.path.join(isofit_path, "data", "iop", "k_liquid_water_ice.xlsx")
 
     # k_wi = pd.read_excel(io=path_k, sheet_name="Sheet1", engine="openpyxl")
     # wl_water, k_water = get_refractive_index(
@@ -243,6 +247,7 @@ def invert_liquid_water(
     else:
         return solution
 
+
 # https://github.com/isofit/isofit/blob/main/isofit/inversion/inverse_simple.py#L514C1-L532C17
 def beer_lambert_model(x, y, wl, alpha_lw):
     """Function, which computes the vector of residuals between measured and modeled surface reflectance optimizing
@@ -263,6 +268,7 @@ def beer_lambert_model(x, y, wl, alpha_lw):
     resid = rho - y
 
     return resid
+
 
 # https://github.com/isofit/isofit/blob/dev/isofit/core/common.py#L461C1-L488C26
 def get_refractive_index(k_wi, a, b, col_wvl, col_k):
