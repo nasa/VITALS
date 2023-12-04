@@ -1,0 +1,26 @@
+---
+title: Cloud Workspace Setup
+---
+
+> If you plan to use this repository with the **Openscapes 2i2c JupyterHub Cloud Workspace** there are no additonal setup requirements for the Python environment. All packages needed are included unless specified within a notebook, in which case a cell will be dedicated to installing the necessary Python libraries using the appropriate package manager.
+
+After completing the [prerequisistes](prerequisites.md) you will have access to the [Openscapes 2i2c JupyterHub cloud workspace](https://openscapes.2i2c.cloud/). Follow the link and sign in using your GitHub username and password. After signing in you will be prompted for some server options:
+
+<p align="left">
+  <img src="../img/2i2c_server_selection.png" width=100%/>
+</p>
+
+Be sure to select the radio button for **Python** and a size of **14.8 GB RAM and up to 3.75 CPUs**.
+
+---
+
+## Contact Info  
+
+Email: <LPDAAC@usgs.gov>  
+Voice: +1-866-573-3222  
+Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
+Website: <https://lpdaac.usgs.gov/>  
+Date last modified: 11-30-2023  
+
+¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I. 
+

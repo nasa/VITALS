@@ -1,29 +1,21 @@
 ---
-title: Schedule 
+title: 2023 AGU Workshop Schedule 
 ---
+**December 10, 2023.**
 
-**Space Station Synergies AGU Workshop take place on December 10, 2023.**   
-
-This workshop is hosted by NASA’s Land Processes Distributed Activate Archive [LP DAAC](https://lpdaac.usgs.gov/) and NASA Jet Propulsion Laboratory [JPL](https://www.jpl.nasa.gov/) with support from the NASA [Openscapes](https://nasa-openscapes.github.io/) project.  
-Hands-on exercises will be executed from a [Jupyter Hub on the 2i2c cloud instance](https://openscapes.2i2c.cloud/). Your GitHub username is used to enable access to the cloud instance during the workshop. Please pass along your Github Username to get access if you have not already.
-
-> To open the JupyterHub and clone the VITALS repository automatically you can use the following link: [https://tinyurl.com/yckery74](https://tinyurl.com/yckery74).
->
-> If you have cloned the repository using this link before, make sure the older one is deleted and then click on the link to get the most updated content. 
-
- 
- 
-## Workshop Schedule 
+**Space Station Synergies: Applying ECOSTRESS and EMIT ecological problems for Scientific Insight**
 
 | Time | Description | Leads/Instructors |  
 |------|---------------------|-------------| 
-|8-8:30 AM | Introduction, overview, learning objectives | Dana Chadwick |  
-|8:30-9:50 AM | ECOSTRESS Overview <br> EMIT Overview | Dana Chadwick & Madeleine Pascolini-Campbell |  
-|10-10:30 AM | Introduction to cloud computing environment |  Aaron Friesz & Cole Krehbiel |  
-|10:30- 11:15 AM | Finding Concurrent Data <br> - Find and Download the data used for all of the notebooks | Erik Bolch |  
-|11:15 - 12PM | Introduction to EMIT and ECOSTRESS Data | Erik Bolch |  
-|12PM | Lunch Break |  |  
-|1 - 2 PM | CWC/EWT from EMIT Reflectance | Erik Bolch |   
-|2 - 3 PM | Use Case 1: ET and CWC for Agricultural Application | Claire Villanueva-Weeks |  
-|3 - 4 PM | Use Case 2: ET and CWC for Fire/Burn Severity| Marie Johnson |
-|4 - 5 PM| Discussion, feedback, resources to take home | All |  
+|8:00-8:30 AM|Introduction, overview, learning objectives|Dana Chadwick <br> Madeleine Pascolini-Campbell|  
+|8:30-9:30 AM|Finding EMIT and ECOSTRESS Data: <br> - [Earthdata Search](https://search.earthdata.nasa.gov/search) <br> - [AppEEARS](https://appeears.earthdatacloud.nasa.gov/) <br> - [VISIONS](https://earth.jpl.nasa.gov/emit/data/data-portal/coverage-and-forecasts/)|Aaron Friesz <br> Dana Chadwick|  
+|9:30-9:45 AM|Break||  
+|9:45-10:05 AM|Introduction to Cloud Computing Environment|Aaron Friesz|
+|10:05-10:50 AM|Finding Concurrent EMIT and ECOSTRESS Data|Erik Bolch|  
+|10:50-11:05 AM|Break||
+|11:05-12:00 PM|Exploring EMIT Reflectance and ECOSTRESS LST|Erik Bolch|  
+|12:00-1:00 PM|Lunch Break||  
+|1:00-2:00 PM|Estimating Canopy Water Content|Dana Chadwick <br> Niklas Bohn <br> Erik Bolch|   
+|2:00-2:30 PM|Use Case 1: Dangermond Preserve Land Cover|Christiana Ade <br> Marie Johnson|  
+|2:30-3:00 PM|Use Case 2: Santa Barbara Agriculture|Claire Villanueva-Weeks <br> Gregory Halverson|
+|3:00-3:30 PM|Discussion, feedback, resources to take home|All|  
