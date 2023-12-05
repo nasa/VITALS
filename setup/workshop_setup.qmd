@@ -12,6 +12,8 @@ After completing the [prerequisistes](prerequisites.md) you will have access to 
 
 Be sure to select the radio button for **Python** and a size of **14.8 GB RAM and up to 3.75 CPUs**.
 
+To open the JupyterHub and clone the VITALS repository automatically you can use the following link: [https://tinyurl.com/yckery74](https://tinyurl.com/yckery74).
+
 ---
 
 ## Contact Info  
@@ -20,7 +22,6 @@ Email: <LPDAAC@usgs.gov>
 Voice: +1-866-573-3222  
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
 Website: <https://lpdaac.usgs.gov/>  
-Date last modified: 11-30-2023  
+Date last modified: 12-05-2023  
 
 ¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I. 
-

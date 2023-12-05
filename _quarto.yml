@@ -36,9 +36,11 @@ website:
         - text: "2023 AGU Workshop"
           href: index.qmd
         - text: "Repository Description"
-          href: README.md
+          href: readme.qmd
         - text: "Workshop Schedule"
           href: schedule.qmd
+      - text: "Background"
+        href: background.qmd
       - section: "Setup Instructions"
         contents:
         - text: "Prerequisites"
