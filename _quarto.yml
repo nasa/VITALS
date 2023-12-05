@@ -16,7 +16,7 @@ website:
 
   sidebar:
     title: "VITALS"
-    logo: img/lp_jpl.png
+    logo: img/lp_jpl_vitals_light.png
     pinned: true
     align: center
     tools: 
@@ -63,6 +63,7 @@ format:
   html:
     theme:
       light: cosmo
+      dark: [cosmo,theme-dark.scss]
     code-background: true
     code-copy: true
     css: styles.css
