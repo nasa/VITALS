@@ -7,11 +7,8 @@ execute:
 
 website:
   page-navigation: true
-  search: 
-    location: navbar
-    type: overlay
   page-footer: 
-    left: "VSWIR Imaging and Thermal Applications, Learning, and Science."
+    center: "VSWIR Imaging and Thermal Applications, Learning, and Science."
 
   title: "VITALS"
   site-url: https://nasa.github.io/VITALS/
@@ -19,9 +16,9 @@ website:
 
   sidebar:
     title: "VITALS"
-    logo: img/lp_jpl.png 
+    logo: img/lp_jpl_vitals_light.png
     pinned: true
-    align: left
+    align: center
     tools: 
       - icon: globe
         href: https://nasa.github.io/VITALS/
@@ -30,22 +27,32 @@ website:
         href: https://github.com/nasa/VITALS
         text: "VITALS Repository"
         
-    style: "docked"
+    style: "floating"
     search: true
-    collapse-level: 1
+    collapse-level: 2
     contents:
-      - text: "Welcome"
-        href: index.qmd
-      - text: "Schedule"
-        href: schedule.qmd
-      - text: "Set Up Instruction"
-        href: setup/setup_instructions.md
-      - section: "Tutorials"            
+      - section: "Welcome"
+        contents:
+        - text: "2023 AGU Workshop"
+          href: index.qmd
+        - text: "Repository Description"
+          href: vitals.qmd
+        - text: "Workshop Schedule"
+          href: schedule.qmd
+      - section: "Setup Instructions"
+        contents:
+        - text: "Prerequisites"
+          href: setup/prerequisites.md
+        - text: "Cloud Workspace Setup"
+          href: setup/workshop_setup.qmd
+      - section: "Python Notebooks"            
         contents: 
-          - text: "01-Finding Concurrent ECOSTRESS and EMIT Data"
+          - text: "1 Finding Concurrent Data"
             href: python/01_Finding_Concurrent_Data.ipynb
-          - text: "02-Carpinteria Salt Marsh Analysis"
-            href: python/ECOSTRESS-EMIT_Carpinteria_Workshop.ipynb
+          - text: "2 EMIT Reflectance and ECOSTRESS LST"
+            href: python/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.ipynb
+          - text: "3 Canopy Water Content"
+            href: python/03_EMIT_CWC_from_Reflectance.ipynb
       - section: "Contributing"
         contents:
           - href: CONTRIBUTING.md
@@ -54,8 +61,8 @@ format:
   html:
     theme:
       light: cosmo
+      dark: [cosmo,theme-dark.scss]
     code-background: true
     code-copy: true
     css: styles.css
     toc: true
-

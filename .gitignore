@@ -8,6 +8,6 @@
 *.envi*
 *.hdr*
 *.nc*
-/ignore
+/_ignore
 /.quarto/
 /_site/
