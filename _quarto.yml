@@ -36,19 +36,15 @@ website:
         - text: "2023 AGU Workshop"
           href: index.qmd
         - text: "Repository Description"
-          href: readme.qmd
+          href: vitals.qmd
         - text: "Workshop Schedule"
           href: schedule.qmd
-      - text: "Background"
-        href: background.qmd
       - section: "Setup Instructions"
         contents:
         - text: "Prerequisites"
           href: setup/prerequisites.md
         - text: "Cloud Workspace Setup"
           href: setup/workshop_setup.qmd
-        - text: "Local Setup"
-          href: setup/setup_instructions.md
       - section: "Python Notebooks"            
         contents: 
           - text: "1 Finding Concurrent Data"
