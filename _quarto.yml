@@ -53,6 +53,8 @@ website:
             href: python/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.ipynb
           - text: "3 Canopy Water Content"
             href: python/03_EMIT_CWC_from_Reflectance.ipynb
+          - text: "4 Dangermond Land Cover"
+            href: python/04_Dangermond_Land_Cover.ipynb
       - section: "Contributing"
         contents:
           - href: CONTRIBUTING.md
