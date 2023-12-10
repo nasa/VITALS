@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nasa.github.io/VITALS/vitals.html</loc>
-    <lastmod>2023-12-07T19:15:53.913Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nasa.github.io/VITALS/setup/setup_instructions.html</loc>
-    <lastmod>2023-12-07T19:15:52.950Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nasa.github.io/VITALS/schedule.html</loc>
-    <lastmod>2023-12-07T19:15:51.985Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nasa.github.io/VITALS/python/03_EMIT_CWC_from_Reflectance.html</loc>
-    <lastmod>2023-12-07T19:15:48.873Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nasa.github.io/VITALS/python/01_Finding_Concurrent_Data.html</loc>
-    <lastmod>2023-12-07T19:15:39.418Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nasa.github.io/VITALS/CONTRIBUTING.html</loc>
-    <lastmod>2023-12-07T19:15:35.879Z</lastmod>
-  </url>
-  <url>
     <loc>https://nasa.github.io/VITALS/CHANGE_LOG.html</loc>
-    <lastmod>2023-12-07T19:15:34.010Z</lastmod>
+    <lastmod>2023-12-10T16:33:50.836Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/CODE_OF_CONDUCT.html</loc>
-    <lastmod>2023-12-07T19:15:34.669Z</lastmod>
+    <lastmod>2023-12-10T16:33:51.333Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nasa.github.io/VITALS/CONTRIBUTING.html</loc>
+    <lastmod>2023-12-10T16:33:52.086Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/index.html</loc>
-    <lastmod>2023-12-07T19:15:36.987Z</lastmod>
+    <lastmod>2023-12-10T16:33:52.479Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nasa.github.io/VITALS/python/01_Finding_Concurrent_Data.html</loc>
+    <lastmod>2023-12-10T16:33:53.330Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/python/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.html</loc>
-    <lastmod>2023-12-07T19:15:40.718Z</lastmod>
+    <lastmod>2023-12-10T16:33:53.935Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nasa.github.io/VITALS/python/03_EMIT_CWC_from_Reflectance.html</loc>
+    <lastmod>2023-12-10T16:33:58.459Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/python/04_Dangermond_Land_Cover.html</loc>
-    <lastmod>2023-12-07T19:15:51.466Z</lastmod>
+    <lastmod>2023-12-10T16:34:00.687Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nasa.github.io/VITALS/schedule.html</loc>
+    <lastmod>2023-12-10T16:34:01.090Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/setup/prerequisites.html</loc>
-    <lastmod>2023-12-07T19:15:52.492Z</lastmod>
+    <lastmod>2023-12-10T16:34:01.497Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nasa.github.io/VITALS/setup/setup_instructions.html</loc>
+    <lastmod>2023-12-10T16:34:01.906Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/setup/workshop_setup.html</loc>
-    <lastmod>2023-12-07T19:15:53.458Z</lastmod>
+    <lastmod>2023-12-10T16:34:02.339Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nasa.github.io/VITALS/vitals.html</loc>
+    <lastmod>2023-12-10T16:34:02.723Z</lastmod>
   </url>
 </urlset>
