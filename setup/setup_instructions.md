@@ -6,20 +6,20 @@ For local Python environment setup we recommend using [mamba](https://mamba.read
 
 ## Python Environment Setup
 
-These Python Environments will work for all of the guides, how-to's, and tutorials within this repository. A `.yml` file that can be used to set up the necessary environment has been included in the repository for both Windows and MacOS. Use the appropriate file in the steps below.
+These Python Environments will work for all of the guides, how-to's, and tutorials within this repository.
 
 1. Using your preferred command line interface (command prompt, terminal, cmder, etc.) navigate to your local copy of the repository, then type the following to create a compatible Python environment.
 
     For Windows:
 
     ```cmd
-    mamba env create -f setup/lpdaac_vitals_windows.yml
+    mamba create -n lpdaac_vitals -c conda-forge --yes python=3.10 fiona=1.8.22 gdal hvplot geoviews rioxarray rasterio jupyter geopandas earthaccess jupyter_bokeh h5py h5netcdf spectral scikit-image jupyterlab seaborn dask ray-default
     ```
 
-    For MacOS(tested on arm-64):
+    For MacOSX:
 
     ```cmd
-    mamba env create -f setup/lpdaac_vitals_macos.yml
+    mamba create -n lpdaac_vitals -c conda-forge --yes python=3.10 gdal=3.7.2 hvplot geoviews rioxarray rasterio geopandas fiona=1.9.4 jupyter earthaccess jupyter_bokeh h5py h5netcdf spectral scikit-image seaborn jupyterlab dask ray-default ray-dashboard
     ```
 
 2. Next, activate the Python Environment that you just created.
@@ -34,22 +34,6 @@ These Python Environments will work for all of the guides, how-to's, and tutoria
     jupyter notebook 
     ```
 
-If you're having trouble creating a compatible Python Environment or having an issue with one of the above environments, you can also try to create one using the commands below. Using your preferred command line interface (command prompt, terminal, cmder, etc.) type the following to create a compatible Python environment.
-
-For Windows:
-
-```cmd
-mamba create -n lpdaac_vitals_test -c conda-forge --yes python=3.10 fiona=1.8.22 gdal hvplot geoviews rioxarray rasterio jupyter geopandas earthaccess jupyter_bokeh h5py h5netcdf spectral scikit-image ray-default
-```
-
-For MacOSX:
-
-```cmd
-mamba create -n lpdaac_vitals -c conda-forge --yes python=3.10 gdal=3.7.2 hvplot geoviews rioxarray rasterio geopandas fiona=1.9.4 jupyter earthaccess jupyter_bokeh h5py h5netcdf spectral scikit-image dask ray-default ray-dashboard
-```
-
-After this, you should be able to do steps 2 and 3 above.
-
 **Still having trouble getting a compatible Python environment set up? Contact [LP DAAC User Services](https://lpdaac.usgs.gov/lpdaac-contact-us/).**  
 
 ---
@@ -60,6 +44,6 @@ Email: <LPDAAC@usgs.gov>
 Voice: +1-866-573-3222  
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
 Website: <https://lpdaac.usgs.gov/>  
-Date last modified: 01-10-2023  
+Date last modified: 01-19-2024  
 
 ¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.  
