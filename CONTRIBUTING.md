@@ -5,7 +5,7 @@
 We want your help! Even if you're not a coder! There are several ways you can contribute to this repository:
 
 - Report an [Issue](https://github.com/nasa/VITALS/issues) or make a recommendation
-- Update code, documentation, notebooks or other files (even fixing typos)
+- Update code, documentation, notebooks, or other files (even fixing typos)
 - Propose a new notebook
 
 In the sections below we outline how to approach each of these types of contributions. If you're new to GitHub, you can [sign up here](https://github.com/). There are a bunch of great resources on the [GitHub Quickstart page](https://docs.github.com/en/get-started/quickstart). The [GitHub Cheatsheet](https://training.github.com/downloads/github-git-cheat-sheet/) is also quite helpful, even for experienced users. Please reach out to [lpdaac@usgs.gov](lpdaac@usgs.gov) with questions or concerns.  
@@ -66,7 +66,7 @@ To contribute a solution to an issue or make a change to files within the reposi
     git status
     ```
 
-    - Commit locally as you progress using `git add` and `git commit`.` For example, updating a readme.md file:
+    - Commit locally as you progress using `git add` and `git commit`. For example, updating a readme.md file:
 
     ```
     git add readme.md

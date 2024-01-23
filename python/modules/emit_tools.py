@@ -131,7 +131,7 @@ def coord_vects(ds):
     loc: an xarray.Dataset containing the 'location' group of an EMIT dataset
 
     Returns:
-    lon, lat (numpy.array): longitute and latitude array grid for the dataset
+    lon, lat (numpy.array): longitude and latitude array grid for the dataset
 
     """
     # Retrieve Geotransform from Metadata
@@ -219,7 +219,7 @@ def ortho_xr(ds, GLT_NODATA_VALUE=0, fill_value=-9999):
         # Mask fill values
         out_ds[out_ds == fill_value] = np.nan
 
-        # Update variables - Only works for 2 or 3 dimensional arays
+        # Update variables - Only works for 2 or 3 dimensional arrays
         if raw_ds.ndim == 2:
             out_ds = out_ds.squeeze()
             data_vars[var] = (["latitude", "longitude"], out_ds)

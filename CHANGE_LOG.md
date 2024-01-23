@@ -22,7 +22,7 @@ _________________________________________________________________________
 
 > ### Summary
 >
-> Updated notebook ROI to Carpenteria Salt Marsh
+> Updated notebook ROI to Carpinteria Salt Marsh
 >
 > ### Added
 >
