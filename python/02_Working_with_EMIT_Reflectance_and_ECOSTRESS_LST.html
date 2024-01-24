@@ -204,8 +204,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../setup/workshop_setup.html" class="sidebar-item-text sidebar-link">Cloud Workspace Setup</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/setup_instructions.html" class="sidebar-item-text sidebar-link">Local Python Environment Setup</a>
+  </div>
+</li>
     </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides.html" class="sidebar-item-text sidebar-link">Workshop Slides</a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
         <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Python Notebooks</a>
@@ -232,6 +242,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../python/04_Dangermond_Land_Cover.html" class="sidebar-item-text sidebar-link">4 Dangermond Land Cover</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/05_SB_Vineyards.html" class="sidebar-item-text sidebar-link">5 Santa Barbara Vineyards</a>
   </div>
 </li>
     </ul>
@@ -265,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#working-with-emit-l2a-reflectance-and-ecostress-l2-lste-et-products" id="toc-working-with-emit-l2a-reflectance-and-ecostress-l2-lste-et-products" class="nav-link active" data-scroll-target="#working-with-emit-l2a-reflectance-and-ecostress-l2-lste-et-products">2 Working with EMIT L2A Reflectance and ECOSTRESS L2 LSTE ET Products</a>
+  <li><a href="#working-with-emit-l2a-reflectance-and-ecostress-l2-lste-products" id="toc-working-with-emit-l2a-reflectance-and-ecostress-l2-lste-products" class="nav-link active" data-scroll-target="#working-with-emit-l2a-reflectance-and-ecostress-l2-lste-products">2 Working with EMIT L2A Reflectance and ECOSTRESS L2 LSTE Products</a>
   <ul class="collapse">
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">2.1 Setup</a></li>
   <li><a href="#opening-and-exploring-emit-reflectance-data" id="toc-opening-and-exploring-emit-reflectance-data" class="nav-link" data-scroll-target="#opening-and-exploring-emit-reflectance-data">2.2 Opening and Exploring EMIT Reflectance Data</a>
@@ -291,8 +306,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="working-with-emit-l2a-reflectance-and-ecostress-l2-lste-et-products" class="level1">
-<h1>2 Working with EMIT L2A Reflectance and ECOSTRESS L2 LSTE ET Products</h1>
+<section id="working-with-emit-l2a-reflectance-and-ecostress-l2-lste-products" class="level1">
+<h1>2 Working with EMIT L2A Reflectance and ECOSTRESS L2 LSTE Products</h1>
 <p><strong>Summary</strong></p>
 <p>In the previous notebook, we found and downloaded concurrent EMIT L2A Reflectance and ECOSTRESS L2 Land Surface Temperature and Emissivity scenes over our region of interest. In this notebook, we will open and explore both datasets to better understand the structure, then we will conduct some common preprocessing routines to make the data usable together, including: applying quality data, reprojecting, placing data on a common grid, and cropping.</p>
 <div>
@@ -314,8 +329,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Requirements</strong><br>
 - <a href="https://urs.earthdata.nasa.gov/home">NASA Earthdata Account</a><br>
 - <em>No Python setup requirements if connected to the workshop cloud instance!</em><br>
-- <em>Local Only</em> - Set up Python Environment. See <strong>setup_instructions.md</strong> in the <code>/setup/</code> folder<br>
-- <em>Local Only</em> - Downloaded necessary files. This is done at the end of the <a href="../python/01_Finding_Concurrent_Data.html">01_Finding_Concurrent_Data</a> notebook.</p>
+- <strong>Local Only</strong> Set up Python Environment - See <strong>setup_instructions.md</strong> in the <code>/setup/</code> folder to set up a local compatible Python environment<br>
+- Downloaded necessary files. This is done at the end of the <a href="../python/01_Finding_Concurrent_Data.html">01_Finding_Concurrent_Data</a> notebook.</p>
 <p><strong>Learning Objectives</strong><br>
 - How to open and work with EMIT L2A Reflectance and ECOSTRESS L2T LSTE data<br>
 - How to apply a quality mask to EMIT datasets<br>
@@ -336,30 +351,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="setup">2.1 Setup</h2>
 <p>Import Python libraries.</p>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Packages</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#import os</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#import csv</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> glob</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> earthaccess</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> osgeo <span class="im">import</span> gdal</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio <span class="im">as</span> rio</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rioxarray <span class="im">as</span> rxr</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hvplot.xarray</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hvplot.pandas</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> holoviews <span class="im">as</span> hv</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geoviews <span class="im">as</span> gv</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gp</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> modules.emit_tools <span class="im">import</span> emit_xarray, ortho_xr</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> holoviews.plotting.links <span class="im">import</span> DataLink</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Define a filepath for an EMIT L2A Reflectance file, EMIT L2A Mask file, and an ECOSTRESS L2T LSTE and ECOSTRESS L2T Mask file. The files selected in this example are from April 1, 2023 at around 20:37.</p>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>emit_fp <span class="op">=</span> <span class="st">"../../shared/2023-VITALS-Workshop-AGU/data/EMIT_L2A_RFL_001_20230401T203751_2309114_002.nc"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>emit_qa_fp <span class="op">=</span> <span class="st">"../../shared/2023-VITALS-Workshop-AGU/data/EMIT_L2A_MASK_001_20230401T203751_2309114_002.nc"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>eco_fp <span class="op">=</span> <span class="st">"../../shared/2023-VITALS-Workshop-AGU/data/ECOv002_L2T_LSTE_26860_001_10SGD_20230401T203733_0710_01_LST.tif"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Some cells may generate warnings that we can ignore. Comment below lines to see.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#import glob</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#import earthaccess</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#import pandas as pd</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#import xarray as xr</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> osgeo <span class="im">import</span> gdal</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio <span class="im">as</span> rio</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rioxarray <span class="im">as</span> rxr</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hvplot.xarray</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hvplot.pandas</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> holoviews <span class="im">as</span> hv</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#import geoviews as gv</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gp</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">#import sys</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> modules.emit_tools <span class="im">import</span> emit_xarray</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">#from holoviews.plotting.links import DataLink</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Define a filepath for an EMIT L2A Reflectance file, EMIT L2A Mask file, and an ECOSTRESS L2T LSTE and ECOSTRESS L2T Mask file. The files selected in this example are from April 1, 2023, at around 20:37.</p>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>emit_fp <span class="op">=</span> <span class="st">"../data/EMIT_L2A_RFL_001_20230401T203751_2309114_002.nc"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>emit_qa_fp <span class="op">=</span> <span class="st">"../data/EMIT_L2A_MASK_001_20230401T203751_2309114_002.nc"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>eco_fp <span class="op">=</span> <span class="st">"../data/ECOv002_L2T_LSTE_26860_001_10SGD_20230401T203733_0710_01_LST.tif"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="opening-and-exploring-emit-reflectance-data" class="level2">
 <h2 class="anchored" data-anchor-id="opening-and-exploring-emit-reflectance-data">2.2 Opening and Exploring EMIT Reflectance Data</h2>
@@ -385,7 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="ss">f'Latitude = </span><span class="sc">{</span>point<span class="sc">.</span>latitude<span class="sc">.</span>values<span class="sc">.</span><span class="bu">round</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="ss">, Longitude = </span><span class="sc">{</span>point<span class="sc">.</span>longitude<span class="sc">.</span>values<span class="sc">.</span><span class="bu">round</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can also plot individual bands spatially by selecting a wavelength, then plotting. Select the band with a wavelengths of 850 nm and plot it using ESRI imagery as a basemap to get a better understanding of where the scene was acquired.</p>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>emit_layer <span class="op">=</span> emit_ds.sel(wavelengths<span class="op">=</span><span class="dv">850</span>,method<span class="op">=</span><span class="st">'nearest'</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>emit_layer.hvplot.image(cmap<span class="op">=</span><span class="st">'viridis'</span>,geo<span class="op">=</span><span class="va">True</span>, tiles<span class="op">=</span><span class="st">'ESRI'</span>, frame_width<span class="op">=</span><span class="dv">720</span>,frame_height<span class="op">=</span><span class="dv">405</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, fontscale<span class="op">=</span><span class="dv">2</span>).opts(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>emit_layer.hvplot.image(cmap<span class="op">=</span><span class="st">'viridis'</span>,geo<span class="op">=</span><span class="va">True</span>, tiles<span class="op">=</span><span class="st">'ESRI'</span>, crs<span class="op">=</span><span class="st">'EPSG:4326'</span>, frame_width<span class="op">=</span><span class="dv">720</span>,frame_height<span class="op">=</span><span class="dv">405</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, fontscale<span class="op">=</span><span class="dv">2</span>).opts(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>emit_layer<span class="sc">.</span>wavelengths<span class="sc">:.3f}</span><span class="ss"> </span><span class="sc">{</span>emit_layer<span class="sc">.</span>wavelengths<span class="sc">.</span>units<span class="sc">}</span><span class="ss">"</span>, xlabel<span class="op">=</span><span class="st">'Longitude'</span>,ylabel<span class="op">=</span><span class="st">'Latitude'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="applying-quality-masks-to-emit-data" class="level3">
 <h3 class="anchored" data-anchor-id="applying-quality-masks-to-emit-data">2.2.1 Applying Quality Masks to EMIT Data</h3>
@@ -399,10 +418,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>emit_mask.mask_bands.data.tolist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>As mentioned, we will use the <code>Aggregate Flag</code>. Select that band with the <code>sel</code> function as we did for wavelengths before.</p>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>emit_aggregate_mask <span class="op">=</span> emit_mask.sel(mask_bands<span class="op">=</span><span class="st">'Aggregate Flag'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now we can visualize our aggregate quality mask. You may have noticed before that we added a lot of parameters to our plotting function. If we want to consistently apply the same formatting for multiple plots, we can add those agrguments to a dictionary that we can unpack into <code>hvplot</code> functions using <code>**</code>.</p>
+<p>Now we can visualize our aggregate quality mask. You may have noticed before that we added a lot of parameters to our plotting function. If we want to consistently apply the same formatting for multiple plots, we can add those arguments to a dictionary that we can unpack into <code>hvplot</code> functions using <code>**</code>.</p>
 <p>Create two dictionaries with plotting options.</p>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>size_opts <span class="op">=</span> <span class="bu">dict</span>(frame_height<span class="op">=</span><span class="dv">405</span>, frame_width<span class="op">=</span><span class="dv">720</span>, fontscale<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>map_opts <span class="op">=</span> <span class="bu">dict</span>(geo<span class="op">=</span><span class="va">True</span>,alpha<span class="op">=</span><span class="fl">0.7</span>, xlabel<span class="op">=</span><span class="st">'Longitude'</span>,ylabel<span class="op">=</span><span class="st">'Latitude'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>map_opts <span class="op">=</span> <span class="bu">dict</span>(geo<span class="op">=</span><span class="va">True</span>, crs<span class="op">=</span><span class="st">'EPSG:4326'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, xlabel<span class="op">=</span><span class="st">'Longitude'</span>,ylabel<span class="op">=</span><span class="st">'Latitude'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>emit_aggregate_mask.hvplot.image(cmap<span class="op">=</span><span class="st">'viridis'</span>, tiles<span class="op">=</span><span class="st">'ESRI'</span>, <span class="op">**</span>size_opts, <span class="op">**</span>map_opts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Values of 1 in the mask indicate areas to omit. Apply the mask to our EMIT Data by assigning values where the <code>mask.data == 1</code> to <code>np.nan</code></p>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>emit_ds.reflectance.data[emit_aggregate_mask.mask.data <span class="op">==</span> <span class="dv">1</span>] <span class="op">=</span> np.nan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -425,140 +444,135 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        scaled <span class="op">=</span> np.nan_to_num(scaled, nan <span class="op">=</span> <span class="dv">1</span>) <span class="co"># Assign NA's to 1 so they appear white in plots</span></span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    rgb_ds.reflectance.data <span class="op">=</span> scaled</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> rgb_ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Suppress Warnings for Some of the holoviews plots</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>emit_rgb <span class="op">=</span> gamma_adjust(emit_rgb,white_background<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>emit_rgb <span class="op">=</span> gamma_adjust(emit_rgb,white_background<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now that we have an RGB dataset, we can use that to create a spatial plot, and data selected by clicking on that ‘map’ can be inputs for a function to return values from the full dataset at that latitude and longitude location using the cell below. To visualize the spectral and spatial data side-by-side, we use the Point Draw tool from the holoviews library.</p>
 <p>Define a limit to the quantity of points and spectra we will plot, a list of colors to cycle through, and an initial point. Then use the input from the Tap function to provide clicked x and y positions on the map and use these to retrieve spectra from the dataset at those coordinates.</p>
 <p>Click in the RGB image to add spectra to the plot. You can also click and hold the mouse button then drag previously place points. To remove a point click and hold the mouse button down, then press the backspace key.</p>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Interactive Points Plotting</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Modified from https://github.com/auspatious/hyperspectral-notebooks/blob/main/03_EMIT_Interactive_Points.ipynb</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>POINT_LIMIT <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>color_cycle <span class="op">=</span> hv.Cycle(<span class="st">'Category20'</span>)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create RGB Map</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="bu">map</span> <span class="op">=</span> emit_rgb.hvplot.rgb(fontscale<span class="op">=</span><span class="fl">1.5</span>, xlabel<span class="op">=</span><span class="st">'Longitude'</span>,ylabel<span class="op">=</span><span class="st">'Latitude'</span>,frame_width<span class="op">=</span><span class="dv">480</span>, frame_height<span class="op">=</span><span class="dv">480</span>)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up a holoviews points array to enable plotting of the clicked points</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>xmid <span class="op">=</span> emit_ds.longitude.values[<span class="bu">int</span>(<span class="bu">len</span>(emit_ds.longitude) <span class="op">/</span> <span class="dv">2</span>)]</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>ymid <span class="op">=</span> emit_ds.latitude.values[<span class="bu">int</span>(<span class="bu">len</span>(emit_ds.latitude) <span class="op">/</span> <span class="dv">2</span>)]</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>first_point <span class="op">=</span> ([xmid], [ymid], [<span class="dv">0</span>])</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> hv.Points(first_point, vdims<span class="op">=</span><span class="st">'id'</span>)</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>points_stream <span class="op">=</span> hv.streams.PointDraw(</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>points.columns(),</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    source<span class="op">=</span>points,</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    drag<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    num_objects<span class="op">=</span>POINT_LIMIT,</span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    styles<span class="op">=</span>{<span class="st">'fill_color'</span>: color_cycle.values[<span class="dv">1</span>:POINT_LIMIT<span class="op">+</span><span class="dv">1</span>], <span class="st">'line_color'</span>: <span class="st">'gray'</span>}</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>posxy <span class="op">=</span> hv.streams.PointerXY(source<span class="op">=</span><span class="bu">map</span>, x<span class="op">=</span>xmid, y<span class="op">=</span>ymid)</span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>clickxy <span class="op">=</span> hv.streams.Tap(source<span class="op">=</span><span class="bu">map</span>, x<span class="op">=</span>xmid, y<span class="op">=</span>ymid)</span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to build spectral plot of clicked location to show on hover stream plot</span></span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> click_spectra(data):</span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>    coordinates <span class="op">=</span> []</span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> data <span class="kw">is</span> <span class="va">None</span> <span class="kw">or</span> <span class="kw">not</span> <span class="bu">any</span>(<span class="bu">len</span>(d) <span class="cf">for</span> d <span class="kw">in</span> data.values()):</span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>        coordinates.append(clicked_points[<span class="dv">0</span>][<span class="dv">0</span>], clicked_points[<span class="dv">1</span>][<span class="dv">0</span>])</span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>        coordinates <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> <span class="bu">zip</span>(data[<span class="st">'x'</span>], data[<span class="st">'y'</span>])]</span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>    plots <span class="op">=</span> []</span>
-<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, coords <span class="kw">in</span> <span class="bu">enumerate</span>(coordinates):</span>
-<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> coords</span>
-<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> emit_ds.sel(longitude<span class="op">=</span>x, latitude<span class="op">=</span>y, method<span class="op">=</span><span class="st">"nearest"</span>)</span>
-<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>        plots.append(</span>
-<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>            data.hvplot.line(</span>
-<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>                y<span class="op">=</span><span class="st">"reflectance"</span>,</span>
-<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>                x<span class="op">=</span><span class="st">"wavelengths"</span>,</span>
-<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span>color_cycle,</span>
-<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>        points_stream.data[<span class="st">"id"</span>][i] <span class="op">=</span> i</span>
-<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hv.Overlay(plots)</span>
-<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hover_spectra(x,y):</span>
-<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> emit_ds.sel(longitude<span class="op">=</span>x,latitude<span class="op">=</span>y,method<span class="op">=</span><span class="st">'nearest'</span>).hvplot.line(y<span class="op">=</span><span class="st">'reflectance'</span>,x<span class="op">=</span><span class="st">'wavelengths'</span>,</span>
-<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a>                                                                            color<span class="op">=</span><span class="st">'black'</span>, frame_width<span class="op">=</span><span class="dv">400</span>)</span>
-<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the Dynamic Maps</span></span>
-<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>click_dmap <span class="op">=</span> hv.DynamicMap(click_spectra, streams<span class="op">=</span>[points_stream])</span>
-<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>hover_dmap <span class="op">=</span> hv.DynamicMap(hover_spectra, streams<span class="op">=</span>[posxy])</span>
-<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the Map and Dynamic Map side by side</span></span>
-<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a>hv.Layout(hover_dmap<span class="op">*</span>click_dmap <span class="op">+</span> <span class="bu">map</span> <span class="op">*</span> points).cols(<span class="dv">2</span>).opts(</span>
-<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a>    hv.opts.Points(active_tools<span class="op">=</span>[<span class="st">'point_draw'</span>], size<span class="op">=</span><span class="dv">10</span>, tools<span class="op">=</span>[<span class="st">'hover'</span>], color<span class="op">=</span><span class="st">'white'</span>, line_color<span class="op">=</span><span class="st">'gray'</span>),</span>
-<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a>    hv.opts.Overlay(show_legend<span class="op">=</span><span class="va">False</span>, show_title<span class="op">=</span><span class="va">False</span>, fontscale<span class="op">=</span><span class="fl">1.5</span>, frame_height<span class="op">=</span><span class="dv">480</span>)</span>
-<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Interactive Points Plotting</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Modified from https://github.com/auspatious/hyperspectral-notebooks/blob/main/03_EMIT_Interactive_Points.ipynb</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>POINT_LIMIT <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>color_cycle <span class="op">=</span> hv.Cycle(<span class="st">'Category20'</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create RGB Map</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="bu">map</span> <span class="op">=</span> emit_rgb.hvplot.rgb(fontscale<span class="op">=</span><span class="fl">1.5</span>, xlabel<span class="op">=</span><span class="st">'Longitude'</span>,ylabel<span class="op">=</span><span class="st">'Latitude'</span>,frame_width<span class="op">=</span><span class="dv">480</span>, frame_height<span class="op">=</span><span class="dv">480</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up a holoviews points array to enable plotting of the clicked points</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>xmid <span class="op">=</span> emit_ds.longitude.values[<span class="bu">int</span>(<span class="bu">len</span>(emit_ds.longitude) <span class="op">/</span> <span class="dv">2</span>)]</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>ymid <span class="op">=</span> emit_ds.latitude.values[<span class="bu">int</span>(<span class="bu">len</span>(emit_ds.latitude) <span class="op">/</span> <span class="dv">2</span>)]</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>first_point <span class="op">=</span> ([xmid], [ymid], [<span class="dv">0</span>])</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> hv.Points(first_point, vdims<span class="op">=</span><span class="st">'id'</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>points_stream <span class="op">=</span> hv.streams.PointDraw(</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>points.columns(),</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    source<span class="op">=</span>points,</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    drag<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    num_objects<span class="op">=</span>POINT_LIMIT,</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    styles<span class="op">=</span>{<span class="st">'fill_color'</span>: color_cycle.values[<span class="dv">1</span>:POINT_LIMIT<span class="op">+</span><span class="dv">1</span>], <span class="st">'line_color'</span>: <span class="st">'gray'</span>}</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>posxy <span class="op">=</span> hv.streams.PointerXY(source<span class="op">=</span><span class="bu">map</span>, x<span class="op">=</span>xmid, y<span class="op">=</span>ymid)</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>clickxy <span class="op">=</span> hv.streams.Tap(source<span class="op">=</span><span class="bu">map</span>, x<span class="op">=</span>xmid, y<span class="op">=</span>ymid)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to build spectral plot of clicked location to show on hover stream plot</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> click_spectra(data):</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    coordinates <span class="op">=</span> []</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> data <span class="kw">is</span> <span class="va">None</span> <span class="kw">or</span> <span class="kw">not</span> <span class="bu">any</span>(<span class="bu">len</span>(d) <span class="cf">for</span> d <span class="kw">in</span> data.values()):</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>        coordinates.append(clicked_points[<span class="dv">0</span>][<span class="dv">0</span>], clicked_points[<span class="dv">1</span>][<span class="dv">0</span>])</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>        coordinates <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> <span class="bu">zip</span>(data[<span class="st">'x'</span>], data[<span class="st">'y'</span>])]</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    plots <span class="op">=</span> []</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, coords <span class="kw">in</span> <span class="bu">enumerate</span>(coordinates):</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>        x, y <span class="op">=</span> coords</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> emit_ds.sel(longitude<span class="op">=</span>x, latitude<span class="op">=</span>y, method<span class="op">=</span><span class="st">"nearest"</span>)</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>        plots.append(</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>            data.hvplot.line(</span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>                y<span class="op">=</span><span class="st">"reflectance"</span>,</span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>                x<span class="op">=</span><span class="st">"wavelengths"</span>,</span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span>color_cycle,</span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>        points_stream.data[<span class="st">"id"</span>][i] <span class="op">=</span> i</span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hv.Overlay(plots)</span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hover_spectra(x,y):</span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> emit_ds.sel(longitude<span class="op">=</span>x,latitude<span class="op">=</span>y,method<span class="op">=</span><span class="st">'nearest'</span>).hvplot.line(y<span class="op">=</span><span class="st">'reflectance'</span>,x<span class="op">=</span><span class="st">'wavelengths'</span>,</span>
+<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>                                                                            color<span class="op">=</span><span class="st">'black'</span>, frame_width<span class="op">=</span><span class="dv">400</span>)</span>
+<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the Dynamic Maps</span></span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>click_dmap <span class="op">=</span> hv.DynamicMap(click_spectra, streams<span class="op">=</span>[points_stream])</span>
+<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>hover_dmap <span class="op">=</span> hv.DynamicMap(hover_spectra, streams<span class="op">=</span>[posxy])</span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the Map and Dynamic Map side by side</span></span>
+<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>hv.Layout(hover_dmap<span class="op">*</span>click_dmap <span class="op">+</span> <span class="bu">map</span> <span class="op">*</span> points).cols(<span class="dv">2</span>).opts(</span>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>    hv.opts.Points(active_tools<span class="op">=</span>[<span class="st">'point_draw'</span>], size<span class="op">=</span><span class="dv">10</span>, tools<span class="op">=</span>[<span class="st">'hover'</span>], color<span class="op">=</span><span class="st">'white'</span>, line_color<span class="op">=</span><span class="st">'gray'</span>),</span>
+<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a>    hv.opts.Overlay(show_legend<span class="op">=</span><span class="va">False</span>, show_title<span class="op">=</span><span class="va">False</span>, fontscale<span class="op">=</span><span class="fl">1.5</span>, frame_height<span class="op">=</span><span class="dv">480</span>)</span>
+<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can take these selected points and the corresponding reflectance spectra and save them as a <code>.csv</code> for later use.</p>
-<p>Select 10 points by adding to the figure above. We will save these and use them in a to caclculate Equivalent Water Thickness or Canopy water content in the next notebook.</p>
-<p>After making a selection, re-enable warnings to make sure we don’t have issues with other cells in the notebook.</p>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enable Warnings again</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'default'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Select 10 points by adding to the figure above. We will save these and use them in a to calculate Equivalent Water Thickness or Canopy water content in the next notebook.</p>
 <p>Build a dictionary of the selected points and spectra, then export the spectra to a .csv file.</p>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> points_stream.data</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>wavelengths <span class="op">=</span> emit_ds.wavelengths.values</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> [[<span class="st">"id"</span>, <span class="st">"x"</span>, <span class="st">"y"</span>] <span class="op">+</span> [<span class="bu">str</span>(i) <span class="cf">for</span> i <span class="kw">in</span> wavelengths]]</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> <span class="bu">zip</span>(data[<span class="st">'x'</span>], data[<span class="st">'y'</span>], data[<span class="st">'id'</span>]):</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    x, y, i <span class="op">=</span> p</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    spectra <span class="op">=</span> emit_ds.sel(longitude<span class="op">=</span>x, latitude<span class="op">=</span>y, method<span class="op">=</span><span class="st">"nearest"</span>).reflectance.values</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> [i, x, y] <span class="op">+</span> <span class="bu">list</span>(spectra)</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    rows.append(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> points_stream.data</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>wavelengths <span class="op">=</span> emit_ds.wavelengths.values</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> [[<span class="st">"id"</span>, <span class="st">"x"</span>, <span class="st">"y"</span>] <span class="op">+</span> [<span class="bu">str</span>(i) <span class="cf">for</span> i <span class="kw">in</span> wavelengths]]</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> <span class="bu">zip</span>(data[<span class="st">'x'</span>], data[<span class="st">'y'</span>], data[<span class="st">'id'</span>]):</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    x, y, i <span class="op">=</span> p</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    spectra <span class="op">=</span> emit_ds.sel(longitude<span class="op">=</span>x, latitude<span class="op">=</span>y, method<span class="op">=</span><span class="st">"nearest"</span>).reflectance.values</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> [i, x, y] <span class="op">+</span> <span class="bu">list</span>(spectra)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    rows.append(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We’ve preselected 10 points, but feel free to uncomment the cell below to use your own. This will overwrite the file containing the preselected points.</p>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># with open('../data/emit_click_data.csv', 'w', newline='') as f:</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     writer = csv.writer(f)</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     writer.writerows(rows)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># with open('../data/emit_click_data.csv', 'w', newline='') as f:</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     writer = csv.writer(f)</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     writer.writerows(rows)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="cropping-emit-data-to-a-region-of-interest" class="level3">
 <h3 class="anchored" data-anchor-id="cropping-emit-data-to-a-region-of-interest">2.2.3 Cropping EMIT data to a Region of Interest</h3>
-<p>To crop our dataset to our ROI we first need to open a shapefile of the region. Open the included <code>geojson</code> for Sedgwick Reserve and Plot it onto our EMIT 850nm reflectance spatial plot. Note that here we don’t use use tiles – there seems to be a bug preventing this.</p>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>shape <span class="op">=</span> gp.read_file(<span class="st">"../data/dangermond_boundary.geojson"</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>emit_ds.sel(wavelengths<span class="op">=</span><span class="dv">850</span>, method<span class="op">=</span><span class="st">'nearest'</span>).hvplot.image(cmap<span class="op">=</span><span class="st">'viridis'</span>,<span class="op">**</span>size_opts,<span class="op">**</span>map_opts,tiles<span class="op">=</span><span class="st">'ESRI'</span>)<span class="op">*</span>shape.to_crs(<span class="st">'EPSG:3857'</span>).hvplot(color<span class="op">=</span><span class="st">'#d95f02'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To crop our dataset to our ROI we first need to open a shapefile of the region. Open the included <code>geojson</code> for Sedgwick Reserve and Plot it onto our EMIT 850nm reflectance spatial plot. To ensure the plotting of the shape and EMIT scene works, be sure to specify the CRS (this is done for the image in the <code>map_opts</code> dictionary).</p>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>shape <span class="op">=</span> gp.read_file(<span class="st">"../data/dangermond_boundary.geojson"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>emit_ds.sel(wavelengths<span class="op">=</span><span class="dv">850</span>, method<span class="op">=</span><span class="st">'nearest'</span>).hvplot.image(cmap<span class="op">=</span><span class="st">'viridis'</span>,<span class="op">**</span>size_opts,<span class="op">**</span>map_opts,tiles<span class="op">=</span><span class="st">'ESRI'</span>)<span class="op">*</span>shape.hvplot(color<span class="op">=</span><span class="st">'#d95f02'</span>,alpha<span class="op">=</span><span class="fl">0.5</span>, crs<span class="op">=</span><span class="st">'EPSG:4326'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now use the <code>clip</code> function from <code>rasterio</code> to crop the data to our ROI using our shape’s <code>geometry</code> and <code>crs</code>. The <code>all_touched=True</code> argument will ensure all pixels touched by our polygon will be included.</p>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>emit_cropped <span class="op">=</span> emit_ds.rio.clip(shape.geometry.values,shape.crs, all_touched<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>emit_cropped <span class="op">=</span> emit_ds.rio.clip(shape.geometry.values,shape.crs, all_touched<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Plot the cropped data.</p>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>emit_cropped.sel(wavelengths<span class="op">=</span><span class="dv">850</span>,method<span class="op">=</span><span class="st">'nearest'</span>).hvplot.image(cmap<span class="op">=</span><span class="st">'viridis'</span>, tiles<span class="op">=</span><span class="st">'ESRI'</span>, <span class="op">**</span>size_opts, <span class="op">**</span>map_opts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>emit_cropped.sel(wavelengths<span class="op">=</span><span class="dv">850</span>,method<span class="op">=</span><span class="st">'nearest'</span>).hvplot.image(cmap<span class="op">=</span><span class="st">'viridis'</span>, tiles<span class="op">=</span><span class="st">'ESRI'</span>, <span class="op">**</span>size_opts, <span class="op">**</span>map_opts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="write-an-output" class="level3">
 <h3 class="anchored" data-anchor-id="write-an-output">2.2.4 Write an output</h3>
 <p>Lastly for our EMIT dataset, we can write a smaller output that we can use in later notebooks, to calculate Canopy water content or other applications. We use the <code>granule_id</code> from the dataset to keep a similar naming convention.</p>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write Clipped Output</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#emit_cropped.to_netcdf(f'../data/{emit_cropped.granule_id}_dangermond.nc')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write Clipped Output</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>emit_cropped.to_netcdf(<span class="ss">f'../data/</span><span class="sc">{</span>emit_cropped<span class="sc">.</span>granule_id<span class="sc">}</span><span class="ss">_dangermond.nc'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="working-with-ecostress-l2t-land-surface-temperature-and-emissivity" class="level2">
 <h2 class="anchored" data-anchor-id="working-with-ecostress-l2t-land-surface-temperature-and-emissivity">3.0 Working with ECOSTRESS L2T Land Surface Temperature and Emissivity</h2>
 <p>For this example we’re only taking a look at the ECOSTRESS Level 2 Tiled Land Surface Temperature (ECO_L2T_LSTE). The Land Surface Temperature and Emissivity values are derived from five thermal infrared (TIR) bands using a physics-based Temperature and Emissivity Separation (TES) algorithm. This tiled data product uses a modified version of the Military Grid Reference System (MGRS) which divides Universal Transverse Mercator (UTM) zones into square tiles that are 109.8 km by 109.8 km with a 70 meter (m) spatial resolution.</p>
 <p>Open the LSTE file using <code>open_rasterio</code> from the <code>rioxarray</code> library. Since the file consists of only 1 layer, we can <code>squeeze</code> it, removing the <code>band</code> dimension.</p>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>eco_lst_ds <span class="op">=</span> rxr.open_rasterio(eco_fp).squeeze(<span class="st">'band'</span>, drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>eco_lst_ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>eco_lst_ds <span class="op">=</span> rxr.open_rasterio(eco_fp).squeeze(<span class="st">'band'</span>, drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>eco_lst_ds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>As mentioned the ECOSTRESS product we are using here is tiled and the coordinate reference system (CRS) is dependent on UTM zone. For this tile, we can look at the <code>spatial_ref</code> variable through the interactive object above to see details such as the well-known-text (WKT) representation of the CRS and other attributes.</p>
-<p>Now lets plot the data using <code>hvplot</code>. The underlying functions will recognize the CRS and reprojet the scene for our visualization with an ESRI imagery RBG background tile.</p>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>eco_lst_ds.hvplot.image(x<span class="op">=</span><span class="st">'x'</span>,y<span class="op">=</span><span class="st">'y'</span>,<span class="op">**</span>size_opts, cmap<span class="op">=</span><span class="st">'inferno'</span>,tiles<span class="op">=</span><span class="st">'ESRI'</span>, xlabel<span class="op">=</span><span class="st">'Longitude'</span>,ylabel<span class="op">=</span><span class="st">'Latitude'</span>,title<span class="op">=</span><span class="st">'ECOSTRESS LST (K)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now let’s plot the data using <code>hvplot</code>. Reproject the dataset first, and be sure to specify the CRS argument within the <code>hvplot.image</code> function so the ESRI imagery RBG background tile aligns with our scene.</p>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>eco_lst_ds.rio.reproject(<span class="st">'EPSG:4326'</span>).hvplot.image(x<span class="op">=</span><span class="st">'x'</span>,y<span class="op">=</span><span class="st">'y'</span>,<span class="op">**</span>size_opts, cmap<span class="op">=</span><span class="st">'inferno'</span>,tiles<span class="op">=</span><span class="st">'ESRI'</span>, xlabel<span class="op">=</span><span class="st">'Longitude'</span>,ylabel<span class="op">=</span><span class="st">'Latitude'</span>,title<span class="op">=</span><span class="st">'ECOSTRESS LST (K)'</span>, crs<span class="op">=</span><span class="st">'EPSG:4326'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="reprojecting-and-regridding-ecostress-data" class="level3">
 <h3 class="anchored" data-anchor-id="reprojecting-and-regridding-ecostress-data">2.3.1 Reprojecting and Regridding ECOSTRESS Data</h3>
 <p>We will need to reproject manually to pair this scene with the EMIT data, but we will not need to mask ECOSTRESS, because cloud masking has already been done for the tiled LSTE product.</p>
 <p>To give a reasonable 1:1 comparison, in addition to reprojecting we want the data on the same grid, so each pixel from the ECOSTRESS scene corresponds to a pixel in the EMIT scene. To do this, we can use the <code>reproject_match</code> function from the <code>rioxarray</code> library. This will reproject and regrid our ECOSTRESS data to match the EMIT CRS and grid using the <code>spatial_ref</code> variable from each dataset. Since we’ve already cropped the EMIT scene, this will limit our ECOSTRESS scene to the extent of that cropped EMIT scene as well.</p>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>eco_lst_ds_regrid <span class="op">=</span> eco_lst_ds.rio.reproject_match(emit_cropped)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>eco_lst_ds_regrid <span class="op">=</span> eco_lst_ds.rio.reproject_match(emit_cropped)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can now visualize our reprojected, regridded ECOSTRESS LSTE scene.</p>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>eco_lst_ds_regrid.hvplot.image(geo<span class="op">=</span><span class="va">True</span>, tiles<span class="op">=</span><span class="st">'ESRI'</span>,cmap<span class="op">=</span><span class="st">'inferno'</span>,<span class="op">**</span>size_opts, xlabel<span class="op">=</span><span class="st">'Longitude'</span>,ylabel<span class="op">=</span><span class="st">'Latitude'</span>,title<span class="op">=</span><span class="st">'Regridded ECOSTRESS LST (K)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>eco_lst_ds_regrid.hvplot.image(geo<span class="op">=</span><span class="va">True</span>, tiles<span class="op">=</span><span class="st">'ESRI'</span>,cmap<span class="op">=</span><span class="st">'inferno'</span>,<span class="op">**</span>size_opts, xlabel<span class="op">=</span><span class="st">'Longitude'</span>,ylabel<span class="op">=</span><span class="st">'Latitude'</span>,title<span class="op">=</span><span class="st">'Regridded ECOSTRESS LST (K)'</span>, crs<span class="op">=</span><span class="st">'EPSG:4326'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="cropping-ecostress-data" class="level3">
 <h3 class="anchored" data-anchor-id="cropping-ecostress-data">2.3.2 Cropping ECOSTRESS Data</h3>
 <p>This has been cropped to the extent, but we can further mask data outside of our region of interest by using the <code>clip</code> function like we did for EMIT data.</p>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>eco_dangermond <span class="op">=</span> eco_lst_ds_regrid.rio.clip(shape.geometry.values,shape.crs, all_touched<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>eco_dangermond.hvplot.image(geo<span class="op">=</span><span class="va">True</span>,cmap<span class="op">=</span><span class="st">'inferno'</span>,<span class="op">**</span>size_opts, tiles<span class="op">=</span><span class="st">'ESRI'</span>,alpha<span class="op">=</span><span class="fl">0.7</span>, title<span class="op">=</span><span class="st">'Cropped ECOSTRESS LST (K)'</span>, xlabel<span class="op">=</span><span class="st">'Longitude'</span>,ylabel<span class="op">=</span><span class="st">'Latitude'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>eco_dangermond <span class="op">=</span> eco_lst_ds_regrid.rio.clip(shape.geometry.values,shape.crs, all_touched<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>eco_dangermond.hvplot.image(geo<span class="op">=</span><span class="va">True</span>,cmap<span class="op">=</span><span class="st">'inferno'</span>,<span class="op">**</span>size_opts, tiles<span class="op">=</span><span class="st">'ESRI'</span>,alpha<span class="op">=</span><span class="fl">0.7</span>, title<span class="op">=</span><span class="st">'Cropped ECOSTRESS LST (K)'</span>, xlabel<span class="op">=</span><span class="st">'Longitude'</span>,ylabel<span class="op">=</span><span class="st">'Latitude'</span>, crs<span class="op">=</span><span class="st">'EPSG:4326'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="writing-outputs" class="level3">
 <h3 class="anchored" data-anchor-id="writing-outputs">2.3.3 Writing Outputs</h3>
 <p>We now have a subset ECOSTRESS scene that is aligned with EMIT data that we can export for our use in later notebooks.</p>
 <p>Save the ECOSTRESS LSTE scene.</p>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment to overwrite included sample</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># eco_outname = f"../data/{eco_fp.split('/')[-1].split('.')[0]}_dangermond.tif"</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># eco_sedgwick.rio.to_raster(raster_path=eco_outname, driver='COG')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment to overwrite included sample</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>eco_outname <span class="op">=</span> <span class="ss">f"../data/</span><span class="sc">{</span>eco_fp<span class="sc">.</span>split(<span class="st">'/'</span>)[<span class="op">-</span><span class="dv">1</span>]<span class="sc">.</span>split(<span class="st">'.'</span>)[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">_dangermond.tif"</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>eco_dangermond.rio.to_raster(raster_path<span class="op">=</span>eco_outname, driver<span class="op">=</span><span class="st">'COG'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="contact-info" class="level2">
@@ -567,7 +581,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Voice: +1-866-573-3222<br>
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹<br>
 Website: https://lpdaac.usgs.gov/<br>
-Date last modified: 11-28-2023</p>
+Date last modified: 01-23-2024</p>
 <p>¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.</p>
 
 
