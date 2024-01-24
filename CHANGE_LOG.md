@@ -5,6 +5,27 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 _________________________________________________________________________
 
+## 2024-01-24
+
+> ### Summary
+>
+> - Updated earthaccess search to use concept-id for Notebook 1
+> - Implemented downloading of required scenes for Notebooks 2-5 into a cell in Notebook 1
+> - Corrected projection/crs arguments for plotting of EMIT and ECOSTRESS imagery
+> - Made minor changes to Notebook 5 to fix cloud/local compatibility issues
+> - Fixed implementation of ewt_detection_limit threshold in ewt_calc.py
+> - Improved description of ewt_detection_limit in Notebook 3
+> - misc typos/syntax fixes
+>
+>
+> ### Added
+>
+> - Local environment support and setup instructions  
+> - Added EWT and ET cloud-optimized GeoTIFFs generated for the workshop to repository
+> - Added list of required granules/scenes to execute notebooks
+> - Added workshop slides.md
+>
+
 ## 2023-10-10
 
 > ### Summary
