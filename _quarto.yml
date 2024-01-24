@@ -45,6 +45,10 @@ website:
           href: setup/prerequisites.md
         - text: "Cloud Workspace Setup"
           href: setup/workshop_setup.qmd
+        - text: "Local Python Environment Setup"
+          href: setup/setup_instructions.md
+      - text: "Workshop Slides"
+        href: slides.md
       - section: "Python Notebooks"            
         contents: 
           - text: "1 Finding Concurrent Data"
@@ -55,6 +59,8 @@ website:
             href: python/03_EMIT_CWC_from_Reflectance.ipynb
           - text: "4 Dangermond Land Cover"
             href: python/04_Dangermond_Land_Cover.ipynb
+          - text: "5 Santa Barbara Vineyards"
+            href: python/05_SB_Vineyards.ipynb
       - section: "Contributing"
         contents:
           - href: CONTRIBUTING.md

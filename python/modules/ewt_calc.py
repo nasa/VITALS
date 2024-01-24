@@ -73,6 +73,7 @@ def calc_ewt(
             filepath,
             wvl,
             line_breaks[n],
+            ewt_detection_limit,
         )
         for n in range(len(line_breaks))
     ]
@@ -141,7 +142,7 @@ def run_lines(
     rfl_file: str,
     wl: np.array,
     startstop: tuple,
-    ewt_detection_limit: float = 0.5,
+    ewt_detection_limit: float,
 ) -> None:
     start_line, stop_line = startstop
 
@@ -159,8 +160,8 @@ def run_lines(
             if np.all(meas < 0):
                 continue
             output_cwc[r, c, 0] = invert_liquid_water(
-                meas, wl, ewt_detection_limit=0.5
-            )[0]
+                meas, wl, ewt_detection_limit=ewt_detection_limit
+            )
         logging.info(f"CWC writing line {r}")
     return output_cwc
 
@@ -240,7 +241,7 @@ def invert_liquid_water(
         args=(rfl_meas_sel, wl_sel, abs_co_w),
     )
 
-    solution = x_opt.x
+    solution = x_opt.x[0]
 
     if return_abs_co:
         return solution, abs_co_w

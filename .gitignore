@@ -3,7 +3,6 @@
 *__pycache__*
 
 # local development
-*.tif*
 *.img*
 *.envi*
 *.hdr*
