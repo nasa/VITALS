@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 _________________________________________________________________________
 
+## 2024-01-31
+
+### Summary
+>
+> - Fixed some typos
+>
+
 ## 2024-01-24
 
 > ### Summary
