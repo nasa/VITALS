@@ -4,7 +4,7 @@
     "href": "CHANGE_LOG.html",
     "title": "VITALS",
     "section": "",
-    "text": "All notable changes to this project will be documented in this file. The format is based on Keep a Changelog and this project adheres to Semantic Versioning. _________________________________________________________________________\n\n\n\n\n\nUpdated earthaccess search to use concept-id for Notebook 1\nImplemented downloading of required scenes for Notebooks 2-5 into a cell in Notebook 1\nCorrected projection/crs arguments for plotting of EMIT and ECOSTRESS imagery\nMade minor changes to Notebook 5 to fix cloud/local compatibility issues\nFixed implementation of ewt_detection_limit threshold in ewt_calc.py\nImproved description of ewt_detection_limit in Notebook 3\nmisc typos/syntax fixes\n\n\n\nLocal environment support and setup instructions\n\nAdded EWT and ET cloud-optimized GeoTIFFs generated for the workshop to repository\nAdded list of required granules/scenes to execute notebooks\nAdded workshop slides.md\n\n\n\n\n\n\n\n\nImproved Finding Concurrent Data Notebook text/instructions\nRenamed contribute.md\nadded repo description\n\n\n\nRepository description\n\n\n\n\n\n\n\nUpdated notebook ROI to Carpinteria Salt Marsh\n\n\nAdded landcover.geojson\n\n\n\n\n\n\n\nUpdated contribute.md and added user contributed directory\n\n\nAdded user_contributed directory\n\n\n\n\n\n\n\nThis is the first update.\n\n\nFinding Concurrent Data Notebook"
+    "text": "All notable changes to this project will be documented in this file. The format is based on Keep a Changelog and this project adheres to Semantic Versioning. _________________________________________________________________________\n\n\n\n\n\n\nFixed some typos\nResize slides in slides.md\n\n\n\n\n\n\n\n\n\nUpdated earthaccess search to use concept-id for Notebook 1\nImplemented downloading of required scenes for Notebooks 2-5 into a cell in Notebook 1\nCorrected projection/crs arguments for plotting of EMIT and ECOSTRESS imagery\nMade minor changes to Notebook 5 to fix cloud/local compatibility issues\nFixed implementation of ewt_detection_limit threshold in ewt_calc.py\nImproved description of ewt_detection_limit in Notebook 3\nmisc typos/syntax fixes\n\n\n\nLocal environment support and setup instructions\n\nAdded EWT and ET cloud-optimized GeoTIFFs generated for the workshop to repository\nAdded list of required granules/scenes to execute notebooks\nAdded workshop slides.md\n\n\n\n\n\n\n\n\nImproved Finding Concurrent Data Notebook text/instructions\nRenamed contribute.md\nadded repo description\n\n\n\nRepository description\n\n\n\n\n\n\n\nUpdated notebook ROI to Carpinteria Salt Marsh\n\n\nAdded landcover.geojson\n\n\n\n\n\n\n\nUpdated contribute.md and added user contributed directory\n\n\nAdded user_contributed directory\n\n\n\n\n\n\n\nThis is the first update.\n\n\nFinding Concurrent Data Notebook"
   },
   {
     "objectID": "CODE_OF_CONDUCT.html",
@@ -23,42 +23,42 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Space Station Synergies: Applying ECOSTRESS and EMIT ecological problems for Scientific Insight",
+    "title": "Space Station Synergies: Applying ECOSTRESS and EMIT to ecological problems for Scientific Insight",
     "section": "",
     "text": "The International Space Station is a critical asset for the Earth science community – both for advancing critical science and applications priorities, and as a platform for technology demonstrations/pathfinders. These benefits have been particularly significant in recent years, with the installation and operation of instruments such as ECOSTRESS, a multispectral thermal instrument, and EMIT, a visible to short wave infrared imaging spectrometer with best-in-class signal to noise - both acquiring data at field-scale (<70-m). With both sensors mounted on the ISS, there is an unprecedented opportunity to demonstrate the compounded benefits of working with both datasets. In this workshop we highlight the power of these tools when used together, through the use of open source tools and services, cloud compute resources to effectively combine data from ECOSTRESS and EMIT to perform scientific analyses and apply data to real world issues.\nThis workshop is hosted by NASA Land Processes Distributed Activate Archive Center(LP DAAC) and NASA Jet Propulsion Laboratory (JPL) with support from the NASA Openscapes project.\nHands-on exercises will be executed from a Jupyter Hub on the Openscapes 2i2c cloud instance."
   },
   {
     "objectID": "index.html#learning-outcomes",
     "href": "index.html#learning-outcomes",
-    "title": "Space Station Synergies: Applying ECOSTRESS and EMIT ecological problems for Scientific Insight",
+    "title": "Space Station Synergies: Applying ECOSTRESS and EMIT to ecological problems for Scientific Insight",
     "section": "Learning Outcomes:",
     "text": "Learning Outcomes:\n\nImaging Spectroscopy and thermal measurements 101, the electromagnetic spectrum and sensor specific considerations\n\nHow to access EMIT and ECOSTRESS data\n\nData Preprocessing and Exploratory Analysis\n\nHow to manipulate, combine, and visualize EMIT and ECOSTRESS data"
   },
   {
     "objectID": "index.html#learning-focus",
     "href": "index.html#learning-focus",
-    "title": "Space Station Synergies: Applying ECOSTRESS and EMIT ecological problems for Scientific Insight",
+    "title": "Space Station Synergies: Applying ECOSTRESS and EMIT to ecological problems for Scientific Insight",
     "section": "Learning Focus:",
     "text": "Learning Focus:\nPractical Skills for Science"
   },
   {
     "objectID": "index.html#knowledge-career-level",
     "href": "index.html#knowledge-career-level",
-    "title": "Space Station Synergies: Applying ECOSTRESS and EMIT ecological problems for Scientific Insight",
+    "title": "Space Station Synergies: Applying ECOSTRESS and EMIT to ecological problems for Scientific Insight",
     "section": "Knowledge & Career Level:",
     "text": "Knowledge & Career Level:\nBeginner, Intermediate"
   },
   {
     "objectID": "index.html#target-audience",
     "href": "index.html#target-audience",
-    "title": "Space Station Synergies: Applying ECOSTRESS and EMIT ecological problems for Scientific Insight",
+    "title": "Space Station Synergies: Applying ECOSTRESS and EMIT to ecological problems for Scientific Insight",
     "section": "Target Audience:",
     "text": "Target Audience:\n\nEarth and Planetary Surface Processes\nHydrology\nGlobal Environmental Change\nOcean Sciences\nScience and Society\nBiogeosciences"
   },
   {
     "objectID": "index.html#contact-info",
     "href": "index.html#contact-info",
-    "title": "Space Station Synergies: Applying ECOSTRESS and EMIT ecological problems for Scientific Insight",
+    "title": "Space Station Synergies: Applying ECOSTRESS and EMIT to ecological problems for Scientific Insight",
     "section": "Contact Info",
     "text": "Contact Info\nEmail: LPDAAC@usgs.gov\nVoice: +1-866-573-3222\nOrganization: Land Processes Distributed Active Archive Center (LP DAAC)¹\nWebsite: https://lpdaac.usgs.gov/\nDate last modified: 12-05-2023\n¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I."
   },
@@ -102,7 +102,7 @@
     "href": "schedule.html",
     "title": "2023 AGU Workshop Schedule",
     "section": "",
-    "text": "Space Station Synergies: Applying ECOSTRESS and EMIT ecological problems for Scientific Insight\n\n\n\nTime\nDescription\nLeads/Instructors\n\n\n\n\n8:00-8:30 AM\nIntroduction, overview, learning objectives\nDana Chadwick  Madeleine Pascolini-Campbell\n\n\n8:30-9:30 AM\nFinding EMIT and ECOSTRESS Data:  - Earthdata Search  - AppEEARS  - VISIONS\nAaron Friesz  Dana Chadwick\n\n\n9:30-9:45 AM\nBreak\n\n\n\n9:45-10:05 AM\nIntroduction to Cloud Computing Environment\nAaron Friesz\n\n\n10:05-10:50 AM\nFinding Concurrent EMIT and ECOSTRESS Data\nErik Bolch\n\n\n10:50-11:05 AM\nBreak\n\n\n\n11:05-12:00 PM\nExploring EMIT Reflectance and ECOSTRESS LST\nErik Bolch\n\n\n12:00-1:00 PM\nLunch Break\n\n\n\n1:00-2:00 PM\nEstimating Canopy Water Content\nDana Chadwick  Niklas Bohn  Erik Bolch\n\n\n2:00-2:30 PM\nUse Case 1: Dangermond Preserve Land Cover\nChristiana Ade  Marie Johnson\n\n\n2:30-3:00 PM\nUse Case 2: Santa Barbara Agriculture\nClaire Villanueva-Weeks  Gregory Halverson\n\n\n3:00-3:30 PM\nDiscussion, feedback, resources to take home\nAll"
+    "text": "Space Station Synergies: Applying ECOSTRESS and EMIT to ecological problems for Scientific Insight\n\n\n\nTime\nDescription\nLeads/Instructors\n\n\n\n\n8:00-8:30 AM\nIntroduction, overview, learning objectives\nDana Chadwick  Madeleine Pascolini-Campbell\n\n\n8:30-9:30 AM\nFinding EMIT and ECOSTRESS Data:  - Earthdata Search  - AppEEARS  - VISIONS\nAaron Friesz  Dana Chadwick\n\n\n9:30-9:45 AM\nBreak\n\n\n\n9:45-10:05 AM\nIntroduction to Cloud Computing Environment\nAaron Friesz\n\n\n10:05-10:50 AM\nFinding Concurrent EMIT and ECOSTRESS Data\nErik Bolch\n\n\n10:50-11:05 AM\nBreak\n\n\n\n11:05-12:00 PM\nExploring EMIT Reflectance and ECOSTRESS LST\nErik Bolch\n\n\n12:00-1:00 PM\nLunch Break\n\n\n\n1:00-2:00 PM\nEstimating Canopy Water Content\nDana Chadwick  Niklas Bohn  Erik Bolch\n\n\n2:00-2:30 PM\nUse Case 1: Dangermond Preserve Land Cover\nChristiana Ade  Marie Johnson\n\n\n2:30-3:00 PM\nUse Case 2: Santa Barbara Agriculture\nClaire Villanueva-Weeks  Gregory Halverson\n\n\n3:00-3:30 PM\nDiscussion, feedback, resources to take home\nAll"
   },
   {
     "objectID": "setup/prerequisites.html",
