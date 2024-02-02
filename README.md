@@ -1,6 +1,6 @@
 > **Fall AGU 2023 VITALS Workshop**  
 >
-> Please view the [web-book](https://github.com/nasa/VITALS) for workshop details. **Resources in the VITALS repository have been developed using the Openscapes 2i2c JupyterHub cloud workspace. For local python environment setup instructions please see the [Setup Instructions](setup/setup_instructions.md)
+> Please view the [web-book](https://nasa.github.io/VITALS/) for workshop details. **Resources in the VITALS repository have been developed using the Openscapes 2i2c JupyterHub cloud workspace. For local python environment setup instructions please see the [Setup Instructions](setup/setup_instructions.md)
 
 # VITALS
 
@@ -16,6 +16,6 @@ Email: <LPDAAC@usgs.gov>
 Voice: +1-866-573-3222  
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
 Website: <https://lpdaac.usgs.gov/>  
-Date last modified: 01-24-2024  
+Date last modified: 02-02-2024  
 
 ¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.  
