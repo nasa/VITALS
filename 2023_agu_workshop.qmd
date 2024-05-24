@@ -1,0 +1,62 @@
+---
+title: "Space Station Synergies: Applying ECOSTRESS and EMIT to ecological problems for Scientific Insight"
+---
+
+<p align="left">
+  <img src="img/ISS.jpg" />
+</p>
+
+The International Space Station is a critical asset for the Earth science community -- both for advancing critical science and applications priorities, and as a platform for technology demonstrations/pathfinders.  These benefits have been particularly significant in recent years, with the installation and operation of instruments such as ECOSTRESS, a multispectral thermal instrument, and EMIT, a visible to short wave infrared imaging spectrometer with best-in-class signal to noise - both acquiring data at field-scale (<70-m).  With both sensors mounted on the ISS, there is an unprecedented opportunity to demonstrate the compounded benefits of working with both datasets.  In this workshop we highlight the power of these tools when used together, through the use of open source tools and services, cloud compute resources to effectively combine data from ECOSTRESS and EMIT to perform scientific analyses and apply data to real world issues. 
+
+This workshop is hosted by NASA [Land Processes Distributed Activate Archive Center(LP DAAC)](https://lpdaac.usgs.gov/) and [NASA Jet Propulsion Laboratory (JPL)](https://www.jpl.nasa.gov/) with support from the NASA [Openscapes](https://nasa-openscapes.github.io/) project.  
+Hands-on exercises will be executed from a [Jupyter Hub on the Openscapes 2i2c cloud instance](https://tinyurl.com/yckery74).
+
+## Slides
+
+<iframe src="https://docs.google.com/presentation/d/1-XXW_FkcZuA3jxJN4EX_wpZ8Q8886nZqkhF9LaPhVEU/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="445" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+## Agenda
+
+| Time | Description | Leads/Instructors |  
+|------|---------------------|-------------| 
+|8:00-8:30 AM|Introduction, overview, learning objectives|Dana Chadwick <br> Madeleine Pascolini-Campbell|  
+|8:30-9:30 AM|Finding EMIT and ECOSTRESS Data: <br> - [Earthdata Search](https://search.earthdata.nasa.gov/search) <br> - [AppEEARS](https://appeears.earthdatacloud.nasa.gov/) <br> - [VISIONS](https://earth.jpl.nasa.gov/emit/data/data-portal/coverage-and-forecasts/)|Aaron Friesz <br> Dana Chadwick|  
+|9:30-9:45 AM|Break||  
+|9:45-10:05 AM|Introduction to Cloud Computing Environment|Aaron Friesz|
+|10:05-10:50 AM|Finding Concurrent EMIT and ECOSTRESS Data|Erik Bolch|  
+|10:50-11:05 AM|Break||
+|11:05-12:00 PM|Exploring EMIT Reflectance and ECOSTRESS LST|Erik Bolch|  
+|12:00-1:00 PM|Lunch Break||  
+|1:00-2:00 PM|Estimating Canopy Water Content|Dana Chadwick <br> Niklas Bohn <br> Erik Bolch|   
+|2:00-2:30 PM|Use Case 1: Dangermond Preserve Land Cover|Christiana Ade <br> Marie Johnson|  
+|2:30-3:00 PM|Use Case 2: Santa Barbara Agriculture|Claire Villanueva-Weeks <br> Gregory Halverson|
+|3:00-3:30 PM|Discussion, feedback, resources to take home|All|  
+
+## Learning Outcomes: 
+- Imaging Spectroscopy and thermal measurements 101, the electromagnetic spectrum and sensor specific considerations  
+- How to access EMIT and ECOSTRESS data  
+- Data Preprocessing and Exploratory Analysis  
+- How to manipulate, combine, and visualize EMIT and ECOSTRESS data  
+
+## Learning Focus: 
+Practical Skills for Science
+
+## Knowledge & Career Level: 
+Beginner, Intermediate
+
+## Target Audience:
+- Earth and Planetary Surface Processes
+- Hydrology
+- Global Environmental Change
+- Ocean Sciences
+- Science and Society
+- Biogeosciences
+
+## Contact Info  
+Email: <LPDAAC@usgs.gov>  
+Voice: +1-866-573-3222  
+Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
+Website: <https://lpdaac.usgs.gov/>  
+Date last modified: 12-05-2023  
+
+¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.

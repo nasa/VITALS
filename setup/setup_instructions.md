@@ -58,4 +58,4 @@ Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹
 Website: <https://lpdaac.usgs.gov/>  
 Date last modified: 05-21-2024  
 
-¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.  
+¹Work performed under USGS contract 140G0121D0001 for NASA contract NNG14HH33I.  
