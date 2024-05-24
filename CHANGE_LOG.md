@@ -5,6 +5,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 _________________________________________________________________________
 
+## 2024-05-24
+
+### Summary
+>
+> - Add streaming functionality to notebooks 2 and 3
+> - Add ECOSTRESS ET example to notebook 2
+> - Update some text
+> - Add SBG workshop contents
+> - minor changes to notebook 4
+> - update to newest `emit_tools.py`
+>
+
 ## 2024-01-31
 
 ### Summary
