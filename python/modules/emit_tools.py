@@ -4,14 +4,11 @@ like opening and flattening the data to work in xarray, orthorectification, and 
 
 Author: Erik Bolch, ebolch@contractor.usgs.gov 
 
-Last Updated: 06/29/2023
+Last Updated: 05/09/2024
 
 TO DO: 
-- Add units to metadata for ENVI header
-- Investigate reducing memory usage
-- Improve conditionals to evaluate which EMIT product is being used/what to use for band dimension indexing
-- Test/Improve flexibility for applying the GLT to modified/clipped datasets
-- Improve envi conversion function
+- Rework masking functions to be more flexible
+- Update format to match AppEEARS outputs
 """
 
 # Packages used
@@ -21,10 +18,14 @@ from spectral.io import envi
 from osgeo import gdal
 import numpy as np
 import math
+from skimage import io
 import pandas as pd
+import geopandas as gpd
 import xarray as xr
 import rasterio as rio
+import rioxarray as rxr
 import s3fs
+from rioxarray.merge import merge_arrays
 from fsspec.implementations.http import HTTPFile
 
 
@@ -109,10 +110,9 @@ def emit_xarray(filepath, ortho=False, qmask=None, unpacked_bmask=None):
     # Apply Quality and Band Masks, set fill values to NaN
     for var in list(ds.data_vars):
         if qmask is not None:
-            out_xr[var].data[qmask == 1] = np.nan
+            out_xr[var].data[qmask == 1] = -9999
         if unpacked_bmask is not None:
-            out_xr[var].data[unpacked_bmask == 1] = np.nan
-        out_xr[var].data[out_xr[var].data == -9999] = np.nan
+            out_xr[var].data[unpacked_bmask == 1] = -9999
 
     if ortho is True:
         out_xr = ortho_xr(out_xr)
@@ -121,34 +121,28 @@ def emit_xarray(filepath, ortho=False, qmask=None, unpacked_bmask=None):
     return out_xr
 
 
-# Function to Calculate the Lat and Lon Vectors/Coordinate Grid
-def coord_vects(ds):
+# Function to Calculate the center of pixel Lat and Lon Coordinates of the GLT grid
+def get_pixel_center_coords(ds):
     """
-    This function calculates the Lat and Lon Coordinate Vectors using the GLT and Metadata from an EMIT dataset read into xarray.
+    This function calculates the gridded latitude and longitude pixel centers for the dataset using the geotransform and GLT arrays.
 
     Parameters:
-    ds: an xarray.Dataset containing the root variable and metadata of an EMIT dataset
-    loc: an xarray.Dataset containing the 'location' group of an EMIT dataset
+    ds: an emit dataset opened with emit_xarray function
 
     Returns:
-    lon, lat (numpy.array): longitude and latitude array grid for the dataset
+    x_geo, y_geo: longitude and latitude pixel centers of glt (gridded data)
 
     """
-    # Retrieve Geotransform from Metadata
+    # Retrieve GLT
     GT = ds.geotransform
-    # Create Array for Lat and Lon and fill
+    # Get Shape of GLT
     dim_x = ds.glt_x.shape[1]
-    dim_y = ds.glt_x.shape[0]
-    lon = np.zeros(dim_x)
-    lat = np.zeros(dim_y)
-    # Note: no rotation for EMIT Data
-    for x in np.arange(dim_x):
-        x_geo = (GT[0] + 0.5 * GT[1]) + x * GT[1]  # Adjust coordinates to pixel-center
-        lon[x] = x_geo
-    for y in np.arange(dim_y):
-        y_geo = (GT[3] + 0.5 * GT[5]) + y * GT[5]
-        lat[y] = y_geo
-    return lon, lat
+    dim_y = ds.glt_y.shape[0]
+    # Build Arrays containing pixel centers
+    x_geo = (GT[0] + 0.5 * GT[1]) + np.arange(dim_x) * GT[1]
+    y_geo = (GT[3] + 0.5 * GT[5]) + np.arange(dim_y) * GT[5]
+
+    return x_geo, y_geo
 
 
 # Function to Apply the GLT to an array
@@ -174,9 +168,12 @@ def apply_glt(ds_array, glt_array, fill_value=-9999, GLT_NODATA_VALUE=0):
     )
     valid_glt = np.all(glt_array != GLT_NODATA_VALUE, axis=-1)
 
-    # Adjust for One based Index
-    glt_array[valid_glt] -= 1
-    out_ds[valid_glt, :] = ds_array[glt_array[valid_glt, 1], glt_array[valid_glt, 0], :]
+    # Adjust for One based Index - make a copy to prevent decrementing multiple times inside ortho_xr when applying the glt to elev
+    glt_array_copy = glt_array.copy()
+    glt_array_copy[valid_glt] -= 1
+    out_ds[valid_glt, :] = ds_array[
+        glt_array_copy[valid_glt, 1], glt_array_copy[valid_glt, 0], :
+    ]
     return out_ds
 
 
@@ -216,10 +213,7 @@ def ortho_xr(ds, GLT_NODATA_VALUE=0, fill_value=-9999):
         # Apply GLT to dataset
         out_ds = apply_glt(raw_ds, glt_ds, GLT_NODATA_VALUE=GLT_NODATA_VALUE)
 
-        # Mask fill values
-        out_ds[out_ds == fill_value] = np.nan
-
-        # Update variables - Only works for 2 or 3 dimensional arrays
+        # Update variables - Only works for 2 or 3 dimensional arays
         if raw_ds.ndim == 2:
             out_ds = out_ds.squeeze()
             data_vars[var] = (["latitude", "longitude"], out_ds)
@@ -229,13 +223,12 @@ def ortho_xr(ds, GLT_NODATA_VALUE=0, fill_value=-9999):
         del raw_ds
 
     # Calculate Lat and Lon Vectors
-    lon, lat = coord_vects(
+    lon, lat = get_pixel_center_coords(
         ds
     )  # Reorder this function to make sense in case of multiple variables
 
     # Apply GLT to elevation
     elev_ds = apply_glt(ds["elev"].data, glt_ds)
-    elev_ds[elev_ds == fill_value] = np.nan
 
     # Delete glt_ds - no longer needed
     del glt_ds
@@ -409,6 +402,7 @@ def write_envi(
             "file type": "ENVI Standard",
             "data type": envi_typemap[str(xr_ds[var].data.dtype)],
             "byte order": 0,
+            "data ignore value": -9999,
         }
 
         for key in list(xr_ds.attrs.keys()):
@@ -454,9 +448,6 @@ def write_envi(
         ):
             metadata["coordinate system string"] = csstring
             metadata["map info"] = mapinfo
-
-        # Replace NaN values in each layer with fill_value
-        # np.nan_to_num(xr_ds[var].data, copy=False, nan=-9999)
 
         # Write Variables as ENVI Output
         envi_ds = envi.create_image(
@@ -531,19 +522,20 @@ def envi_header(inputpath):
         return inputpath + ".hdr"
 
 
-def raw_spatial_crop(ds, shape):
+def spatial_subset(ds, gdf):
     """
-    Use a polygon to clip the file GLT, then a bounding box to crop the spatially raw data. Regions clipped in the GLT are set to 0 so a mask will be applied when
-    used to orthorectify the data at a later point in a workflow.
-    Args:
-        ds: raw spatial EMIT data (non-orthorectified) opened with the `emit_xarray` function.
-        shape: a polygon opened with geopandas.
-    Returns:
-        clipped_ds: a clipped GLT and raw spatial data clipped to a bounding box.
+    Uses a geodataframe containing polygon geometry to clip the GLT of an emit dataset read with emit_xarray, then uses the min/max downtrack and crosstrack
+    indices to subset the extent of the dataset in rawspace, masking areas outside the provided spatial geometry. Uses rioxarray's clip function.
 
+    Parameters:
+    ds: an emit dataset read into xarray using the emit_xarray function.
+    gdf: a geodataframe.
+
+    Returns:
+    clipped_ds: an xarray dataset clipped to the extent of the provided geodataframe that can be orthorectified with ortho_xr.
     """
     # Reformat the GLT
-    lon, lat = coord_vects(ds)
+    lon, lat = get_pixel_center_coords(ds)
     data_vars = {
         "glt_x": (["latitude", "longitude"], ds.glt_x.data),
         "glt_y": (["latitude", "longitude"], ds.glt_y.data),
@@ -558,19 +550,32 @@ def raw_spatial_crop(ds, shape):
     glt_ds.rio.write_crs(glt_ds.spatial_ref, inplace=True)
 
     # Clip the emit glt
-    clipped = glt_ds.rio.clip(shape.geometry.values, shape.crs, all_touched=True)
-
-    # Pull new geotransform from clipped glt
+    clipped = glt_ds.rio.clip(gdf.geometry.values, gdf.crs, all_touched=True)
+    # Get the clipped geotransform
     clipped_gt = np.array(
         [float(i) for i in clipped["spatial_ref"].GeoTransform.split(" ")]
     )
 
-    # Create Crosstrack and Downtrack masks for spatially raw dataset -1 is to account for 1 based index. Maybe a more robust way to do this exists
-    crosstrack_mask = (ds.crosstrack >= np.nanmin(clipped.glt_x.data) - 1) & (
-        ds.crosstrack <= np.nanmax(clipped.glt_x.data) - 1
+    valid_gltx = clipped.glt_x.data > 0
+    valid_glty = clipped.glt_y.data > 0
+    # Get the subset indices, -1 to convert to 0-based
+    subset_down = [
+        int(np.min(clipped.glt_y.data[valid_glty]) - 1),
+        int(np.max(clipped.glt_y.data[valid_glty]) - 1),
+    ]
+    subset_cross = [
+        int(np.min(clipped.glt_x.data[valid_gltx]) - 1),
+        int(np.max(clipped.glt_x.data[valid_gltx]) - 1),
+    ]
+
+    # print(subset_down, subset_cross)
+
+    crosstrack_mask = (ds.crosstrack >= subset_cross[0]) & (
+        ds.crosstrack <= subset_cross[-1]
     )
-    downtrack_mask = (ds.downtrack >= np.nanmin(clipped.glt_y.data) - 1) & (
-        ds.downtrack <= np.nanmax(clipped.glt_y.data) - 1
+
+    downtrack_mask = (ds.downtrack >= subset_down[0]) & (
+        ds.downtrack <= subset_down[-1]
     )
 
     # Mask Areas outside of crosstrack and downtrack covered by the shape
@@ -582,8 +587,9 @@ def raw_spatial_crop(ds, shape):
     clipped_ds = clipped_ds.drop_vars(["glt_x", "glt_y", "downtrack", "crosstrack"])
 
     # Re-index the GLT to the new array
-    glt_x_data = clipped.glt_x.data - np.nanmin(clipped.glt_x)  # shift to 1 based index
-    glt_y_data = clipped.glt_y.data - np.nanmin(clipped.glt_y)
+    glt_x_data = np.maximum(clipped.glt_x.data - subset_cross[0], 0)
+    glt_y_data = np.maximum(clipped.glt_y.data - subset_down[0], 0)
+
     clipped_ds = clipped_ds.assign_coords(
         {
             "glt_x": (["ortho_y", "ortho_x"], np.nan_to_num(glt_x_data)),
@@ -603,4 +609,124 @@ def raw_spatial_crop(ds, shape):
         }
     )
 
+    clipped_ds.attrs["subset_downtrack_range"] = subset_down
+    clipped_ds.attrs["subset_crosstrack_range"] = subset_cross
+
     return clipped_ds
+
+
+def is_adjacent(scene: str, same_orbit: list):
+    """
+    This function makes a list of scene numbers from the same orbit as integers and checks
+    if they are adjacent/sequential.
+    """
+    scene_nums = [int(scene.split(".")[-2].split("_")[-1]) for scene in same_orbit]
+    return all(b - a == 1 for a, b in zip(scene_nums[:-1], scene_nums[1:]))
+
+
+def merge_emit(datasets: dict, gdf: gpd.GeoDataFrame):
+    """
+    A function to merge xarray datasets formatted using emit_xarray. This could probably be improved,
+    lots of shuffling data around to keep in xarray and get it to merge properly. Note: GDF may only work with a
+    single geometry.
+    """
+    nested_data_arrays = {}
+    # loop over datasets
+    for dataset in datasets:
+        # create dictionary of arrays for each dataset
+
+        # create dictionary of 1D variables, which should be consistent across datasets
+        one_d_arrays = {}
+
+        # Dictionary of variables to merge
+        data_arrays = {}
+        # Loop over variables in dataset including elevation
+        for var in list(datasets[dataset].data_vars) + ["elev"]:
+            # Get 1D for this variable and add to dictionary
+            if not one_d_arrays:
+                # These should be an array describing the others (wavelengths, mask_bands, etc.)
+                one_dim = [
+                    item
+                    for item in list(datasets[dataset].coords)
+                    if item not in ["latitude", "longitude", "spatial_ref"]
+                    and len(datasets[dataset][item].dims) == 1
+                ]
+                # print(one_dim)
+                for od in one_dim:
+                    one_d_arrays[od] = datasets[dataset].coords[od].data
+
+                # Update format for merging - This could probably be improved
+            da = datasets[dataset][var].reset_coords("elev", drop=False)
+            da = da.rename({"latitude": "y", "longitude": "x"})
+            if len(da.dims) == 3:
+                if any(item in list(da.coords) for item in one_dim):
+                    da = da.drop_vars(one_dim)
+                da = da.drop_vars("elev")
+                da = da.to_array(name=var).squeeze("variable", drop=True)
+                da = da.transpose(da.dims[-1], da.dims[0], da.dims[1])
+                # print(da.dims)
+            if var == "elev":
+                da = da.to_array(name=var).squeeze("variable", drop=True)
+            data_arrays[var] = da
+            nested_data_arrays[dataset] = data_arrays
+
+            # Transpose the nested arrays dict. This is horrible to read, but works to pair up variables (ie mask) from the different granules
+    transposed_dict = {
+        inner_key: {
+            outer_key: inner_dict[inner_key]
+            for outer_key, inner_dict in nested_data_arrays.items()
+        }
+        for inner_key in nested_data_arrays[next(iter(nested_data_arrays))]
+    }
+
+    # remove some unused data
+    del nested_data_arrays, data_arrays, da
+
+    # Merge the arrays using rioxarray.merge_arrays()
+    merged = {}
+    for _var in transposed_dict:
+        merged[_var] = merge_arrays(
+            list(transposed_dict[_var].values()),
+            bounds=gdf.unary_union.bounds,
+            nodata=-9999,
+        )
+
+    # Create a new xarray dataset from the merged arrays
+    # Create Merged Dataset
+    merged_ds = xr.Dataset(data_vars=merged, coords=one_d_arrays)
+    # Rename x and y to longitude and latitude
+    merged_ds = merged_ds.rename({"y": "latitude", "x": "longitude"})
+    del transposed_dict, merged
+    return merged_ds
+
+
+def ortho_browse(url, glt, spatial_ref, geotransform, white_background=True):
+    """
+    Use an EMIT GLT, geotransform, and spatial ref to orthorectify a browse image. (browse images are in native resolution)
+    """
+    # Read Data
+    data = io.imread(url)
+    # Orthorectify using GLT and transpose so band is first dimension
+    if white_background == True:
+        fill = 255
+    else:
+        fill = 0
+    ortho_data = apply_glt(data, glt, fill_value=fill).transpose(2, 0, 1)
+    coords = {
+        "y": (
+            ["y"],
+            (geotransform[3] + 0.5 * geotransform[5])
+            + np.arange(glt.shape[0]) * geotransform[5],
+        ),
+        "x": (
+            ["x"],
+            (geotransform[0] + 0.5 * geotransform[1])
+            + np.arange(glt.shape[1]) * geotransform[1],
+        ),
+    }
+    ortho_data = ortho_data.astype(int)
+    ortho_data[ortho_data == -1] = 0
+    # Place in xarray.datarray
+    da = xr.DataArray(ortho_data, dims=["band", "y", "x"], coords=coords)
+    da.rio.write_crs(spatial_ref, inplace=True)
+    return da

@@ -36,6 +36,18 @@ These Python Environments will work for all of the guides, how-to's, and tutoria
 
 **Still having trouble getting a compatible Python environment set up? Contact [LP DAAC User Services](https://lpdaac.usgs.gov/lpdaac-contact-us/).**  
 
+## Cloning the VITALS Repository
+
+If you plan to edit or contribute to the VITALS repository, we recommend following a fork and pull workflow: first fork the repository, then clone your fork to your local machine, make changes, push changes to your fork, then make a pull request back to the main repository. An example can be found in the [CONTRIBUTING.md](../CONTRIBUTING.md) file.
+
+If you just want to work with the notebooks or modules, you can simply clone or download the repository.
+
+To clone the repository, navigate to the directory where you want to store the repository on your local machine, then type the following:
+
+```cmd
+git clone https://github.com/nasa/VITALS.git
+```
+
 ---
 
 ## Contact Info  
@@ -44,6 +56,6 @@ Email: <LPDAAC@usgs.gov>
 Voice: +1-866-573-3222  
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
 Website: <https://lpdaac.usgs.gov/>  
-Date last modified: 01-19-2024  
+Date last modified: 05-21-2024  
 
-¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.  
+¹Work performed under USGS contract 140G0121D0001 for NASA contract NNG14HH33I.  

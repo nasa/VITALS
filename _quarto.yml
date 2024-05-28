@@ -33,12 +33,12 @@ website:
     contents:
       - section: "Welcome"
         contents:
-        - text: "2023 AGU Workshop"
+        - text: "2024 SBG Workshop"
           href: index.qmd
+        - text: "2023 AGU Workshop"
+          href: 2023_agu_workshop.qmd
         - text: "Repository Description"
           href: vitals.qmd
-        - text: "Workshop Schedule"
-          href: schedule.qmd
       - section: "Setup Instructions"
         contents:
         - text: "Prerequisites"
@@ -47,8 +47,6 @@ website:
           href: setup/workshop_setup.qmd
         - text: "Local Python Environment Setup"
           href: setup/setup_instructions.md
-      - text: "Workshop Slides"
-        href: slides.md
       - section: "Python Notebooks"            
         contents: 
           - text: "1 Finding Concurrent Data"
