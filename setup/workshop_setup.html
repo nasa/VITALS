@@ -108,17 +108,17 @@ ul.task-list{list-style: none;}
     <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">2023 AGU Workshop</a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">2024 SBG Workshop</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../2023_agu_workshop.html" class="sidebar-item-text sidebar-link">2023 AGU Workshop</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../vitals.html" class="sidebar-item-text sidebar-link">Repository Description</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../schedule.html" class="sidebar-item-text sidebar-link">Workshop Schedule</a>
   </div>
 </li>
     </ul>
@@ -148,11 +148,6 @@ ul.task-list{list-style: none;}
 </li>
     </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../slides.html" class="sidebar-item-text sidebar-link">Workshop Slides</a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
         <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Python Notebooks</a>
@@ -218,6 +213,7 @@ ul.task-list{list-style: none;}
    
   <ul>
   <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link active" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
+  <li><a href="#cloning-the-vitals-repository" id="toc-cloning-the-vitals-repository" class="nav-link" data-scroll-target="#cloning-the-vitals-repository">Cloning the VITALS Repository</a></li>
   <li><a href="#contact-info" id="toc-contact-info" class="nav-link" data-scroll-target="#contact-info">Contact Info</a></li>
   </ul>
 </nav>
@@ -258,14 +254,22 @@ ul.task-list{list-style: none;}
 <p>No single notebook exceeds roughly the limit using the provided data, but <strong>if you choose to use your own data in the notebook, or have 2 notebooks open and do not shut down the kernel, you may get an out of memory error.</strong></p>
 <p>If you elect to try this on your own data/ROI, you may need to select a larger server size. This will often happen if you are using the last EMIT scene from an orbit. In some cases those can be almost double the size of a normal scene. Please select the smallest possible.</p>
 </section>
+<section id="cloning-the-vitals-repository" class="level2">
+<h2 class="anchored" data-anchor-id="cloning-the-vitals-repository">Cloning the VITALS Repository</h2>
+<p>If you plan to edit or contribute to the VITALS repository, we recommend following a fork and pull workflow: first fork the repository, then clone your fork to your local machine, make changes, push changes to your fork, then make a pull request back to the main repository. An example can be found in the <a href="../CONTRIBUTING.html">CONTRIBUTING.md</a> file.</p>
+<p>If you just want to work with the notebooks or modules, you can simply clone or download the repository.</p>
+<p>To clone the repository, navigate to the directory where you want to store the repository on your local machine, then type the following:</p>
+<pre class="cmd"><code>git clone https://github.com/nasa/VITALS.git</code></pre>
+<hr>
+</section>
 <section id="contact-info" class="level2">
 <h2 class="anchored" data-anchor-id="contact-info">Contact Info</h2>
 <p>Email: <a href="mailto:LPDAAC@usgs.gov" class="email">LPDAAC@usgs.gov</a><br>
 Voice: +1-866-573-3222<br>
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹<br>
 Website: <a href="https://lpdaac.usgs.gov/" class="uri">https://lpdaac.usgs.gov/</a><br>
-Date last modified: 01-22-2024</p>
-<p>¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.</p>
+Date last modified: 05-24-2024</p>
+<p>¹Work performed under USGS contract 140G0121D0001 for NASA contract NNG14HH33I.</p>
 
 
 </section>

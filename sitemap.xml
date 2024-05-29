@@ -1,63 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://nasa.github.io/VITALS/2023_agu_workshop.html</loc>
+    <lastmod>2024-05-29T17:15:29.084Z</lastmod>
+  </url>
+  <url>
     <loc>https://nasa.github.io/VITALS/CHANGE_LOG.html</loc>
-    <lastmod>2024-01-31T14:33:36.703Z</lastmod>
+    <lastmod>2024-05-29T17:15:30.501Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/CODE_OF_CONDUCT.html</loc>
-    <lastmod>2024-01-31T14:33:37.230Z</lastmod>
+    <lastmod>2024-05-29T17:15:31.952Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/CONTRIBUTING.html</loc>
-    <lastmod>2024-01-31T14:33:37.876Z</lastmod>
+    <lastmod>2024-05-29T17:15:33.624Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/index.html</loc>
-    <lastmod>2024-01-31T14:33:38.276Z</lastmod>
+    <lastmod>2024-05-29T17:15:34.762Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/python/01_Finding_Concurrent_Data.html</loc>
-    <lastmod>2024-01-31T14:33:39.155Z</lastmod>
+    <lastmod>2024-05-29T17:15:37.132Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/python/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.html</loc>
-    <lastmod>2024-01-31T14:33:39.780Z</lastmod>
+    <lastmod>2024-05-29T17:15:39.057Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/python/03_EMIT_CWC_from_Reflectance.html</loc>
-    <lastmod>2024-01-31T14:33:44.217Z</lastmod>
+    <lastmod>2024-05-29T17:15:48.976Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/python/04_Dangermond_Land_Cover.html</loc>
-    <lastmod>2024-01-31T14:33:46.397Z</lastmod>
+    <lastmod>2024-05-29T17:15:54.378Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/python/05_SB_Vineyards.html</loc>
-    <lastmod>2024-01-31T14:33:48.577Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nasa.github.io/VITALS/schedule.html</loc>
-    <lastmod>2024-01-31T14:33:48.988Z</lastmod>
+    <lastmod>2024-05-29T17:15:59.447Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/setup/prerequisites.html</loc>
-    <lastmod>2024-01-31T14:33:49.411Z</lastmod>
+    <lastmod>2024-05-29T17:16:00.439Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/setup/setup_instructions.html</loc>
-    <lastmod>2024-01-31T14:33:50.011Z</lastmod>
+    <lastmod>2024-05-29T17:16:02.347Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/setup/workshop_setup.html</loc>
-    <lastmod>2024-01-31T14:33:50.418Z</lastmod>
-  </url>
-  <url>
-    <loc>https://nasa.github.io/VITALS/slides.html</loc>
-    <lastmod>2024-01-31T14:33:50.791Z</lastmod>
+    <lastmod>2024-05-29T17:16:03.787Z</lastmod>
   </url>
   <url>
     <loc>https://nasa.github.io/VITALS/vitals.html</loc>
-    <lastmod>2024-01-31T14:33:51.185Z</lastmod>
+    <lastmod>2024-05-29T17:16:04.806Z</lastmod>
   </url>
 </urlset>
