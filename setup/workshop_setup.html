@@ -212,8 +212,8 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link active" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
-  <li><a href="#cloning-the-vitals-repository" id="toc-cloning-the-vitals-repository" class="nav-link" data-scroll-target="#cloning-the-vitals-repository">Cloning the VITALS Repository</a></li>
+  <li><a href="#cloning-the-vitals-repository" id="toc-cloning-the-vitals-repository" class="nav-link active" data-scroll-target="#cloning-the-vitals-repository">Cloning the VITALS Repository</a></li>
+  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
   <li><a href="#contact-info" id="toc-contact-info" class="nav-link" data-scroll-target="#contact-info">Contact Info</a></li>
   </ul>
 </nav>
@@ -240,11 +240,20 @@ ul.task-list{list-style: none;}
 <blockquote class="blockquote">
 <p>If you plan to use this repository with the <strong>Openscapes 2i2c JupyterHub Cloud Workspace</strong> there are no additional setup requirements for the Python environment. All packages needed are included unless specified within a notebook, in which case a cell will be dedicated to installing the necessary Python libraries using the appropriate package manager.</p>
 </blockquote>
-<p>After completing the <a href="../setup/prerequisites.html">prerequisites</a> you will have access to the Openscapes 2i2c JupyterHub cloud workspace. <a href="https://tinyurl.com/yckery74">Click here to start JupyterLab</a>. Use your GitHub username and password to sign in. After signing in you will be prompted for some server options:</p>
+<p>After completing the <a href="../setup/prerequisites.html">prerequisites</a> you will have access to the Openscapes 2i2c JupyterHub cloud workspace. <a href="https://workshop.openscapes.2i2c.cloud/">Click here to start JupyterLab</a>. Use your email and the provided password to sign in. This password will be provided in the workshop. If you’re interested in using the 2i2c cloud workspace outside of the workshop, please <a href="#contact-info">contact us</a>.</p>
+<p>After signing in you will be prompted for some server options:</p>
 <p align="left">
 <img src="../img/2i2c_server_selection.png" width="100%/">
 </p>
 <p>Be sure to select the radio button for <strong>Python</strong> and a size of <strong>14.8 GB RAM and up to 3.75 CPUs</strong>.</p>
+<p>At this point you can use the terminal to clone the repository.</p>
+<section id="cloning-the-vitals-repository" class="level2">
+<h2 class="anchored" data-anchor-id="cloning-the-vitals-repository">Cloning the VITALS Repository</h2>
+<p>If you plan to edit or contribute to the VITALS repository, we recommend following a fork and pull workflow: first fork the repository, then clone your fork to your local machine, make changes, push changes to your fork, then make a pull request back to the main repository. An example can be found in the <a href="../CONTRIBUTING.html">CONTRIBUTING.md</a> file.</p>
+<p>If you just want to work with the notebooks or modules, you can simply clone the repository.</p>
+<p>To clone the repository, navigate to the directory where you want to store the repository on your local machine, then type the following:</p>
+<pre class="cmd"><code>git clone https://github.com/nasa/VITALS.git</code></pre>
+</section>
 <section id="troubleshooting" class="level2">
 <h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
 <p>We recommend <em>Shutting down all kernels</em> after running each notebook. This will clear the memory used by the previous notebook, and is necessary to run some of the more memory intensive notebooks.</p>
@@ -253,13 +262,6 @@ ul.task-list{list-style: none;}
 </p>
 <p>No single notebook exceeds roughly the limit using the provided data, but <strong>if you choose to use your own data in the notebook, or have 2 notebooks open and do not shut down the kernel, you may get an out of memory error.</strong></p>
 <p>If you elect to try this on your own data/ROI, you may need to select a larger server size. This will often happen if you are using the last EMIT scene from an orbit. In some cases those can be almost double the size of a normal scene. Please select the smallest possible.</p>
-</section>
-<section id="cloning-the-vitals-repository" class="level2">
-<h2 class="anchored" data-anchor-id="cloning-the-vitals-repository">Cloning the VITALS Repository</h2>
-<p>If you plan to edit or contribute to the VITALS repository, we recommend following a fork and pull workflow: first fork the repository, then clone your fork to your local machine, make changes, push changes to your fork, then make a pull request back to the main repository. An example can be found in the <a href="../CONTRIBUTING.html">CONTRIBUTING.md</a> file.</p>
-<p>If you just want to work with the notebooks or modules, you can simply clone or download the repository.</p>
-<p>To clone the repository, navigate to the directory where you want to store the repository on your local machine, then type the following:</p>
-<pre class="cmd"><code>git clone https://github.com/nasa/VITALS.git</code></pre>
 <hr>
 </section>
 <section id="contact-info" class="level2">
