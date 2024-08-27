@@ -7,3 +7,5 @@ They demonstrate how to find spatially concurrent NEON [Surface Reflectance Data
 The **NEON Imaging Spectrometer (NIS)** is an airborne [imaging spectrometer](https://www.neonscience.org/data-collection/imaging-spectrometer) built by JPL (AVIRIS-NG) and operated by the National Ecological Observatory Network's (NEON) Airborne Observation Platform (AOP). NEON's hyperspectral sensors collect measurements of sunlight reflected from the Earth's surface in 426 narrow (~5 nm) spectral channels spanning wavelengths between ~ 380 - 2500 nm. NEON's remote sensing data is intended to map and answer questions about a landscape, with ecological applications including identifying and classifying plant species and communities, mapping vegetation health, detecting disease or invasive species, and mapping droughts, wildfires, or other natural disturbances and their impacts. 
 
 Setup instructions for running these notebooks are the same as for the main VITALS repo. 
+
+For more learning resources and tutorials on working with NEON data, please see [NEON Learning Hub Tutorials](https://www.neonscience.org/resources/learning-hub/tutorials).
