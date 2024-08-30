@@ -1,0 +1,34 @@
+---
+title: "Surface Biology and Geology: VITALS Workshop"
+---
+
+The International Space Station is a critical asset for the Earth science community -- both for advancing critical science and applications priorities, and as a platform for technology demonstrations/pathfinders.  These benefits have been particularly significant in recent years, with the installation and operation of instruments such as ECOSTRESS, a multispectral thermal instrument, and EMIT, a visible to short wave infrared imaging spectrometer with best-in-class signal to noise - both acquiring data at field-scale (<70-m).  With both sensors mounted on the ISS, there is an unprecedented opportunity to demonstrate the compounded benefits of working with both datasets.  In this workshop we highlight the power of these tools when used together, through the use of open source tools and services, cloud compute resources to effectively combine data from ECOSTRESS and EMIT to perform scientific analyses and apply data to real world issues. 
+
+This workshop is hosted by NASA [Land Processes Distributed Activate Archive Center(LP DAAC)](https://lpdaac.usgs.gov/) and [NASA Jet Propulsion Laboratory (JPL)](https://www.jpl.nasa.gov/) with support from the NASA [Openscapes](https://nasa-openscapes.github.io/) project.  
+Hands-on exercises will be executed from a [Jupyter Hub on the Openscapes 2i2c cloud instance](https://workshop.openscapes.2i2c.cloud/).
+
+<iframe src="https://docs.google.com/presentation/d/1XrdG9P5rLNR8C1TeLpf80YZUCtqdmUev/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="445" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+## Agenda
+
+| Time | Description | Leads/Instructors |  
+|------|---------------------|-------------| 
+|2:00 PM|Introduction and Overview |Christiana Ade|  
+|2:05 PM|Git, Open Science, and the Cloud Environment|Erik Bolch|  
+|2:30 PM|Notebook 1: Finding Concurrent EMIT and ECOSTRESS Data|Erik Bolch|
+|3:00 PM|Break||
+|3:10 PM|Notebook 2: Exploring EMIT Reflectance and ECOSTRESS LST|Erik Bolch|  
+|3:40 PM|Notebook 3: Estimating Canopy Water Content|Niklas Bohn <br> Erik Bolch|
+|4:00 PM|Break|| 
+|4:10 PM|Notebook 4: Dangermond Preserve Land Cover Use Case|Christiana Ade|  
+|4:45 PM|Discussion and Wrap Up|All|  
+
+## Contact Info  
+
+Email: <LPDAAC@usgs.gov>  
+Voice: +1-866-573-3222  
+Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
+Website: <https://lpdaac.usgs.gov/>  
+Date last modified: 05-21-2024
+
+¹Work performed under USGS contract 140G0121D0001 for NASA contract NNG14HH33I.

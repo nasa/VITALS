@@ -3,9 +3,10 @@
 *__pycache__*
 
 # local development
-*.tif*
 *.img*
 *.envi*
 *.hdr*
 *.nc*
-/ignore
+/_ignore
+/.quarto/
+/_site/

@@ -1,0 +1,74 @@
+project:
+  type: website
+  output-dir: _site
+
+execute:
+  freeze: true  # never re-execute computational content during project render, needed for .qmd and .rmd since quarto does not render .ipynb by default
+
+website:
+  page-navigation: true
+  page-footer: 
+    center: "VSWIR Imaging and Thermal Applications, Learning, and Science."
+
+  title: "VITALS"
+  site-url: https://nasa.github.io/VITALS/
+  repo-url: https://github.com/nasa/VITALS/
+
+  sidebar:
+    title: "VITALS"
+    logo: img/lp_jpl_vitals_light.png
+    pinned: true
+    align: center
+    tools: 
+      - icon: globe
+        href: https://nasa.github.io/VITALS/
+        text: "VITALS Website"
+      - icon: github
+        href: https://github.com/nasa/VITALS
+        text: "VITALS Repository"
+        
+    style: "floating"
+    search: true
+    collapse-level: 2
+    contents:
+      - section: "Welcome"
+        contents:
+        - text: "2024 SBG Workshop"
+          href: index.qmd
+        - text: "2023 AGU Workshop"
+          href: 2023_agu_workshop.qmd
+        - text: "Repository Description"
+          href: vitals.qmd
+      - section: "Setup Instructions"
+        contents:
+        - text: "Prerequisites"
+          href: setup/prerequisites.md
+        - text: "Cloud Workspace Setup"
+          href: setup/workshop_setup.qmd
+        - text: "Local Python Environment Setup"
+          href: setup/setup_instructions.md
+      - section: "Python Notebooks"            
+        contents: 
+          - text: "1 Finding Concurrent Data"
+            href: python/01_Finding_Concurrent_Data.ipynb
+          - text: "2 EMIT Reflectance and ECOSTRESS LST"
+            href: python/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.ipynb
+          - text: "3 Canopy Water Content"
+            href: python/03_EMIT_CWC_from_Reflectance.ipynb
+          - text: "4 Dangermond Land Cover"
+            href: python/04_Dangermond_Land_Cover.ipynb
+          - text: "5 Santa Barbara Vineyards"
+            href: python/05_SB_Vineyards.ipynb
+      - section: "Contributing"
+        contents:
+          - href: CONTRIBUTING.md
+          - href: CODE_OF_CONDUCT.md
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: [cosmo,theme-dark.scss]
+    code-background: true
+    code-copy: true
+    css: styles.css
+    toc: true
