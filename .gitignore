@@ -7,6 +7,8 @@
 *.envi*
 *.hdr*
 *.nc*
+/user_contributed/NEON_EMIT/data/
+/user_contributed/NEON_EMIT/neon_python_modules/
 /_ignore
 /.quarto/
 /_site/

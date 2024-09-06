@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 _________________________________________________________________________
 
+## 2024-09-03
+
+### Summary
+>
+> - Added community contributed notebooks and associated figures:
+>   -  `01_Finding_Co-located_NEON_and_EMIT_Data_NIWO.ipynb`
+>   -  `02_Exploring_NEON_and_EMIT Reflectance_Data_NIWO.ipynb`
+> 
+
 ## 2024-05-24
 
 ### Summary
