@@ -22,25 +22,25 @@ To contribute a solution to an issue or make a change to files within the reposi
 2. Create a [fork](https://docs.github.com/en/get-started/quickstart/contributing-to-projects#about-forking) of this repository. This will create your own copy of the repository. When working from your fork, you can do whatever you want, you won't mess up anyone else's work so you're safe to try things out. Worst case scenario you can delete your fork and recreate it.  
 3. Clone your fork to your local computer or cloud workspace using your preferred command line interface after navigating to the directory you want to place the repository in:
 
-    ```
+    ```git
     git clone your-fork-repository-url
     ```
 
     - Change directories to the one you cloned
 
-    ```
+    ```git
     cd repository-name
     ```
 
     - Add the upstream repository, this is the original repository that you want to contribute to.
 
-    ```
+    ```git
     git remote add upstream original-repository-url
     ```
 
     - You can use the following to view the remote repositories:
 
-    ```
+    ```git
     git remote -v
     ```
 
@@ -50,32 +50,32 @@ To contribute a solution to an issue or make a change to files within the reposi
 4. Develop your contribution:
     - Create a new branch named appropriately for the feature you want to work on:
 
-    ```
+    ```git
     git checkout -b new-branch-name
     ```
 
     - Often, updates to an `upstream` repository will occur while you are developing changes on your personal fork. You can pull the latest changes from `upstream`
 
-    ```
+    ```git
     git pull upstream dev
     ```
 
     - You can check the status of your local copy of the repository to see what changes have been made using:
 
-    ```
+    ```git
     git status
     ```
 
     - Commit locally as you progress using `git add` and `git commit`. For example, updating a readme.md file:
 
-    ```
+    ```git
     git add readme.md
     git commit -m "updated readme file"
     ```
 
     - You can check the status of your local copy of the repository again to see what pending changes have not been added or committed using:
 
-    ```
+    ```git
     git status
     ```
 
@@ -93,7 +93,7 @@ To contribute a solution to an issue or make a change to files within the reposi
 
 ## Adding New Notebooks or Example Workflows
 
-In the spirit of open science, we want to minimize barriers to sharing code and examples. We have added a `user_contributed` directory to the repository for anyone to share examples of their work in notebook or code form. Documentation and descriptions do not need to be as thorough as the examples we've created, but we ask that you provide as much as possible. Follow the [instructions](#updating-code-documentation-notebooks-or-other-files) above, placing your new notebook or module in a suitably named directory within the `user_contributed` directory. Be sure to remove any large datasets and indicate where users can retrieve them.
+In the spirit of open science, we want to minimize barriers to sharing code and examples. We have added a `community_contributed` directory to the repository for anyone to share examples of their work in notebook or code form. Documentation and descriptions do not need to be as thorough as the examples we've created, but we ask that you provide as much as possible. Follow the [instructions](#updating-code-documentation-notebooks-or-other-files) above, placing your new notebook or module in a suitably named directory within the `community_contributed` directory. Be sure to remove any large datasets and indicate where users can retrieve them.
 
 ## Attribution
 
