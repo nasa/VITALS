@@ -2,21 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.8">
+<meta name="generator" content="quarto-1.6.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>VITALS – finding_concurrent_data</title>
+<title>1 Finding Concurrent ECOSTRESS and EMIT Data – VITALS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -27,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -41,47 +47,17 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
@@ -94,19 +70,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6561bbde787c299e21493071c8edc6ff.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate">
+<link href="../site_libs/bootstrap/bootstrap-fdfdc58ad6c2f6f036eeed4db0fdae11.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -115,12 +97,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -131,11 +115,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python/01_Finding_Concurrent_Data.html">Python Notebooks</a></li><li class="breadcrumb-item"><a href="../python/01_Finding_Concurrent_Data.html">1 Finding Concurrent Data</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -143,144 +132,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
-      <a href="../" class="sidebar-logo-link">
+      <a href="../index.html" class="sidebar-logo-link">
       <img src="../img/lp_jpl_vitals_light.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="../">VITALS</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://nasa.github.io/VITALS/" title="VITALS Website" class="sidebar-tool px-1"><i class="bi bi-globe"></i></a>
-    <a href="https://github.com/nasa/VITALS" title="VITALS Repository" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+    <a href="https://nasa.github.io/VITALS/" title="VITALS Website" class="quarto-navigation-tool px-1" aria-label="VITALS Website"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/nasa/VITALS" title="VITALS Repository" class="quarto-navigation-tool px-1" aria-label="VITALS Repository"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Welcome</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-        <li class="sidebar-item">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Welcome</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">2024 SBG Workshop</a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2024 SBG Workshop</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../2023_agu_workshop.html" class="sidebar-item-text sidebar-link">2023 AGU Workshop</a>
+  <a href="../2023_agu_workshop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2023 AGU Workshop</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../vitals.html" class="sidebar-item-text sidebar-link">Repository Description</a>
+  <a href="../vitals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repository Description</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Setup Instructions</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-        <li class="sidebar-item">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Setup Instructions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../setup/prerequisites.html" class="sidebar-item-text sidebar-link">Prerequisites</a>
+  <a href="../setup/prerequisites.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prerequisites</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../setup/workshop_setup.html" class="sidebar-item-text sidebar-link">Cloud Workspace Setup</a>
+  <a href="../setup/workshop_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloud Workspace Setup</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../setup/setup_instructions.html" class="sidebar-item-text sidebar-link">Local Python Environment Setup</a>
+  <a href="../setup/setup_instructions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Local Python Environment Setup</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Python Notebooks</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-        <li class="sidebar-item">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Python Notebooks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python/01_Finding_Concurrent_Data.html" class="sidebar-item-text sidebar-link active">1 Finding Concurrent Data</a>
+  <a href="../python/01_Finding_Concurrent_Data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1 Finding Concurrent Data</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.html" class="sidebar-item-text sidebar-link">2 EMIT Reflectance and ECOSTRESS LST</a>
+  <a href="../python/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 EMIT Reflectance and ECOSTRESS LST</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python/03_EMIT_CWC_from_Reflectance.html" class="sidebar-item-text sidebar-link">3 Canopy Water Content</a>
+  <a href="../python/03_EMIT_CWC_from_Reflectance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 Canopy Water Content</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python/04_Dangermond_Land_Cover.html" class="sidebar-item-text sidebar-link">4 Dangermond Land Cover</a>
+  <a href="../python/04_Dangermond_Land_Cover.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 Dangermond Land Cover</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python/05_SB_Vineyards.html" class="sidebar-item-text sidebar-link">5 Santa Barbara Vineyards</a>
+  <a href="../python/05_SB_Vineyards.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 Santa Barbara Vineyards</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Contributing</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-        <li class="sidebar-item">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Contributing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../CONTRIBUTING.html" class="sidebar-item-text sidebar-link">Contributing to this Repository</a>
+  <a href="../CONTRIBUTING.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributing to this Repository</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../CODE_OF_CONDUCT.html" class="sidebar-item-text sidebar-link">Contributor Code of Conduct</a>
+  <a href="../CODE_OF_CONDUCT.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Code of Conduct</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
   </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#finding-concurrent-ecostress-and-emit-data" id="toc-finding-concurrent-ecostress-and-emit-data" class="nav-link active" data-scroll-target="#finding-concurrent-ecostress-and-emit-data">1 Finding Concurrent ECOSTRESS and EMIT Data</a>
-  <ul class="collapse">
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">1. Setup</a>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">1. Setup</a>
   <ul class="collapse">
   <li><a href="#nasa-earthdata-login-credentials" id="toc-nasa-earthdata-login-credentials" class="nav-link" data-scroll-target="#nasa-earthdata-login-credentials">1.2 NASA Earthdata Login Credentials</a></li>
   </ul></li>
@@ -304,17 +309,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#downloading-data-workflow" id="toc-downloading-data-workflow" class="nav-link" data-scroll-target="#downloading-data-workflow">6.2 Downloading Data Workflow</a></li>
   </ul></li>
   <li><a href="#contact-info" id="toc-contact-info" class="nav-link" data-scroll-target="#contact-info">Contact Info:</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python/01_Finding_Concurrent_Data.html">Python Notebooks</a></li><li class="breadcrumb-item"><a href="../python/01_Finding_Concurrent_Data.html">1 Finding Concurrent Data</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">1 Finding Concurrent ECOSTRESS and EMIT Data</h1>
+</div>
 
 
-<section id="finding-concurrent-ecostress-and-emit-data" class="level1">
-<h1>1 Finding Concurrent ECOSTRESS and EMIT Data</h1>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p><strong>Summary</strong></p>
 <p>Both the ECOsystem Spaceborne Thermal Radiometer Experiment on Space Station (ECOSTRESS) and the Earth surface Mineral dust source InvesTigation (EMIT) instruments are located on the International Space Station (ISS). Their overlapping fields of view provide an unprecedented opportunity to demonstrate the compounded benefits of working with both datasets. In this notebook we will show how to utilize the <a href="https://github.com/nsidc/earthaccess"><code>earthaccess</code> Python library</a> to find concurrent ECOSTRESS and EMIT data.</p>
 <div>
@@ -350,6 +369,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">1. Setup</h2>
 <p>Import the required Python libraries.</p>
+<div id="cell-3" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import required libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span>
@@ -367,6 +387,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shapely.geometry.polygon <span class="im">import</span> orient</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="nasa-earthdata-login-credentials" class="level3">
 <h3 class="anchored" data-anchor-id="nasa-earthdata-login-credentials">1.2 NASA Earthdata Login Credentials</h3>
 <p>To download or stream NASA data you will need an Earthdata account, you can create one <a href="https://urs.earthdata.nasa.gov/home">here</a>. We will use the <code>login</code> function from the <code>earthaccess</code> library for authentication before downloading at the end of the notebook. This function can also be used to create a local <code>.netrc</code> file if it doesn’t exist or add your login info to an existing <code>.netrc</code> file. If no Earthdata Login credentials are found in the <code>.netrc</code> you’ll be prompted for them. This step is not necessary to conduct searches but is needed to download or stream data.</p>
@@ -382,7 +403,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For this example, our spatial region of interest (ROI) will be the a region near Santa Barbara, CA that contains the <a href="https://www.dangermondpreserve.org/">Jack and Laura Dangermond Preserve</a> and the <a href="https://sedgwick.nrs.ucsb.edu/">Sedgwick Reserve</a>.</p>
 <p>In this example, we will create a rectangular ROI surrounding these two reserves as well as some of the agricultural region between. Even though the shape is rectangular we elect to search using a polygon rather than a standard bounding box in <code>earthaccess</code> because bounding boxes will typically have a larger spatial extent, capturing a lot of area we may not be interested in. This becomes more important for searches with larger ROIs than our example here. To search for intersections with a polygon using earthaccess, we need to format our ROI as a counterclockwise list of coordinate pairs.</p>
 <p>Open the <code>geojson</code> file containing the Dangermond and Sedgwick boundaries as a <code>geodataframe</code>, and check the coordinate reference system (CRS) of the data.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="2">
+<div id="cell-6" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>polygon <span class="op">=</span> gpd.read_file(<span class="st">'../data/agu_workshop_roi.geojson'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>polygon.crs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -401,75 +422,82 @@ Datum: World Geodetic System 1984 ensemble
 </div>
 <p>The CRS is <strong>EPSG:4326</strong> (WGS84), which is also the CRS we want the data in to submit for our search.</p>
 <p>Next, let’s examine our polygon a bit closer.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="3">
+<div id="cell-8" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>polygon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Acreage</th>
-      <th>geometry</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Sedgwick Reserve</td>
-      <td>5874.210000</td>
-      <td>POLYGON ((-120.04041 34.74342, -120.04122 34.7...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Dangermond Preserve</td>
-      <td>24458.615397</td>
-      <td>POLYGON ((-120.47367 34.56987, -120.47427 34.5...</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Acreage</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Sedgwick Reserve</td>
+<td>5874.210000</td>
+<td>POLYGON ((-120.04041 34.74342, -120.04122 34.7...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Dangermond Preserve</td>
+<td>24458.615397</td>
+<td>POLYGON ((-120.47367 34.56987, -120.47427 34.5...</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <p>We can see this <code>geodataframe</code> consists of two polygons, that we want to include in our study site. We need to create an exterior boundary polygon containing these, and make sure the vertices are in counterclockwise order to submit them in our query. To do this, create a polygon consisting of all the geometries, then create a bounding rectangle. This will give us a simple exterior polygon around our two ROIs. After that, use the <code>orient</code> function to place our coordinate pairs in counterclockwise order.</p>
+<div id="cell-10" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge all Polygon geometries and create external boundary</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>roi_poly <span class="op">=</span> polygon.unary_union.envelope</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-order vertices to counterclockwise</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>roi_poly <span class="op">=</span> orient(roi_poly, sign<span class="op">=</span><span class="fl">1.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Make a <code>GeoDataFrame</code> consisting of the bounding box geometry.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="5">
+<div id="cell-12" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"Name"</span>:[<span class="st">"ROI Bounding Box"</span>]})</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>agu_bbox <span class="op">=</span> gpd.GeoDataFrame({<span class="st">"Name"</span>:[<span class="st">"ROI Bounding Box"</span>], <span class="st">"geometry"</span>:[roi_poly]},crs<span class="op">=</span><span class="st">"EPSG:4326"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>agu_bbox</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>geometry</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>ROI Bounding Box</td>
-      <td>POLYGON ((-120.49929 34.44230, -120.01175 34.4...</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ROI Bounding Box</td>
+<td>POLYGON ((-120.49929 34.44230, -120.01175 34.4...</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <p>We can write this bounding box to a file for use in future notebooks.</p>
+<div id="cell-14" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#agu_bbox.to_file('../data/roi_bbox.geojson', driver='GeoJSON')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>We can go ahead and visualize our region of interest and the exterior boundary polygon containing ROIs. First add a function to help reformat bounding box coordinates to work with leaflet notation.</p>
+<div id="cell-16" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to convert a bounding box for use in leaflet notation</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_bounds(bbox, invert_y<span class="op">=</span><span class="va">False</span>):</span>
@@ -482,7 +510,8 @@ Datum: World Geodetic System 1984 ensemble
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> invert_y:</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        y1, y2 <span class="op">=</span> y2, y1</span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ((y1, x1), (y2, x2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="8">
+</div>
+<div id="cell-17" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> Figure(width<span class="op">=</span><span class="st">"750px"</span>, height<span class="op">=</span><span class="st">"375px"</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>map1 <span class="op">=</span> folium.Map(tiles<span class="op">=</span><span class="st">'https://mt1.google.com/vt/lyrs=y&amp;x=</span><span class="sc">{x}</span><span class="st">&amp;y=</span><span class="sc">{y}</span><span class="st">&amp;z=</span><span class="sc">{z}</span><span class="st">'</span>, attr<span class="op">=</span><span class="st">'Google'</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>fig.add_child(map1)</span>
@@ -507,7 +536,6 @@ Datum: World Geodetic System 1984 ensemble
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>map1.fit_bounds(bounds<span class="op">=</span>convert_bounds(polygon.unary_union.bounds))</span>
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>display(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-
 <iframe srcdoc="<!DOCTYPE html>
 <html>
 <head>
@@ -837,8 +865,10 @@ Datum: World Geodetic System 1984 ensemble
 </div>
 <p>Above we can see our regions of interest (ROIs) and the exterior boundary polygon containing the ROIs that we opened. We can hover over different areas to see the name of each ROI.</p>
 <p>Lastly, we need to convert our polygon to a list of coordinate pairs, so it will be accepted as a ‘polygon’ search parameter in <code>earthaccess</code>, as it expects a list of coordinate pairs in a counterclockwise order.</p>
+<div id="cell-20" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set ROI as list of exterior polygon vertices as coordinate pairs</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>roi <span class="op">=</span> <span class="bu">list</span>(roi_poly.exterior.coords)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="define-collections-of-interest" class="level3">
 <h3 class="anchored" data-anchor-id="define-collections-of-interest">2.2 Define Collections of Interest</h3>
@@ -846,7 +876,7 @@ Datum: World Geodetic System 1984 ensemble
 <blockquote class="blockquote">
 <p>Note: Here we use the Tiled ECOSTRESS LSTE Product. This will also work with the gridded LSTE and the swath; however, the swath product does not have a browse image for the visualization in section 4 and will require additional processing for subsequent analysis.</p>
 </blockquote>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="10">
+<div id="cell-22" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># EMIT Collection Query</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>emit_collection_query <span class="op">=</span> earthaccess.collection_query().keyword(<span class="st">'EMIT L2A Reflectance'</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>emit_collection_query.fields([<span class="st">'ShortName'</span>,<span class="st">'EntryTitle'</span>,<span class="st">'Version'</span>]).get()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -865,7 +895,7 @@ Datum: World Geodetic System 1984 ensemble
  }]</code></pre>
 </div>
 </div>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="11">
+<div id="cell-23" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ECOSTRESS Collection Query</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>eco_collection_query <span class="op">=</span> earthaccess.collection_query().keyword(<span class="st">'ECOSTRESS L2 Tiled LSTE'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>eco_collection_query.fields([<span class="st">'ShortName'</span>,<span class="st">'EntryTitle'</span>,<span class="st">'Version'</span>]).get()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -909,19 +939,23 @@ Datum: World Geodetic System 1984 ensemble
 </div>
 </div>
 <p>If your search returns multiple products, be sure to select the right concept-id For this example it will be the first one. We want to use the <code>LPCLOUD</code> ECOSTRESS Tiled Land Surface Temperature and Emissivity (concept-id: “C2076090826-LPCLOUD”). Create a list of these concept-ids for our data search.</p>
+<div id="cell-25" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Collections for our search</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>concept_ids <span class="op">=</span> [<span class="st">'C2408750690-LPCLOUD'</span>, <span class="st">'C2076090826-LPCLOUD'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="define-date-range" class="level3">
 <h3 class="anchored" data-anchor-id="define-date-range">2.3 Define Date Range</h3>
 <p>For our date range, we’ll look at data collected between January and October 2023. The <code>date_range</code> can be specified as a pair of dates, start and end (up to, not including).</p>
+<div id="cell-27" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Date Range</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>date_range <span class="op">=</span> (<span class="st">'2023-01-01'</span>,<span class="st">'2023-11-01'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="searching" class="level3">
 <h3 class="anchored" data-anchor-id="searching">2.4 Searching</h3>
 <p>Submit a query using <code>earthaccess</code>.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="14">
+<div id="cell-29" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> earthaccess.search_data(</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    concept_id<span class="op">=</span>concept_ids,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    polygon<span class="op">=</span>roi,</span>
@@ -938,6 +972,7 @@ Datum: World Geodetic System 1984 ensemble
 <h2 class="anchored" data-anchor-id="organizing-and-filtering-results">3. Organizing and Filtering Results</h2>
 <p>As we can see from above, the results object contains a list of objects with metadata and links. We can convert this to a more readable format, a dataframe. In addition, we can make it a geodataframe by taking the spatial metadata and creating a shapely polygon representing the spatial coverage, and further customize which information we want to use from other metadata fields.</p>
 <p>First, we define some functions to help us create a shapely object for our geodataframe, and retrieve the specific browse image URLs that we want. By default, the browse image selected by <code>earthaccess</code> is the first one in the list, but the ECO_L2_LSTE has several browse images, and we want to make sure we retrieve the <code>png</code> file, which is a preview of the LSTE.</p>
+<div id="cell-31" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to create shapely polygon of spatial coverage</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_shapely_object(result:earthaccess.results.DataGranule):</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get Geometry Keys</span></span>
@@ -970,8 +1005,9 @@ Datum: World Geodetic System 1984 ensemble
 <span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>        browse <span class="op">=</span> [png <span class="cf">for</span> png <span class="kw">in</span> https_links <span class="cf">if</span> <span class="st">'.png'</span> <span class="kw">in</span> png][<span class="dv">0</span>]</span>
 <span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(browse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Now that we have our functions we can create a dataframe, then calculate and add our shapely geometries to make a geodataframe. After that, add a column for our browse image urls and print the number of granules in our results, so we can monitor the quantity we are working with a we winnow down to the data we want.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="16">
+<div id="cell-33" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Dataframe of Results Metadata</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>results_df <span class="op">=</span> pd.json_normalize(results)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create shapely polygons for result</span></span>
@@ -990,168 +1026,169 @@ Datum: World Geodetic System 1984 ensemble
 </div>
 </div>
 <p>Preview our geodataframe to get an idea what it looks like.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="17">
+<div id="cell-35" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>gdf.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>size</th>
-      <th>meta.concept-type</th>
-      <th>meta.concept-id</th>
-      <th>meta.revision-id</th>
-      <th>meta.native-id</th>
-      <th>meta.collection-concept-id</th>
-      <th>meta.provider-id</th>
-      <th>meta.format</th>
-      <th>meta.revision-date</th>
-      <th>umm.TemporalExtent.RangeDateTime.BeginningDateTime</th>
-      <th>...</th>
-      <th>umm.Platforms</th>
-      <th>umm.MetadataSpecification.URL</th>
-      <th>umm.MetadataSpecification.Name</th>
-      <th>umm.MetadataSpecification.Version</th>
-      <th>umm.SpatialExtent.HorizontalSpatialDomain.Geometry.GPolygons</th>
-      <th>umm.PGEVersionClass.PGEName</th>
-      <th>umm.CloudCover</th>
-      <th>geometry</th>
-      <th>browse</th>
-      <th>shortname</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2.496260</td>
-      <td>granule</td>
-      <td>G2581836170-LPCLOUD</td>
-      <td>2</td>
-      <td>ECOv002_L2T_LSTE_25460_016_11SKU_20230101T1552...</td>
-      <td>C2076090826-LPCLOUD</td>
-      <td>LPCLOUD</td>
-      <td>application/echo10+xml</td>
-      <td>2024-01-20T15:57:11.266Z</td>
-      <td>2023-01-01T15:52:48.650Z</td>
-      <td>...</td>
-      <td>[{'ShortName': 'ISS', 'Instruments': [{'ShortN...</td>
-      <td>https://cdn.earthdata.nasa.gov/umm/granule/v1.6.6</td>
-      <td>UMM-G</td>
-      <td>1.6.6</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.292531</td>
-      <td>granule</td>
-      <td>G2586136519-LPCLOUD</td>
-      <td>2</td>
-      <td>ECOv002_L2T_LSTE_25486_005_10SGD_20230103T0743...</td>
-      <td>C2076090826-LPCLOUD</td>
-      <td>LPCLOUD</td>
-      <td>application/echo10+xml</td>
-      <td>2024-01-20T17:35:56.995Z</td>
-      <td>2023-01-03T07:43:30.510Z</td>
-      <td>...</td>
-      <td>[{'ShortName': 'ISS', 'Instruments': [{'ShortN...</td>
-      <td>https://cdn.earthdata.nasa.gov/umm/granule/v1.6.6</td>
-      <td>UMM-G</td>
-      <td>1.6.6</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>8.495430</td>
-      <td>granule</td>
-      <td>G2586136993-LPCLOUD</td>
-      <td>2</td>
-      <td>ECOv002_L2T_LSTE_25486_006_11SKU_20230103T0744...</td>
-      <td>C2076090826-LPCLOUD</td>
-      <td>LPCLOUD</td>
-      <td>application/echo10+xml</td>
-      <td>2024-01-20T17:36:01.364Z</td>
-      <td>2023-01-03T07:44:22.480Z</td>
-      <td>...</td>
-      <td>[{'ShortName': 'ISS', 'Instruments': [{'ShortN...</td>
-      <td>https://cdn.earthdata.nasa.gov/umm/granule/v1.6.6</td>
-      <td>UMM-G</td>
-      <td>1.6.6</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>5.103070</td>
-      <td>granule</td>
-      <td>G2586137000-LPCLOUD</td>
-      <td>2</td>
-      <td>ECOv002_L2T_LSTE_25486_006_10SGD_20230103T0744...</td>
-      <td>C2076090826-LPCLOUD</td>
-      <td>LPCLOUD</td>
-      <td>application/echo10+xml</td>
-      <td>2024-01-20T17:36:08.168Z</td>
-      <td>2023-01-03T07:44:22.480Z</td>
-      <td>...</td>
-      <td>[{'ShortName': 'ISS', 'Instruments': [{'ShortN...</td>
-      <td>https://cdn.earthdata.nasa.gov/umm/granule/v1.6.6</td>
-      <td>UMM-G</td>
-      <td>1.6.6</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1.160680</td>
-      <td>granule</td>
-      <td>G2591892077-LPCLOUD</td>
-      <td>2</td>
-      <td>ECOv002_L2T_LSTE_25547_005_11SKU_20230107T0607...</td>
-      <td>C2076090826-LPCLOUD</td>
-      <td>LPCLOUD</td>
-      <td>application/echo10+xml</td>
-      <td>2024-01-17T16:14:22.254Z</td>
-      <td>2023-01-07T06:07:21.560Z</td>
-      <td>...</td>
-      <td>[{'ShortName': 'ISS', 'Instruments': [{'ShortN...</td>
-      <td>https://cdn.earthdata.nasa.gov/umm/granule/v1.6.6</td>
-      <td>UMM-G</td>
-      <td>1.6.6</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">size</th>
+<th data-quarto-table-cell-role="th">meta.concept-type</th>
+<th data-quarto-table-cell-role="th">meta.concept-id</th>
+<th data-quarto-table-cell-role="th">meta.revision-id</th>
+<th data-quarto-table-cell-role="th">meta.native-id</th>
+<th data-quarto-table-cell-role="th">meta.collection-concept-id</th>
+<th data-quarto-table-cell-role="th">meta.provider-id</th>
+<th data-quarto-table-cell-role="th">meta.format</th>
+<th data-quarto-table-cell-role="th">meta.revision-date</th>
+<th data-quarto-table-cell-role="th">umm.TemporalExtent.RangeDateTime.BeginningDateTime</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">umm.Platforms</th>
+<th data-quarto-table-cell-role="th">umm.MetadataSpecification.URL</th>
+<th data-quarto-table-cell-role="th">umm.MetadataSpecification.Name</th>
+<th data-quarto-table-cell-role="th">umm.MetadataSpecification.Version</th>
+<th data-quarto-table-cell-role="th">umm.SpatialExtent.HorizontalSpatialDomain.Geometry.GPolygons</th>
+<th data-quarto-table-cell-role="th">umm.PGEVersionClass.PGEName</th>
+<th data-quarto-table-cell-role="th">umm.CloudCover</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+<th data-quarto-table-cell-role="th">browse</th>
+<th data-quarto-table-cell-role="th">shortname</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2.496260</td>
+<td>granule</td>
+<td>G2581836170-LPCLOUD</td>
+<td>2</td>
+<td>ECOv002_L2T_LSTE_25460_016_11SKU_20230101T1552...</td>
+<td>C2076090826-LPCLOUD</td>
+<td>LPCLOUD</td>
+<td>application/echo10+xml</td>
+<td>2024-01-20T15:57:11.266Z</td>
+<td>2023-01-01T15:52:48.650Z</td>
+<td>...</td>
+<td>[{'ShortName': 'ISS', 'Instruments': [{'ShortN...</td>
+<td>https://cdn.earthdata.nasa.gov/umm/granule/v1.6.6</td>
+<td>UMM-G</td>
+<td>1.6.6</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.292531</td>
+<td>granule</td>
+<td>G2586136519-LPCLOUD</td>
+<td>2</td>
+<td>ECOv002_L2T_LSTE_25486_005_10SGD_20230103T0743...</td>
+<td>C2076090826-LPCLOUD</td>
+<td>LPCLOUD</td>
+<td>application/echo10+xml</td>
+<td>2024-01-20T17:35:56.995Z</td>
+<td>2023-01-03T07:43:30.510Z</td>
+<td>...</td>
+<td>[{'ShortName': 'ISS', 'Instruments': [{'ShortN...</td>
+<td>https://cdn.earthdata.nasa.gov/umm/granule/v1.6.6</td>
+<td>UMM-G</td>
+<td>1.6.6</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>8.495430</td>
+<td>granule</td>
+<td>G2586136993-LPCLOUD</td>
+<td>2</td>
+<td>ECOv002_L2T_LSTE_25486_006_11SKU_20230103T0744...</td>
+<td>C2076090826-LPCLOUD</td>
+<td>LPCLOUD</td>
+<td>application/echo10+xml</td>
+<td>2024-01-20T17:36:01.364Z</td>
+<td>2023-01-03T07:44:22.480Z</td>
+<td>...</td>
+<td>[{'ShortName': 'ISS', 'Instruments': [{'ShortN...</td>
+<td>https://cdn.earthdata.nasa.gov/umm/granule/v1.6.6</td>
+<td>UMM-G</td>
+<td>1.6.6</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>5.103070</td>
+<td>granule</td>
+<td>G2586137000-LPCLOUD</td>
+<td>2</td>
+<td>ECOv002_L2T_LSTE_25486_006_10SGD_20230103T0744...</td>
+<td>C2076090826-LPCLOUD</td>
+<td>LPCLOUD</td>
+<td>application/echo10+xml</td>
+<td>2024-01-20T17:36:08.168Z</td>
+<td>2023-01-03T07:44:22.480Z</td>
+<td>...</td>
+<td>[{'ShortName': 'ISS', 'Instruments': [{'ShortN...</td>
+<td>https://cdn.earthdata.nasa.gov/umm/granule/v1.6.6</td>
+<td>UMM-G</td>
+<td>1.6.6</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1.160680</td>
+<td>granule</td>
+<td>G2591892077-LPCLOUD</td>
+<td>2</td>
+<td>ECOv002_L2T_LSTE_25547_005_11SKU_20230107T0607...</td>
+<td>C2076090826-LPCLOUD</td>
+<td>LPCLOUD</td>
+<td>application/echo10+xml</td>
+<td>2024-01-17T16:14:22.254Z</td>
+<td>2023-01-07T06:07:21.560Z</td>
+<td>...</td>
+<td>[{'ShortName': 'ISS', 'Instruments': [{'ShortN...</td>
+<td>https://cdn.earthdata.nasa.gov/umm/granule/v1.6.6</td>
+<td>UMM-G</td>
+<td>1.6.6</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+</tbody>
 </table>
+
 <p>5 rows × 35 columns</p>
 </div>
 </div>
 </div>
 <p>There are a lot of columns with data that is not relevant to our goal, so we can drop those. To do that, list the names of columns.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="18">
+<div id="cell-37" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List Column Names</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>gdf.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
@@ -1177,99 +1214,100 @@ Datum: World Geodetic System 1984 ensemble
 </div>
 </div>
 <p>Now create a list of columns to keep and use it to filter the dataframe.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="19">
+<div id="cell-39" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of columns to keep</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>keep_cols <span class="op">=</span> [<span class="st">'meta.concept-id'</span>,<span class="st">'meta.native-id'</span>, <span class="st">'umm.TemporalExtent.RangeDateTime.BeginningDateTime'</span>,<span class="st">'umm.TemporalExtent.RangeDateTime.EndingDateTime'</span>,<span class="st">'umm.CloudCover'</span>,<span class="st">'umm.DataGranule.DayNightFlag'</span>,<span class="st">'geometry'</span>,<span class="st">'browse'</span>, <span class="st">'shortname'</span>]</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove unneeded columns</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> gdf[gdf.columns.intersection(keep_cols)]</span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>gdf.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>meta.concept-id</th>
-      <th>meta.native-id</th>
-      <th>umm.TemporalExtent.RangeDateTime.BeginningDateTime</th>
-      <th>umm.TemporalExtent.RangeDateTime.EndingDateTime</th>
-      <th>umm.DataGranule.DayNightFlag</th>
-      <th>umm.CloudCover</th>
-      <th>geometry</th>
-      <th>browse</th>
-      <th>shortname</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>G2581836170-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_25460_016_11SKU_20230101T1552...</td>
-      <td>2023-01-01T15:52:48.650Z</td>
-      <td>2023-01-01T15:53:40.620Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>G2586136519-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_25486_005_10SGD_20230103T0743...</td>
-      <td>2023-01-03T07:43:30.510Z</td>
-      <td>2023-01-03T07:44:22.480Z</td>
-      <td>Night</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>G2586136993-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_25486_006_11SKU_20230103T0744...</td>
-      <td>2023-01-03T07:44:22.480Z</td>
-      <td>2023-01-03T07:45:14.450Z</td>
-      <td>Night</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>G2586137000-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_25486_006_10SGD_20230103T0744...</td>
-      <td>2023-01-03T07:44:22.480Z</td>
-      <td>2023-01-03T07:45:14.450Z</td>
-      <td>Night</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>G2591892077-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_25547_005_11SKU_20230107T0607...</td>
-      <td>2023-01-07T06:07:21.560Z</td>
-      <td>2023-01-07T06:08:13.530Z</td>
-      <td>Night</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">meta.concept-id</th>
+<th data-quarto-table-cell-role="th">meta.native-id</th>
+<th data-quarto-table-cell-role="th">umm.TemporalExtent.RangeDateTime.BeginningDateTime</th>
+<th data-quarto-table-cell-role="th">umm.TemporalExtent.RangeDateTime.EndingDateTime</th>
+<th data-quarto-table-cell-role="th">umm.DataGranule.DayNightFlag</th>
+<th data-quarto-table-cell-role="th">umm.CloudCover</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+<th data-quarto-table-cell-role="th">browse</th>
+<th data-quarto-table-cell-role="th">shortname</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>G2581836170-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_25460_016_11SKU_20230101T1552...</td>
+<td>2023-01-01T15:52:48.650Z</td>
+<td>2023-01-01T15:53:40.620Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>G2586136519-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_25486_005_10SGD_20230103T0743...</td>
+<td>2023-01-03T07:43:30.510Z</td>
+<td>2023-01-03T07:44:22.480Z</td>
+<td>Night</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>G2586136993-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_25486_006_11SKU_20230103T0744...</td>
+<td>2023-01-03T07:44:22.480Z</td>
+<td>2023-01-03T07:45:14.450Z</td>
+<td>Night</td>
+<td>NaN</td>
+<td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>G2586137000-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_25486_006_10SGD_20230103T0744...</td>
+<td>2023-01-03T07:44:22.480Z</td>
+<td>2023-01-03T07:45:14.450Z</td>
+<td>Night</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>G2591892077-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_25547_005_11SKU_20230107T0607...</td>
+<td>2023-01-07T06:07:21.560Z</td>
+<td>2023-01-07T06:08:13.530Z</td>
+<td>Night</td>
+<td>NaN</td>
+<td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <p>This is looking better, but we can make it more readable by renaming our columns.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="20">
+<div id="cell-41" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename some Columns</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>gdf.rename(columns <span class="op">=</span> {<span class="st">'meta.concept-id'</span>:<span class="st">'concept_id'</span>,<span class="st">'meta.native-id'</span>:<span class="st">'granule'</span>,</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                       <span class="st">'umm.TemporalExtent.RangeDateTime.BeginningDateTime'</span>:<span class="st">'start_datetime'</span>,</span>
@@ -1278,87 +1316,88 @@ Datum: World Geodetic System 1984 ensemble
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'umm.DataGranule.DayNightFlag'</span>:<span class="st">'day_night'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>gdf.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>concept_id</th>
-      <th>granule</th>
-      <th>start_datetime</th>
-      <th>end_datetime</th>
-      <th>day_night</th>
-      <th>cloud_cover</th>
-      <th>geometry</th>
-      <th>browse</th>
-      <th>shortname</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>G2581836170-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_25460_016_11SKU_20230101T1552...</td>
-      <td>2023-01-01T15:52:48.650Z</td>
-      <td>2023-01-01T15:53:40.620Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>G2586136519-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_25486_005_10SGD_20230103T0743...</td>
-      <td>2023-01-03T07:43:30.510Z</td>
-      <td>2023-01-03T07:44:22.480Z</td>
-      <td>Night</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>G2586136993-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_25486_006_11SKU_20230103T0744...</td>
-      <td>2023-01-03T07:44:22.480Z</td>
-      <td>2023-01-03T07:45:14.450Z</td>
-      <td>Night</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>G2586137000-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_25486_006_10SGD_20230103T0744...</td>
-      <td>2023-01-03T07:44:22.480Z</td>
-      <td>2023-01-03T07:45:14.450Z</td>
-      <td>Night</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>G2591892077-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_25547_005_11SKU_20230107T0607...</td>
-      <td>2023-01-07T06:07:21.560Z</td>
-      <td>2023-01-07T06:08:13.530Z</td>
-      <td>Night</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">concept_id</th>
+<th data-quarto-table-cell-role="th">granule</th>
+<th data-quarto-table-cell-role="th">start_datetime</th>
+<th data-quarto-table-cell-role="th">end_datetime</th>
+<th data-quarto-table-cell-role="th">day_night</th>
+<th data-quarto-table-cell-role="th">cloud_cover</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+<th data-quarto-table-cell-role="th">browse</th>
+<th data-quarto-table-cell-role="th">shortname</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>G2581836170-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_25460_016_11SKU_20230101T1552...</td>
+<td>2023-01-01T15:52:48.650Z</td>
+<td>2023-01-01T15:53:40.620Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>G2586136519-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_25486_005_10SGD_20230103T0743...</td>
+<td>2023-01-03T07:43:30.510Z</td>
+<td>2023-01-03T07:44:22.480Z</td>
+<td>Night</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>G2586136993-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_25486_006_11SKU_20230103T0744...</td>
+<td>2023-01-03T07:44:22.480Z</td>
+<td>2023-01-03T07:45:14.450Z</td>
+<td>Night</td>
+<td>NaN</td>
+<td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>G2586137000-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_25486_006_10SGD_20230103T0744...</td>
+<td>2023-01-03T07:44:22.480Z</td>
+<td>2023-01-03T07:45:14.450Z</td>
+<td>Night</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>G2591892077-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_25547_005_11SKU_20230107T0607...</td>
+<td>2023-01-07T06:07:21.560Z</td>
+<td>2023-01-07T06:08:13.530Z</td>
+<td>Night</td>
+<td>NaN</td>
+<td>POLYGON ((-119.06582 34.21003, -119.06582 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1366,26 +1405,34 @@ Datum: World Geodetic System 1984 ensemble
 <p><strong>Note: If querying on-premises (not cloud) LP DAAC datasets, the <code>meta.concept-id</code> will not show as <code>xxxxxx-LPCLOUD</code>. For these datasets, the granule name can be retrieved from the <code>umm.DataGranule.Identifiers</code> column.</strong></p>
 </blockquote>
 <p>We can filter using the day/night flag as well, but this step will be unnecessary as we check to ensure all results from ECOSTRESS fall within an hour of resulting EMIT granules.</p>
+<div id="cell-44" class="cell" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gdf = gdf[gdf['day_night'].str.contains('Day')]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Our first step toward filtering the datasets will be to add a column with a <code>datetime</code>.</p>
 <blockquote class="blockquote">
 <p><strong>You may have noticed that the date format is similar for ECOSTRESS and EMIT, but the ECOSTRESS data also includes fractional seconds. If using an different version of <code>pandas</code>, you may need to drop the <code>format='ISO8601'</code>argument to the <code>to_datetime</code> function, as shown in the commented-out line.</strong></p>
 </blockquote>
+<div id="cell-46" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gdf['datetime_obj'] = pd.to_datetime(gdf['start_datetime']) # different pandas version</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>gdf[<span class="st">'datetime_obj'</span>] <span class="op">=</span> pd.to_datetime(gdf[<span class="st">'start_datetime'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'ISO8601'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>We can roughly visualize the quantity of results by month at our location using a histogram with 8 bins (Jan - Oct).</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="23">
+<div id="cell-48" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>gdf.hist(column<span class="op">=</span><span class="st">'datetime_obj'</span>, by<span class="op">=</span><span class="st">'shortname'</span>, bins<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">'green'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, sharey<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>array([&lt;Axes: title={'center': 'ECO_L2T_LSTE'}&gt;,
        &lt;Axes: title={'center': 'EMITL2ARFL'}&gt;], dtype=object)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="01_Finding_Concurrent_Data_files/figure-html/cell-24-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="01_Finding_Concurrent_Data_files/figure-html/cell-24-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now we will separate the results into two dataframes, one for ECOTRESS and one for EMIT, and print the number of results for each so we can monitor how many granules we’re filtering.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="24">
+<div id="cell-50" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Suppress Setting with Copy Warning - not applicable in this use case</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>pd.options.mode.chained_assignment <span class="op">=</span> <span class="va">None</span>  <span class="co"># default='warn'</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1398,102 +1445,103 @@ Datum: World Geodetic System 1984 ensemble
  EMIT Granules: 35</code></pre>
 </div>
 </div>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="25">
+<div id="cell-51" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>emit_gdf.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>concept_id</th>
-      <th>granule</th>
-      <th>start_datetime</th>
-      <th>end_datetime</th>
-      <th>day_night</th>
-      <th>cloud_cover</th>
-      <th>geometry</th>
-      <th>browse</th>
-      <th>shortname</th>
-      <th>datetime_obj</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>31</th>
-      <td>G2623634492-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230129T211308_2302914_003</td>
-      <td>2023-01-29T21:13:08Z</td>
-      <td>2023-01-29T21:13:20Z</td>
-      <td>Day</td>
-      <td>96.0</td>
-      <td>POLYGON ((-120.29004 35.49324, -121.08087 34.8...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-01-29 21:13:08+00:00</td>
-    </tr>
-    <tr>
-      <th>53</th>
-      <td>G2631040813-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230219T202939_2305013_002</td>
-      <td>2023-02-19T20:29:39Z</td>
-      <td>2023-02-19T20:29:51Z</td>
-      <td>Day</td>
-      <td>47.0</td>
-      <td>POLYGON ((-120.70791 35.54348, -121.19894 34.9...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-02-19 20:29:39+00:00</td>
-    </tr>
-    <tr>
-      <th>56</th>
-      <td>G2631045418-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230219T202951_2305013_003</td>
-      <td>2023-02-19T20:29:51Z</td>
-      <td>2023-02-19T20:30:14Z</td>
-      <td>Day</td>
-      <td>67.0</td>
-      <td>POLYGON ((-120.04838 35.03646, -120.54523 34.4...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-02-19 20:29:51+00:00</td>
-    </tr>
-    <tr>
-      <th>65</th>
-      <td>G2631457332-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230223T185536_2305412_003</td>
-      <td>2023-02-23T18:55:36Z</td>
-      <td>2023-02-23T18:55:48Z</td>
-      <td>Day</td>
-      <td>98.0</td>
-      <td>POLYGON ((-120.61175 35.58776, -121.10041 34.9...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-02-23 18:55:36+00:00</td>
-    </tr>
-    <tr>
-      <th>66</th>
-      <td>G2631458885-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230223T185548_2305412_004</td>
-      <td>2023-02-23T18:55:48Z</td>
-      <td>2023-02-23T18:56:00Z</td>
-      <td>Day</td>
-      <td>96.0</td>
-      <td>POLYGON ((-119.95147 35.08163, -120.44685 34.4...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-02-23 18:55:48+00:00</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">concept_id</th>
+<th data-quarto-table-cell-role="th">granule</th>
+<th data-quarto-table-cell-role="th">start_datetime</th>
+<th data-quarto-table-cell-role="th">end_datetime</th>
+<th data-quarto-table-cell-role="th">day_night</th>
+<th data-quarto-table-cell-role="th">cloud_cover</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+<th data-quarto-table-cell-role="th">browse</th>
+<th data-quarto-table-cell-role="th">shortname</th>
+<th data-quarto-table-cell-role="th">datetime_obj</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">31</td>
+<td>G2623634492-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230129T211308_2302914_003</td>
+<td>2023-01-29T21:13:08Z</td>
+<td>2023-01-29T21:13:20Z</td>
+<td>Day</td>
+<td>96.0</td>
+<td>POLYGON ((-120.29004 35.49324, -121.08087 34.8...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-01-29 21:13:08+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">53</td>
+<td>G2631040813-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230219T202939_2305013_002</td>
+<td>2023-02-19T20:29:39Z</td>
+<td>2023-02-19T20:29:51Z</td>
+<td>Day</td>
+<td>47.0</td>
+<td>POLYGON ((-120.70791 35.54348, -121.19894 34.9...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-02-19 20:29:39+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">56</td>
+<td>G2631045418-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230219T202951_2305013_003</td>
+<td>2023-02-19T20:29:51Z</td>
+<td>2023-02-19T20:30:14Z</td>
+<td>Day</td>
+<td>67.0</td>
+<td>POLYGON ((-120.04838 35.03646, -120.54523 34.4...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-02-19 20:29:51+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">65</td>
+<td>G2631457332-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230223T185536_2305412_003</td>
+<td>2023-02-23T18:55:36Z</td>
+<td>2023-02-23T18:55:48Z</td>
+<td>Day</td>
+<td>98.0</td>
+<td>POLYGON ((-120.61175 35.58776, -121.10041 34.9...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-02-23 18:55:36+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">66</td>
+<td>G2631458885-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230223T185548_2305412_004</td>
+<td>2023-02-23T18:55:48Z</td>
+<td>2023-02-23T18:56:00Z</td>
+<td>Day</td>
+<td>96.0</td>
+<td>POLYGON ((-119.95147 35.08163, -120.44685 34.4...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-02-23 18:55:48+00:00</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 <p>We still haven’t filtered the locations where EMIT and ECOSTRESS have data at the same spatial location and timeframe. The EMIT acquisition mask has been added to ECOSTRESS, so in most cases if EMIT is collecting data, so will ECOSTRESS, but there are edge cases where this is not true. To do this we’ll use two filters to catch the edge-cases and provide an example that can be used with other datasets.</p>
 <p>First, since EMIT has a smaller swath width, we can use a unary union of the spatial coverage present in our geodataframe to filter out ECOSTRESS granules that do not overlap with it.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="26">
+<div id="cell-53" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset ECOSTRESS Granules in Geodataframe by intersection with EMIT granules</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Create new column based on intersection with union of EMIT polygons.</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>eco_gdf[<span class="st">'intersects'</span>] <span class="op">=</span> eco_gdf.intersects(emit_gdf.unary_union)</span>
@@ -1508,6 +1556,7 @@ Datum: World Geodetic System 1984 ensemble
 <p>In this instance, our results aren’t narrowed because our region of interest is smaller than a single EMIT scene. If the spatial ROI was very large, this would be much more unlikely.</p>
 <p>Additionally, we want to make sure that data in our results are collected at the same time. For EMIT and ECOSTRESS, the EMIT acquisition mask has been added to the ECOSTRESS mask, meaning that if there is an EMIT scene, there should also be an ECOSTRESS scene acquired at the same time. In practice, however, the timestamps on the scenes can vary slightly. In order to capture this slight variability, we need to use a range instead of a single timestamp to capture concurrent data. To do this, we’ll ensure all ECOSTRESS granule start times fall within 10 minutes of any of the EMIT granules in our results, and vice-versa.</p>
 <p>Write a function to evaluate whether these <code>datetime</code> objects fall within 10 minutes of one another using the <code>timedelta</code> function.</p>
+<div id="cell-56" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to Filter timestamps that do not fall within a time_delta of timestamps from the other acquisition time</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> concurrent_match(gdf_a:pd.DataFrame, gdf_b:pd.DataFrame, col_name:<span class="bu">str</span>, time_delta:timedelta):</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
@@ -1542,8 +1591,9 @@ Datum: World Geodetic System 1984 ensemble
 <span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>    a_filtered <span class="op">=</span> gdf_a.loc[<span class="bu">sum</span>(a_list) <span class="op">&gt;</span> <span class="dv">0</span>]</span>
 <span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>    b_filtered <span class="op">=</span> gdf_b.loc[<span class="bu">sum</span>(b_list) <span class="op">&gt;</span> <span class="dv">0</span>]</span>
 <span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(a_filtered, b_filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Now run our function.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="28">
+<div id="cell-58" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>eco_gdf, emit_gdf <span class="op">=</span> concurrent_match(eco_gdf,emit_gdf, col_name<span class="op">=</span><span class="st">'datetime_obj'</span>,time_delta<span class="op">=</span>timedelta(minutes<span class="op">=</span><span class="dv">10</span>))</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f' ECOSTRESS Granules: </span><span class="sc">{</span>eco_gdf<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> EMIT Granules: </span><span class="sc">{</span>emit_gdf<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1555,7 +1605,7 @@ Datum: World Geodetic System 1984 ensemble
 <section id="visualizing-intersecting-coverage" class="level2">
 <h2 class="anchored" data-anchor-id="visualizing-intersecting-coverage">4. Visualizing Intersecting Coverage</h2>
 <p>Now that we have geodataframes containing some concurrent data, we can visualize them on a map using <code>folium</code>. It’s often difficult to visualize a large time-series of scenes, so we’ve included an example in Appendix A1 on how to filter to a single day.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="38">
+<div id="cell-60" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot Using Folium</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Figure and Select Background Tiles</span></span>
@@ -1623,7 +1673,6 @@ Datum: World Geodetic System 1984 ensemble
 <span id="cb39-65"><a href="#cb39-65" aria-hidden="true" tabindex="-1"></a>map1.add_child(folium.LayerControl())</span>
 <span id="cb39-66"><a href="#cb39-66" aria-hidden="true" tabindex="-1"></a>display(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-
 <iframe srcdoc="<!DOCTYPE html>
 <html>
 <head>
@@ -2345,8 +2394,10 @@ Datum: World Geodetic System 1984 ensemble
 <p>In the figure above, you can zoom in and out, and add or remove layers using the layer control in the top right. Notice that since we’re using the tiled ECOSTRESS product, we have 2 overlapping tiles at our ROI. You can visualize the tiles by adding or removing the layers.</p>
 <p>From this figure, we can see there are two ECOSTRESS tiles: 10SGD and 10SKU, which both intersect with our area. Since both fall within tile 10SGD, we can keep results using 10SGD as a filter.</p>
 <p><strong>There is a lot going on in the above visualization. After doing some additional filtering below, we can re-run the above cell to visualize our filtered scenes.</strong></p>
+<div id="cell-62" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>eco_gdf <span class="op">=</span> eco_gdf[eco_gdf[<span class="st">'granule'</span>].<span class="bu">str</span>.contains(<span class="st">"10SGD"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="31">
+</div>
+<div id="cell-63" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f' ECOSTRESS Granules: </span><span class="sc">{</span>eco_gdf<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> EMIT Granules: </span><span class="sc">{</span>emit_gdf<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> ECOSTRESS Granules: 17 
@@ -2359,7 +2410,7 @@ Datum: World Geodetic System 1984 ensemble
 <blockquote class="blockquote">
 <p>Note: The black space is indicative of onboard cloud masking that occurs before data is downlinked from the ISS.</p>
 </blockquote>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="32">
+<div id="cell-65" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> math.ceil(<span class="bu">len</span>(emit_gdf)<span class="op">/</span>cols)</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(rows, cols, figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">20</span>))</span>
@@ -2373,19 +2424,27 @@ Datum: World Geodetic System 1984 ensemble
 <span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="01_Finding_Concurrent_Data_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="01_Finding_Concurrent_Data_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="further-filtering" class="level3">
 <h3 class="anchored" data-anchor-id="further-filtering">4.3 Further Filtering</h3>
 <p>We can see that some of these granules likely won’t work because of the large amount of cloud cover, we can use a list of these to filter them out. Make a list of indexes to filter out. <strong>Note that these indices can change since they are dependent on the order scenes are returned from CMR. Please doublecheck them before running this cell.</strong></p>
+<div id="cell-67" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad granule list</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>bad_granules <span class="op">=</span> [<span class="dv">31</span>,<span class="dv">82</span>,<span class="dv">115</span>,<span class="dv">116</span>,<span class="dv">176</span>,<span class="dv">182</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Filter out the bad granules.</p>
+<div id="cell-69" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>emit_gdf <span class="op">=</span> emit_gdf[<span class="op">~</span>emit_gdf.index.isin(bad_granules)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Now that we’ve narrowed our EMIT results we can again filter the ECOSTRESS granules based on their concurrency with our filtered EMIT granules.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="35">
+<div id="cell-71" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>eco_gdf, emit_gdf <span class="op">=</span> concurrent_match(eco_gdf,emit_gdf, col_name<span class="op">=</span><span class="st">'datetime_obj'</span>,time_delta<span class="op">=</span>timedelta(hours<span class="op">=</span><span class="dv">1</span>))</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f' ECOSTRESS Granules: </span><span class="sc">{</span>eco_gdf<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> EMIT Granules: </span><span class="sc">{</span>emit_gdf<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2393,478 +2452,480 @@ Datum: World Geodetic System 1984 ensemble
  EMIT Granules: 16</code></pre>
 </div>
 </div>
-<div class="cell" data-metadata="{}" data-execution_count="36">
+<div id="cell-72" class="cell" data-metadata="{}" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>eco_gdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>concept_id</th>
-      <th>granule</th>
-      <th>start_datetime</th>
-      <th>end_datetime</th>
-      <th>day_night</th>
-      <th>cloud_cover</th>
-      <th>geometry</th>
-      <th>browse</th>
-      <th>shortname</th>
-      <th>datetime_obj</th>
-      <th>intersects</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>52</th>
-      <td>G2627756987-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_26223_011_10SGD_20230219T2028...</td>
-      <td>2023-02-19T20:28:51.310Z</td>
-      <td>2023-02-19T20:29:43.280Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-02-19 20:28:51.310000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>54</th>
-      <td>G2627758024-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_26223_012_10SGD_20230219T2029...</td>
-      <td>2023-02-19T20:29:43.280Z</td>
-      <td>2023-02-19T20:30:35.250Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-02-19 20:29:43.280000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>75</th>
-      <td>G2630582431-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_26345_013_10SGD_20230227T1720...</td>
-      <td>2023-02-27T17:20:29.100Z</td>
-      <td>2023-02-27T17:21:21.070Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-02-27 17:20:29.100000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>76</th>
-      <td>G3015778622-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_26345_013_10SGD_20230227T1720...</td>
-      <td>2023-02-27T17:20:29.104Z</td>
-      <td>2023-02-27T17:21:21.074Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-02-27 17:20:29.104000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>79</th>
-      <td>G2630583457-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_26345_014_10SGD_20230227T1721...</td>
-      <td>2023-02-27T17:21:21.070Z</td>
-      <td>2023-02-27T17:22:13.040Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-02-27 17:21:21.070000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>81</th>
-      <td>G3015772990-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_26345_014_10SGD_20230227T1721...</td>
-      <td>2023-02-27T17:21:21.074Z</td>
-      <td>2023-02-27T17:22:13.044Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-02-27 17:21:21.074000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>119</th>
-      <td>G2650963815-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_26860_001_10SGD_20230401T2037...</td>
-      <td>2023-04-01T20:37:33.030Z</td>
-      <td>2023-04-01T20:38:25.000Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-04-01 20:37:33.030000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>124</th>
-      <td>G2655983115-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_26921_001_10SGD_20230405T1902...</td>
-      <td>2023-04-05T19:02:58.950Z</td>
-      <td>2023-04-05T19:03:50.920Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-04-05 19:02:58.950000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>153</th>
-      <td>G2710071138-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_27185_010_10SGD_20230422T1958...</td>
-      <td>2023-04-22T19:58:36.740Z</td>
-      <td>2023-04-22T19:59:28.710Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-04-22 19:58:36.740000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>174</th>
-      <td>G2715826603-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_27745_005_10SGD_20230528T2204...</td>
-      <td>2023-05-28T22:04:01.690Z</td>
-      <td>2023-05-28T22:04:53.660Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-05-28 22:04:01.690000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>180</th>
-      <td>G2715906073-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_27806_005_10SGD_20230601T2026...</td>
-      <td>2023-06-01T20:26:19.770Z</td>
-      <td>2023-06-01T20:27:11.740Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-06-01 20:26:19.770000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>205</th>
-      <td>G2729123248-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_28238_012_10SGD_20230629T1704...</td>
-      <td>2023-06-29T17:04:16.344Z</td>
-      <td>2023-06-29T17:05:08.313Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-06-29 17:04:16.344000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>293</th>
-      <td>G2772539755-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_29576_005_10SGD_20230923T2321...</td>
-      <td>2023-09-23T23:21:04.439Z</td>
-      <td>2023-09-23T23:21:56.408Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-09-23 23:21:04.439000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>307</th>
-      <td>G2792244801-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_29901_007_10SGD_20231014T2239...</td>
-      <td>2023-10-14T22:39:36.895Z</td>
-      <td>2023-10-14T22:40:28.865Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-10-14 22:39:36.895000+00:00</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>316</th>
-      <td>G2790664680-LPCLOUD</td>
-      <td>ECOv002_L2T_LSTE_29962_012_10SGD_20231018T2102...</td>
-      <td>2023-10-18T21:02:08.141Z</td>
-      <td>2023-10-18T21:03:00.111Z</td>
-      <td>Day</td>
-      <td>NaN</td>
-      <td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>ECO_L2T_LSTE</td>
-      <td>2023-10-18 21:02:08.141000+00:00</td>
-      <td>True</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">concept_id</th>
+<th data-quarto-table-cell-role="th">granule</th>
+<th data-quarto-table-cell-role="th">start_datetime</th>
+<th data-quarto-table-cell-role="th">end_datetime</th>
+<th data-quarto-table-cell-role="th">day_night</th>
+<th data-quarto-table-cell-role="th">cloud_cover</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+<th data-quarto-table-cell-role="th">browse</th>
+<th data-quarto-table-cell-role="th">shortname</th>
+<th data-quarto-table-cell-role="th">datetime_obj</th>
+<th data-quarto-table-cell-role="th">intersects</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">52</td>
+<td>G2627756987-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_26223_011_10SGD_20230219T2028...</td>
+<td>2023-02-19T20:28:51.310Z</td>
+<td>2023-02-19T20:29:43.280Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-02-19 20:28:51.310000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">54</td>
+<td>G2627758024-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_26223_012_10SGD_20230219T2029...</td>
+<td>2023-02-19T20:29:43.280Z</td>
+<td>2023-02-19T20:30:35.250Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-02-19 20:29:43.280000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75</td>
+<td>G2630582431-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_26345_013_10SGD_20230227T1720...</td>
+<td>2023-02-27T17:20:29.100Z</td>
+<td>2023-02-27T17:21:21.070Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-02-27 17:20:29.100000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">76</td>
+<td>G3015778622-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_26345_013_10SGD_20230227T1720...</td>
+<td>2023-02-27T17:20:29.104Z</td>
+<td>2023-02-27T17:21:21.074Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-02-27 17:20:29.104000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">79</td>
+<td>G2630583457-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_26345_014_10SGD_20230227T1721...</td>
+<td>2023-02-27T17:21:21.070Z</td>
+<td>2023-02-27T17:22:13.040Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-02-27 17:21:21.070000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">81</td>
+<td>G3015772990-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_26345_014_10SGD_20230227T1721...</td>
+<td>2023-02-27T17:21:21.074Z</td>
+<td>2023-02-27T17:22:13.044Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-02-27 17:21:21.074000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">119</td>
+<td>G2650963815-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_26860_001_10SGD_20230401T2037...</td>
+<td>2023-04-01T20:37:33.030Z</td>
+<td>2023-04-01T20:38:25.000Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-04-01 20:37:33.030000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">124</td>
+<td>G2655983115-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_26921_001_10SGD_20230405T1902...</td>
+<td>2023-04-05T19:02:58.950Z</td>
+<td>2023-04-05T19:03:50.920Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-04-05 19:02:58.950000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">153</td>
+<td>G2710071138-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_27185_010_10SGD_20230422T1958...</td>
+<td>2023-04-22T19:58:36.740Z</td>
+<td>2023-04-22T19:59:28.710Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-04-22 19:58:36.740000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">174</td>
+<td>G2715826603-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_27745_005_10SGD_20230528T2204...</td>
+<td>2023-05-28T22:04:01.690Z</td>
+<td>2023-05-28T22:04:53.660Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-05-28 22:04:01.690000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">180</td>
+<td>G2715906073-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_27806_005_10SGD_20230601T2026...</td>
+<td>2023-06-01T20:26:19.770Z</td>
+<td>2023-06-01T20:27:11.740Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-06-01 20:26:19.770000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">205</td>
+<td>G2729123248-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_28238_012_10SGD_20230629T1704...</td>
+<td>2023-06-29T17:04:16.344Z</td>
+<td>2023-06-29T17:05:08.313Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-06-29 17:04:16.344000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">293</td>
+<td>G2772539755-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_29576_005_10SGD_20230923T2321...</td>
+<td>2023-09-23T23:21:04.439Z</td>
+<td>2023-09-23T23:21:56.408Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-09-23 23:21:04.439000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">307</td>
+<td>G2792244801-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_29901_007_10SGD_20231014T2239...</td>
+<td>2023-10-14T22:39:36.895Z</td>
+<td>2023-10-14T22:40:28.865Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-10-14 22:39:36.895000+00:00</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">316</td>
+<td>G2790664680-LPCLOUD</td>
+<td>ECOv002_L2T_LSTE_29962_012_10SGD_20231018T2102...</td>
+<td>2023-10-18T21:02:08.141Z</td>
+<td>2023-10-18T21:03:00.111Z</td>
+<td>Day</td>
+<td>NaN</td>
+<td>POLYGON ((-119.59844 34.20719, -119.59844 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>ECO_L2T_LSTE</td>
+<td>2023-10-18 21:02:08.141000+00:00</td>
+<td>True</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
-<div class="cell" data-metadata="{}" data-execution_count="37">
+<div id="cell-73" class="cell" data-metadata="{}" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>emit_gdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>concept_id</th>
-      <th>granule</th>
-      <th>start_datetime</th>
-      <th>end_datetime</th>
-      <th>day_night</th>
-      <th>cloud_cover</th>
-      <th>geometry</th>
-      <th>browse</th>
-      <th>shortname</th>
-      <th>datetime_obj</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>53</th>
-      <td>G2631040813-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230219T202939_2305013_002</td>
-      <td>2023-02-19T20:29:39Z</td>
-      <td>2023-02-19T20:29:51Z</td>
-      <td>Day</td>
-      <td>47.0</td>
-      <td>POLYGON ((-120.70791 35.54348, -121.19894 34.9...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-02-19 20:29:39+00:00</td>
-    </tr>
-    <tr>
-      <th>56</th>
-      <td>G2631045418-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230219T202951_2305013_003</td>
-      <td>2023-02-19T20:29:51Z</td>
-      <td>2023-02-19T20:30:14Z</td>
-      <td>Day</td>
-      <td>67.0</td>
-      <td>POLYGON ((-120.04838 35.03646, -120.54523 34.4...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-02-19 20:29:51+00:00</td>
-    </tr>
-    <tr>
-      <th>77</th>
-      <td>G2631818088-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230227T172116_2305811_004</td>
-      <td>2023-02-27T17:21:16Z</td>
-      <td>2023-02-27T17:21:28Z</td>
-      <td>Day</td>
-      <td>99.0</td>
-      <td>POLYGON ((-120.73262 35.83169, -121.21741 35.1...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-02-27 17:21:16+00:00</td>
-    </tr>
-    <tr>
-      <th>121</th>
-      <td>G2648965598-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230401T203751_2309114_002</td>
-      <td>2023-04-01T20:37:51Z</td>
-      <td>2023-04-01T20:38:03Z</td>
-      <td>Day</td>
-      <td>80.0</td>
-      <td>POLYGON ((-120.21542 34.90659, -120.99248 34.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-04-01 20:37:51+00:00</td>
-    </tr>
-    <tr>
-      <th>122</th>
-      <td>G2648966116-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230401T203803_2309114_003</td>
-      <td>2023-04-01T20:38:03Z</td>
-      <td>2023-04-01T20:38:15Z</td>
-      <td>Day</td>
-      <td>18.0</td>
-      <td>POLYGON ((-119.55793 35.41507, -120.34872 34.7...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-04-01 20:38:03+00:00</td>
-    </tr>
-    <tr>
-      <th>125</th>
-      <td>G2667368816-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230405T190311_2309513_002</td>
-      <td>2023-04-05T19:03:11Z</td>
-      <td>2023-04-05T19:03:23Z</td>
-      <td>Day</td>
-      <td>71.0</td>
-      <td>POLYGON ((-119.87804 34.90691, -120.65480 34.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-04-05 19:03:11+00:00</td>
-    </tr>
-    <tr>
-      <th>154</th>
-      <td>G2667503312-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230422T195924_2311213_002</td>
-      <td>2023-04-22T19:59:24Z</td>
-      <td>2023-04-22T19:59:36Z</td>
-      <td>Day</td>
-      <td>40.0</td>
-      <td>POLYGON ((-120.49827 35.12071, -120.99520 34.4...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-04-22 19:59:24+00:00</td>
-    </tr>
-    <tr>
-      <th>177</th>
-      <td>G2699997381-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230528T220420_2314815_004</td>
-      <td>2023-05-28T22:04:20Z</td>
-      <td>2023-05-28T22:04:32Z</td>
-      <td>Day</td>
-      <td>52.0</td>
-      <td>POLYGON ((-119.96105 35.44150, -120.75292 34.8...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-05-28 22:04:20+00:00</td>
-    </tr>
-    <tr>
-      <th>179</th>
-      <td>G2720810376-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230601T202611_2315214_002</td>
-      <td>2023-06-01T20:26:11Z</td>
-      <td>2023-06-01T20:26:23Z</td>
-      <td>Day</td>
-      <td>15.0</td>
-      <td>POLYGON ((-120.29042 34.51665, -120.82317 33.9...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-06-01 20:26:11+00:00</td>
-    </tr>
-    <tr>
-      <th>207</th>
-      <td>G2735424106-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230629T170449_2318011_002</td>
-      <td>2023-06-29T17:04:49Z</td>
-      <td>2023-06-29T17:05:01Z</td>
-      <td>Day</td>
-      <td>48.0</td>
-      <td>POLYGON ((-120.35333 35.27559, -120.83881 34.6...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-06-29 17:04:49+00:00</td>
-    </tr>
-    <tr>
-      <th>292</th>
-      <td>G2772438951-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230923T232101_2326615_002</td>
-      <td>2023-09-23T23:21:01Z</td>
-      <td>2023-09-23T23:21:13Z</td>
-      <td>Day</td>
-      <td>73.0</td>
-      <td>POLYGON ((-120.52930 35.29765, -121.32658 34.6...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-09-23 23:21:01+00:00</td>
-    </tr>
-    <tr>
-      <th>295</th>
-      <td>G2772444304-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20230923T232113_2326615_003</td>
-      <td>2023-09-23T23:21:13Z</td>
-      <td>2023-09-23T23:21:31Z</td>
-      <td>Day</td>
-      <td>10.0</td>
-      <td>POLYGON ((-119.51744 36.06493, -120.67430 35.1...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-09-23 23:21:13+00:00</td>
-    </tr>
-    <tr>
-      <th>309</th>
-      <td>G2786272677-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20231014T224006_2328715_002</td>
-      <td>2023-10-14T22:40:06Z</td>
-      <td>2023-10-14T22:40:18Z</td>
-      <td>Day</td>
-      <td>66.0</td>
-      <td>POLYGON ((-120.79352 35.15521, -121.28294 34.5...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-10-14 22:40:06+00:00</td>
-    </tr>
-    <tr>
-      <th>310</th>
-      <td>G2786302498-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20231014T224018_2328715_003</td>
-      <td>2023-10-14T22:40:18Z</td>
-      <td>2023-10-14T22:40:36Z</td>
-      <td>Day</td>
-      <td>93.0</td>
-      <td>POLYGON ((-120.14165 34.64471, -120.63443 34.0...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-10-14 22:40:18+00:00</td>
-    </tr>
-    <tr>
-      <th>315</th>
-      <td>G2786557891-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20231018T210205_2329114_005</td>
-      <td>2023-10-18T21:02:05Z</td>
-      <td>2023-10-18T21:02:17Z</td>
-      <td>Day</td>
-      <td>11.0</td>
-      <td>POLYGON ((-120.72254 35.89691, -121.20394 35.2...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-10-18 21:02:05+00:00</td>
-    </tr>
-    <tr>
-      <th>318</th>
-      <td>G2786556493-LPCLOUD</td>
-      <td>EMIT_L2A_RFL_001_20231018T210217_2329114_006</td>
-      <td>2023-10-18T21:02:17Z</td>
-      <td>2023-10-18T21:02:29Z</td>
-      <td>Day</td>
-      <td>9.0</td>
-      <td>POLYGON ((-120.05733 35.39170, -120.54254 34.7...</td>
-      <td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
-      <td>EMITL2ARFL</td>
-      <td>2023-10-18 21:02:17+00:00</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">concept_id</th>
+<th data-quarto-table-cell-role="th">granule</th>
+<th data-quarto-table-cell-role="th">start_datetime</th>
+<th data-quarto-table-cell-role="th">end_datetime</th>
+<th data-quarto-table-cell-role="th">day_night</th>
+<th data-quarto-table-cell-role="th">cloud_cover</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+<th data-quarto-table-cell-role="th">browse</th>
+<th data-quarto-table-cell-role="th">shortname</th>
+<th data-quarto-table-cell-role="th">datetime_obj</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">53</td>
+<td>G2631040813-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230219T202939_2305013_002</td>
+<td>2023-02-19T20:29:39Z</td>
+<td>2023-02-19T20:29:51Z</td>
+<td>Day</td>
+<td>47.0</td>
+<td>POLYGON ((-120.70791 35.54348, -121.19894 34.9...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-02-19 20:29:39+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">56</td>
+<td>G2631045418-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230219T202951_2305013_003</td>
+<td>2023-02-19T20:29:51Z</td>
+<td>2023-02-19T20:30:14Z</td>
+<td>Day</td>
+<td>67.0</td>
+<td>POLYGON ((-120.04838 35.03646, -120.54523 34.4...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-02-19 20:29:51+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">77</td>
+<td>G2631818088-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230227T172116_2305811_004</td>
+<td>2023-02-27T17:21:16Z</td>
+<td>2023-02-27T17:21:28Z</td>
+<td>Day</td>
+<td>99.0</td>
+<td>POLYGON ((-120.73262 35.83169, -121.21741 35.1...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-02-27 17:21:16+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">121</td>
+<td>G2648965598-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230401T203751_2309114_002</td>
+<td>2023-04-01T20:37:51Z</td>
+<td>2023-04-01T20:38:03Z</td>
+<td>Day</td>
+<td>80.0</td>
+<td>POLYGON ((-120.21542 34.90659, -120.99248 34.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-04-01 20:37:51+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">122</td>
+<td>G2648966116-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230401T203803_2309114_003</td>
+<td>2023-04-01T20:38:03Z</td>
+<td>2023-04-01T20:38:15Z</td>
+<td>Day</td>
+<td>18.0</td>
+<td>POLYGON ((-119.55793 35.41507, -120.34872 34.7...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-04-01 20:38:03+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">125</td>
+<td>G2667368816-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230405T190311_2309513_002</td>
+<td>2023-04-05T19:03:11Z</td>
+<td>2023-04-05T19:03:23Z</td>
+<td>Day</td>
+<td>71.0</td>
+<td>POLYGON ((-119.87804 34.90691, -120.65480 34.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-04-05 19:03:11+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">154</td>
+<td>G2667503312-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230422T195924_2311213_002</td>
+<td>2023-04-22T19:59:24Z</td>
+<td>2023-04-22T19:59:36Z</td>
+<td>Day</td>
+<td>40.0</td>
+<td>POLYGON ((-120.49827 35.12071, -120.99520 34.4...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-04-22 19:59:24+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">177</td>
+<td>G2699997381-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230528T220420_2314815_004</td>
+<td>2023-05-28T22:04:20Z</td>
+<td>2023-05-28T22:04:32Z</td>
+<td>Day</td>
+<td>52.0</td>
+<td>POLYGON ((-119.96105 35.44150, -120.75292 34.8...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-05-28 22:04:20+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">179</td>
+<td>G2720810376-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230601T202611_2315214_002</td>
+<td>2023-06-01T20:26:11Z</td>
+<td>2023-06-01T20:26:23Z</td>
+<td>Day</td>
+<td>15.0</td>
+<td>POLYGON ((-120.29042 34.51665, -120.82317 33.9...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-06-01 20:26:11+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">207</td>
+<td>G2735424106-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230629T170449_2318011_002</td>
+<td>2023-06-29T17:04:49Z</td>
+<td>2023-06-29T17:05:01Z</td>
+<td>Day</td>
+<td>48.0</td>
+<td>POLYGON ((-120.35333 35.27559, -120.83881 34.6...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-06-29 17:04:49+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">292</td>
+<td>G2772438951-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230923T232101_2326615_002</td>
+<td>2023-09-23T23:21:01Z</td>
+<td>2023-09-23T23:21:13Z</td>
+<td>Day</td>
+<td>73.0</td>
+<td>POLYGON ((-120.52930 35.29765, -121.32658 34.6...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-09-23 23:21:01+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">295</td>
+<td>G2772444304-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20230923T232113_2326615_003</td>
+<td>2023-09-23T23:21:13Z</td>
+<td>2023-09-23T23:21:31Z</td>
+<td>Day</td>
+<td>10.0</td>
+<td>POLYGON ((-119.51744 36.06493, -120.67430 35.1...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-09-23 23:21:13+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">309</td>
+<td>G2786272677-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20231014T224006_2328715_002</td>
+<td>2023-10-14T22:40:06Z</td>
+<td>2023-10-14T22:40:18Z</td>
+<td>Day</td>
+<td>66.0</td>
+<td>POLYGON ((-120.79352 35.15521, -121.28294 34.5...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-10-14 22:40:06+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">310</td>
+<td>G2786302498-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20231014T224018_2328715_003</td>
+<td>2023-10-14T22:40:18Z</td>
+<td>2023-10-14T22:40:36Z</td>
+<td>Day</td>
+<td>93.0</td>
+<td>POLYGON ((-120.14165 34.64471, -120.63443 34.0...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-10-14 22:40:18+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">315</td>
+<td>G2786557891-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20231018T210205_2329114_005</td>
+<td>2023-10-18T21:02:05Z</td>
+<td>2023-10-18T21:02:17Z</td>
+<td>Day</td>
+<td>11.0</td>
+<td>POLYGON ((-120.72254 35.89691, -121.20394 35.2...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-10-18 21:02:05+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">318</td>
+<td>G2786556493-LPCLOUD</td>
+<td>EMIT_L2A_RFL_001_20231018T210217_2329114_006</td>
+<td>2023-10-18T21:02:17Z</td>
+<td>2023-10-18T21:02:29Z</td>
+<td>Day</td>
+<td>9.0</td>
+<td>POLYGON ((-120.05733 35.39170, -120.54254 34.7...</td>
+<td>https://data.lpdaac.earthdatacloud.nasa.gov/lp...</td>
+<td>EMITL2ARFL</td>
+<td>2023-10-18 21:02:17+00:00</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2875,16 +2936,22 @@ Datum: World Geodetic System 1984 ensemble
 <h2 class="anchored" data-anchor-id="generating-a-list-of-urls">5. Generating a list of URLs</h2>
 <p>With our filtered geodataframe we can go back to our <code>earthaccess</code> search results and filter them.</p>
 <p>Create a list of the geodataframe indices to use in filtering our search results.</p>
+<div id="cell-76" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>keep_granules <span class="op">=</span> eco_gdf.index.to_list()<span class="op">+</span>emit_gdf.index.to_list()</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>keep_granules.sort()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Filter the results list.</p>
+<div id="cell-78" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>filtered_results <span class="op">=</span> [result <span class="cf">for</span> i, result <span class="kw">in</span> <span class="bu">enumerate</span>(results) <span class="cf">if</span> i <span class="kw">in</span> keep_granules]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>After filtering our granules, also want to filter which assets we want from each granule. An asset is an individual file associated with a granule.</p>
 <p>Granules often have several assets associated with them, for example, <code>ECO_L2T_LSTE</code> has several assets: - Water Mask (water) - Cloud Mask (cloud) - Quality (QC) - Land Surface Temperature (LST) - Land Surface Temperature Error (LST_err) - Wide Band Emissivity (EmisWB) - Height (height)</p>
 <p>Create a list of results urls from our <code>filtered_results</code> list and print the first 5 results.</p>
+<div id="cell-80" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve URLS for Assets</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>results_urls <span class="op">=</span> [granule.data_links() <span class="cf">for</span> granule <span class="kw">in</span> filtered_results]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="42">
+</div>
+<div id="cell-81" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>results_urls[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>[['https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/ECO_L2T_LSTE.002/ECOv002_L2T_LSTE_26223_011_10SGD_20230219T202851_0710_01/ECOv002_L2T_LSTE_26223_011_10SGD_20230219T202851_0710_01_water.tif',
@@ -2921,7 +2988,7 @@ Datum: World Geodetic System 1984 ensemble
 </div>
 <p>The <code>results_urls</code> list we just generated contains URLs for all of these assets nested by granule. We can further filter our these to remove unwanted assets by using string matching.</p>
 <p>Create a list of strings and enumerate through our results_url list to filter out unwanted assets and remove the nesting.</p>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="43">
+<div id="cell-84" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>filtered_asset_links <span class="op">=</span> []</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Pick Desired Assets (leave _ on RFL to distinguish from RFLUNC, LST. to distinguish from LST_err)</span></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>desired_assets <span class="op">=</span> [<span class="st">'_RFL_'</span>,<span class="st">'_MASK_'</span>, <span class="st">'LST.'</span>] <span class="co"># Add more or do individually for reflectance, reflectance uncertainty, or mask</span></span>
@@ -2942,9 +3009,11 @@ Datum: World Geodetic System 1984 ensemble
 </div>
 </div>
 <p>Write this list of files to a text file to have a record of the search, or to use for streaming or downloading the data.</p>
+<div id="cell-86" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'../data/search_results.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> f:</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> filtered_asset_links:</span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>        f.write(<span class="ss">f"</span><span class="sc">{</span>line<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="streaming-or-downloading-data" class="level2">
 <h2 class="anchored" data-anchor-id="streaming-or-downloading-data">6. Streaming or Downloading Data</h2>
@@ -2963,7 +3032,7 @@ Datum: World Geodetic System 1984 ensemble
 <blockquote class="blockquote">
 <p>Note: If interested users can download all of the files using the cell below and recreate all of the canopy water content files following a workflow similar to the example in notebooks 2 and 3 for all of the necessary scenes. To do this, uncomment the <code>file_list</code> object with the <code>search_results.txt</code> filepath to download all of the results rather than just what is required.</p>
 </blockquote>
-<div class="cell" data-metadata="{}" data-tags="[]" data-execution_count="45">
+<div id="cell-90" class="cell" data-metadata="{}" data-tags="[]" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Authenticate using earthaccess</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>earthaccess.login(persist<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
@@ -2971,12 +3040,15 @@ Datum: World Geodetic System 1984 ensemble
 </div>
 </div>
 <p>Open the text file containing the URLs you wish to download.</p>
+<div id="cell-92" class="cell" data-tags="[]">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Open Text File and Read Lines</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co"># file_list = '../data/required_granules.txt'</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # file_list = '../data/search_results.txt'</span></span>
 <span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co"># with open(file_list) as f:</span></span>
 <span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     urls = [line.rstrip('\n') for line in f]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Download the required granules.</p>
+<div id="cell-94" class="cell" data-tags="[]">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Get requests https Session using Earthdata Login Info</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fs = earthaccess.get_requests_https_session()</span></span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # Retrieve granule asset ID from URL (to maintain existing naming convention)</span></span>
@@ -2990,6 +3062,7 @@ Datum: World Geodetic System 1984 ensemble
 <span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a><span class="co">#             with open(fp,'wb') as dst:</span></span>
 <span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                 for chunk in src.iter_content(chunk_size=64*1024*1024):</span></span>
 <span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="co">#                     dst.write(chunk)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Congratulations, now you have downloaded concurrent data from the ECOSTRESS and EMIT instruments on the ISS.</p>
 </section>
 </section>
@@ -3004,11 +3077,28 @@ Date last modified: 05-17-2024</p>
 
 
 </section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const disableStylesheet = (stylesheets) => {
     for (let i=0; i < stylesheets.length; i++) {
       const stylesheet = stylesheets[i];
@@ -3032,14 +3122,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
     manageTransitions('#quarto-margin-sidebar .nav-link', false);
     if (alternate) {
       enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
     } else {
       disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
     }
     manageTransitions('#quarto-margin-sidebar .nav-link', true);
     // Switch the toggles
@@ -3053,6 +3176,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           toggle.classList.remove("alternate");
         }
       }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
     }
   }
   const isFileUrl = () => { 
@@ -3082,13 +3215,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -3105,7 +3240,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   // Switch to dark mode if need be
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
-  } 
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -3113,12 +3250,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -3127,17 +3267,73 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/nasa\.github\.io\/VITALS\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -3147,50 +3343,314 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../setup/setup_instructions.html" class="pagination-link">
+      <a href="../setup/setup_instructions.html" class="pagination-link" aria-label="Local Python Environment Setup">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Local Python Environment Setup</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../python/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.html" class="pagination-link">
+      <a href="../python/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.html" class="pagination-link" aria-label="2 EMIT Reflectance and ECOSTRESS LST">
         <span class="nav-page-text">2 EMIT Reflectance and ECOSTRESS LST</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -3198,9 +3658,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center">VSWIR Imaging and Thermal Applications, Learning, and Science.</div>
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>VSWIR Imaging and Thermal Applications, Learning, and Science.</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
+
 
 
 
