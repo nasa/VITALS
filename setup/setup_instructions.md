@@ -8,29 +8,27 @@ For local Python environment setup we recommend using [mamba](https://mamba.read
 
 These Python Environments will work for all of the guides, how-to's, and tutorials within this repository.
 
-1. Using your preferred command line interface (command prompt, terminal, cmder, etc.) navigate to your local copy of the repository, then type the following to create a compatible Python environment.
+1. Using your preferred command line interface (command prompt, terminal, cmder, etc.) navigate to your local copy of the repository, then type the following to create a compatible Python environment. It should work for both Windows and MacOS.
 
-    For Windows:
-
-    ```cmd
-    mamba create -n lpdaac_vitals -c conda-forge --yes python=3.10 fiona=1.8.22 gdal hvplot geoviews rioxarray rasterio jupyter geopandas earthaccess jupyter_bokeh h5py h5netcdf spectral scikit-image jupyterlab seaborn dask ray-default
+    ```
+    mamba create -n lpdaac_vitals -c conda-forge --yes python=3.12 gdal fiona hvplot geoviews rioxarray rasterio jupyter geopandas earthaccess jupyter_bokeh h5py h5netcdf spectral scikit-image jupyterlab seaborn dask ray-default pystac-client odc-stac pyresample libgdal-hdf4 harmony-py
     ```
 
-    For MacOSX:
+    Alternatively, you can use the `environment.yml` present in the `setup` directory.
 
-    ```cmd
-    mamba create -n lpdaac_vitals -c conda-forge --yes python=3.10 gdal=3.7.2 hvplot geoviews rioxarray rasterio geopandas fiona=1.9.4 jupyter earthaccess jupyter_bokeh h5py h5netcdf spectral scikit-image seaborn jupyterlab dask ray-default ray-dashboard
+    ```
+    mamba env create -f setup/environment.yml
     ```
 
 2. Next, activate the Python Environment that you just created.
 
-    ```cmd
+    ```
     mamba activate lpdaac_vitals 
     ```
 
 3. Now you can launch Jupyter Notebook to open the notebooks included.
 
-    ```cmd
+    ```
     jupyter notebook 
     ```
 
@@ -56,6 +54,5 @@ Email: <LPDAAC@usgs.gov>
 Voice: +1-866-573-3222  
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
 Website: <https://lpdaac.usgs.gov/>  
-Date last modified: 05-21-2024  
 
 ¹Work performed under USGS contract 140G0121D0001 for NASA contract NNG14HH33I.  
