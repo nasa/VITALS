@@ -3,6 +3,7 @@
 *__pycache__*
 
 # local development
+
 *.img*
 *.envi*
 *.hdr*
@@ -12,3 +13,4 @@
 /_ignore
 /.quarto/
 /_site/
+/.vscode
