@@ -33,6 +33,8 @@ website:
     contents:
       - section: "Welcome"
         contents:
+        - text: "2025 SBG Workshop"
+          href: 2025_sbg_workshop.qmd
         - text: "2024 SBG Workshop"
           href: index.qmd
         - text: "2023 AGU Workshop"
