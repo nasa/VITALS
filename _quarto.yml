@@ -51,6 +51,8 @@ website:
           href: setup/setup_instructions.md
       - section: "Python Notebooks"            
         contents: 
+          - text: "Finding Coincident Airborne and Orbital Data"
+            href: python/Finding_Coincident_Airborne_and_Orbital_Data.ipynb
           - text: "1 Finding Concurrent Data"
             href: python/01_Finding_Concurrent_Data.ipynb
           - text: "2 EMIT Reflectance and ECOSTRESS LST"
