@@ -57,6 +57,7 @@ def get_asset_urls(result:earthaccess.DataGranule, contains=None, extension=None
     
     returns: str or List[str]
     """
+
     if extension is not None and not isinstance(extension, (list,tuple)):
         endswith_list = [extension]
     else:
@@ -79,8 +80,8 @@ def get_asset_urls(result:earthaccess.DataGranule, contains=None, extension=None
         for d in related_urls
         for u in [d["URL"]]
         if (startswith is None or u.startswith(startswith))
-        and (extension is None or any(sub in u for sub in endswith_list))
-        and (contains is None or any(sub in u for sub in contains_list))
+        and (extension is None or any(u.endswith(ext) for ext in endswith_list))
+        and (contains is None or any(sub in u.split("/")[-1] for sub in contains_list))
     ]
     
     if not matched:
