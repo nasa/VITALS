@@ -1,37 +1,17 @@
-/* Default to hiding both logos */
-.logo-light,
-.logo-dark {
-  display: none;
-}
 
-/* Light mode: show light logos */
-@media (prefers-color-scheme: light) {
-  .logo-light {
-    display: inline;
-  }
-}
-
-/* Dark mode: show dark logos */
-@media (prefers-color-scheme: dark) {
-  .logo-dark {
-    display: inline;
-  }
-}
-
-/* You can also include other styles you mentioned, like sidebar logo sizes */
 .sidebar-logo {
-  max-width: 150px;
-}
-
-.sidebar-title {
-  font-size: 1.7rem;
-}
-
-.platform-table td {
-  vertical-align: middle;
-}
-
-.platform-table td > div.sourceCode {
-  margin-top: 0.3rem;
-  margin-bottom: 0.3rem;
-}
+    max-width: 150px;
+  }
+  
+  .sidebar-title {
+    font-size: 1.7rem;
+  }
+  
+  .platform-table td {
+    vertical-align: middle;
+  }
+  
+  .platform-table td > div.sourceCode {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+  }

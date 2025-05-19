@@ -8,9 +8,8 @@ After completing the [prerequisites](prerequisites.md) you will have access to t
 
 After signing in you will be prompted for some server options:
 
-<p float="left">
-  <img src="../img/2i2c_username_pass.png" width="600" height="500"/>
-  <img src="../img/2i2c_server_selection.png" width="600" height="500"/>
+<p align="left">
+  <img src="../img/2i2c_server_selection.png" width=100%/>
 </p>
 
 Be sure to select the radio button for **Python** and a size of **14.8 GB RAM and up to 3.75 CPUs**.
