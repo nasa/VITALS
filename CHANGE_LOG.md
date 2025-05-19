@@ -13,7 +13,10 @@ _________________________________________________________________________
 >   - `Finding_Coincident_Airborne_and_Orbital_Data.ipynb`
 > - Updated setup instructions and python environment
 > - Updated `01_Finding_Concurrent_Data.ipynb`
-> 
+> - Updated the quarto file 
+> - Added 2025 markdown file
+> - Added new logos
+
 
 
 ## 2024-09-09
