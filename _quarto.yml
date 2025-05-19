@@ -14,13 +14,8 @@ website:
   site-url: https://nasa.github.io/VITALS/
   repo-url: https://github.com/nasa/VITALS/
   sidebar:
-    # logo: img/lp_logo_light.png
-    title: |
-      <img class="logo-light" src="img/lp_logo_light.png" alt="logo-light" style="max-width: 170px;">
-      <img class="logo-dark" src="img/lp_logo_dark.png" alt="logo-dark" style="max-width: 170px;">
-      <img class="logo-light" src="img/nasa_jpl_logo_light.png" alt="logo-light" style="width:180px;">
-      <img class="logo-dark" src="img/nasa_jpl_logo_dark.png" alt="logo-dark" style="width:180px;">
-      **VITALS**
+    logo: img/lp_jpl_vitals_light.png
+    title: VITALS
     pinned: true
     align: center
     tools: 
@@ -80,6 +75,3 @@ format:
     code-copy: true
     css: styles.css
     toc: true
-    # include-in-header:
-    #   text: |
-    #     <meta name="quarto-enable-raw-html" content="true">

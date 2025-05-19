@@ -8,7 +8,7 @@ $popover-bg: #242424;
 $input-bg: #242424;
 
 @media (prefers-color-scheme: dark) {
-    .logo-dark {
-      display: inline;
+    .sidebar-logo {
+        content: url('img/lp_jpl_vitals_dark.png');
     }
-  }
+}
