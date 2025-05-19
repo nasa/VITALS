@@ -5,6 +5,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 _________________________________________________________________________
 
+## 2025-05-19
+
+### Summary
+>
+> - Added SBG-TIM2025 contents
+>   - `Finding_Coincident_Airborne_and_Orbital_Data.ipynb`
+> - Updated setup instructions and python environment
+> - Updated `01_Finding_Concurrent_Data.ipynb`
+> 
+
+
 ## 2024-09-09
 
 ### Summary
