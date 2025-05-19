@@ -56,7 +56,7 @@ Beginner, Intermediate
 Email: <LPDAAC@usgs.gov>  
 Voice: +1-866-573-3222  
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
-Website: <https://lpdaac.usgs.gov/>  
+Website: <https://www.earthdata.nasa.gov/centers/lp-daac>  
 Date last modified: 12-05-2023  
 
 ¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.
