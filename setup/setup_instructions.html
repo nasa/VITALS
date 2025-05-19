@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../python/Finding_Coincident_Airborne_and_Orbital_Data.ipynb" rel="next">
+<link href="../python/Finding_Coincident_Airborne_and_Orbital_Data.html" rel="next">
 <link href="../setup/workshop_setup.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-bb05f5d0074da2129d766b238819cd35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-da07cd31545148f957c25e8e93bd3f75.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-dark-8e0555e3ec701b54fef8d2b16a02ab1e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-bb05f5d0074da2129d766b238819cd35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -296,9 +296,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../img/lp_jpl_vitals_light.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="../"><img class="logo-light" src="img/lp_logo_light.png" alt="logo-light" style="max-width: 170px;"> <img class="logo-dark" src="img/lp_logo_dark.png" alt="logo-dark" style="max-width: 170px;"> <img class="logo-light" src="img/nasa_jpl_logo_light.png" alt="logo-light" style="width:180px;"> <img class="logo-dark" src="img/nasa_jpl_logo_dark.png" alt="logo-dark" style="width:180px;"> <strong>VITALS</strong></a> 
+      <a href="../">VITALS</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://nasa.github.io/VITALS/" title="VITALS Website" class="quarto-navigation-tool px-1" aria-label="VITALS Website"><i class="bi bi-globe"></i></a>
     <a href="https://github.com/nasa/VITALS" title="VITALS Repository" class="quarto-navigation-tool px-1" aria-label="VITALS Repository"><i class="bi bi-github"></i></a>
@@ -388,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python/Finding_Coincident_Airborne_and_Orbital_Data.ipynb" class="sidebar-item-text sidebar-link">
+  <a href="../python/Finding_Coincident_Airborne_and_Orbital_Data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Finding Coincident Airborne and Orbital Data</span></a>
   </div>
 </li>
@@ -442,7 +445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../CODE_OF_CONDUCT.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Contributor Code of Conduct</span></a>
+ <span class="menu-text">Code of Conduct</span></a>
   </div>
 </li>
       </ul>
@@ -481,15 +484,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="python-environment-setup">Python Environment Setup</h2>
 <p>These Python Environments will work for all of the guides, how-to’s, and tutorials within this repository.</p>
 <ol type="1">
-<li><p>Using your preferred command line interface (command prompt, terminal, cmder, etc.) navigate to your local copy of the repository, then type the following to create a compatible Python environment.</p>
-<p>For Windows:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mamba create <span class="at">-n</span> lpdaac_vitals <span class="at">-c</span> conda<span class="at">-forge</span> -<span class="at">-yes</span> python=3.10 fiona=1.8.22 gdal hvplot geoviews rioxarray rasterio jupyter geopandas earthaccess jupyter_bokeh h5py h5netcdf spectral scikit<span class="at">-image</span> jupyterlab seaborn dask ray<span class="at">-default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For MacOSX:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mamba create <span class="at">-n</span> lpdaac_vitals <span class="at">-c</span> conda<span class="at">-forge</span> -<span class="at">-yes</span> python=3.10 gdal=3.7.2 hvplot geoviews rioxarray rasterio geopandas fiona=1.9.4 jupyter earthaccess jupyter_bokeh h5py h5netcdf spectral scikit<span class="at">-image</span> seaborn jupyterlab dask ray<span class="at">-default</span> ray<span class="at">-dashboard</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Using your preferred command line interface (command prompt, terminal, cmder, etc.) navigate to your local copy of the repository, then type the following to create a compatible Python environment. It should work for both Windows and MacOS.</p>
+<pre><code>mamba create -n lpdaac_vitals -c conda-forge --yes python=3.12 gdal fiona hvplot geoviews rioxarray rasterio jupyter geopandas earthaccess jupyter_bokeh h5py h5netcdf spectral scikit-image jupyterlab seaborn dask ray-default pystac-client odc-stac pyresample libgdal-hdf4 harmony-py</code></pre>
+<p>Alternatively, you can use the <code>environment.yml</code> present in the <code>setup</code> directory.</p>
+<pre><code>mamba env create -f setup/environment.yml</code></pre></li>
 <li><p>Next, activate the Python Environment that you just created.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mamba activate lpdaac_vitals </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<pre><code>mamba activate lpdaac_vitals </code></pre></li>
 <li><p>Now you can launch Jupyter Notebook to open the notebooks included.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>jupyter notebook </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<pre><code>jupyter notebook </code></pre></li>
 </ol>
 <p><strong>Still having trouble getting a compatible Python environment set up? Contact <a href="https://lpdaac.usgs.gov/lpdaac-contact-us/">LP DAAC User Services</a>.</strong></p>
 </section>
@@ -506,8 +508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Email: <a href="mailto:LPDAAC@usgs.gov" class="email">LPDAAC@usgs.gov</a><br>
 Voice: +1-866-573-3222<br>
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹<br>
-Website: <a href="https://lpdaac.usgs.gov/" class="uri">https://lpdaac.usgs.gov/</a><br>
-Date last modified: 05-21-2024</p>
+Website: <a href="https://www.earthdata.nasa.gov/centers/lp-daac" class="uri">https://www.earthdata.nasa.gov/centers/lp-daac</a></p>
 <p>¹Work performed under USGS contract 140G0121D0001 for NASA contract NNG14HH33I.</p>
 
 
@@ -934,7 +935,7 @@ Date last modified: 05-21-2024</p>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../python/Finding_Coincident_Airborne_and_Orbital_Data.ipynb" class="pagination-link" aria-label="Finding Coincident Airborne and Orbital Data">
+      <a href="../python/Finding_Coincident_Airborne_and_Orbital_Data.html" class="pagination-link" aria-label="Finding Coincident Airborne and Orbital Data">
         <span class="nav-page-text">Finding Coincident Airborne and Orbital Data</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-bb05f5d0074da2129d766b238819cd35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-da07cd31545148f957c25e8e93bd3f75.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-dark-8e0555e3ec701b54fef8d2b16a02ab1e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-bb05f5d0074da2129d766b238819cd35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -261,9 +261,12 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../img/lp_jpl_vitals_light.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="../"><img class="logo-light" src="img/lp_logo_light.png" alt="logo-light" style="max-width: 170px;"> <img class="logo-dark" src="img/lp_logo_dark.png" alt="logo-dark" style="max-width: 170px;"> <img class="logo-light" src="img/nasa_jpl_logo_light.png" alt="logo-light" style="width:180px;"> <img class="logo-dark" src="img/nasa_jpl_logo_dark.png" alt="logo-dark" style="width:180px;"> <strong>VITALS</strong></a> 
+      <a href="../">VITALS</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://nasa.github.io/VITALS/" title="VITALS Website" class="quarto-navigation-tool px-1" aria-label="VITALS Website"><i class="bi bi-globe"></i></a>
     <a href="https://github.com/nasa/VITALS" title="VITALS Repository" class="quarto-navigation-tool px-1" aria-label="VITALS Repository"><i class="bi bi-github"></i></a>
@@ -353,7 +356,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../python/Finding_Coincident_Airborne_and_Orbital_Data.ipynb" class="sidebar-item-text sidebar-link">
+  <a href="../python/Finding_Coincident_Airborne_and_Orbital_Data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Finding Coincident Airborne and Orbital Data</span></a>
   </div>
 </li>
@@ -407,7 +410,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../CODE_OF_CONDUCT.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Contributor Code of Conduct</span></a>
+ <span class="menu-text">Code of Conduct</span></a>
   </div>
 </li>
       </ul>
@@ -442,17 +445,22 @@ ul.task-list li input[type="checkbox"] {
 <li>Create an Earthdata Login account (if you don’t already have one) at <a href="https://urs.earthdata.nasa.gov/users/new" class="uri">https://urs.earthdata.nasa.gov/users/new</a></li>
 <li>Remember your username and password; you will need them to download or access data during the workshop and beyond.</li>
 </ul></li>
+<li><strong>GitHub username</strong>
+<ul>
+<li>Create a GitHub account (if you don’t already have one) at <a href="https://github.com/join" class="uri">https://github.com/join</a>. Follow optional <a href="https://happygitwithr.com/github-acct.html">advice on choosing your username</a></li>
+<li>Your GitHub username is used to enable you access to a cloud environment during the workshop. To gain access, please request access to the NASA Openscapes JupyterHub using <a href="https://forms.gle/Su2p7BQhwnf9Fufb8">this form</a>. You will receive an email invitation to join the organization on GitHub. You must join to gain access to the workspace.<br>
+</li>
+</ul></li>
 <li><strong>Netrc file</strong>
 <ul>
 <li>This file is needed to access NASA Earthdata assets from a scripting environment like Python.</li>
-<li>There are multiple methods to create a .netrc file. For this workshop, <code>earthaccess</code> package is used to automatically create a netrc file using your Earthdata login credentials if one does not exist. There are detailed instruction available for creating a .netrc file using other methods <a href="https://github.com/nasa/LPDAAC-Data-Resources/blob/main/guides/create_netrc_file.md">here</a>.</li>
+<li>There are multiple methods to create a .netrc file. For this workshop, <code>earthaccess</code> package is used to automatically create a netrc file using your Earthdata login credentials if one does not exist. There are detailed instruction available for creating a .netrc file using other methods <a href="https://nasa-openscapes.github.io/2022-Fall-ECOSTRESS-Cloud-Workshop/how-tos/authentication/NASA_Earthdata_Authentication.html">here</a>.</li>
 </ul></li>
 <li><strong>Laptop or tablet</strong>
 <ul>
 <li>Participation in the exercises requires a laptop or tablet. Yes, a tablet works too! All workshop participants will have access to a 2i2c Jupyter Lab instance running in AWS us-west 2.</li>
 </ul></li>
 </ol>
-<p>We recommmend creating a GitHub account (if you don’t already have one) at <a href="https://github.com/join" class="uri">https://github.com/join</a> to <a href="../CONTRIBUTING.html">contribute</a> to this repository. Follow optional <a href="https://happygitwithr.com/github-acct.html">advice on choosing your username</a>.</p>
 
 
 </section>
