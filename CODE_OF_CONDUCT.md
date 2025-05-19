@@ -30,7 +30,6 @@ Violations of this Code of Conduct may result in actions such as warnings, tempo
 Email: <LPDAAC@usgs.gov>  
 Voice: +1-866-573-3222  
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
-Website: <https://lpdaac.usgs.gov/>  
-Date last modified: 01-22-2025  
+Website: <https://www.earthdata.nasa.gov/centers/lp-daac>  
 
 ¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.

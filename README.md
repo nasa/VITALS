@@ -15,7 +15,7 @@ In the interest of open science this repository has been made public but is stil
 Email: <LPDAAC@usgs.gov>  
 Voice: +1-866-573-3222  
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
-Website: <https://lpdaac.usgs.gov/>  
+Website: <https://www.earthdata.nasa.gov/centers/lp-daac>  
 Date last modified: 05-24-2024  
 
 ¹Work performed under USGS contract 140G0121D0001 for NASA contract NNG14HH33I.  

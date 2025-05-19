@@ -53,6 +53,6 @@ git clone https://github.com/nasa/VITALS.git
 Email: <LPDAAC@usgs.gov>  
 Voice: +1-866-573-3222  
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
-Website: <https://lpdaac.usgs.gov/>  
+Website: <https://www.earthdata.nasa.gov/centers/lp-daac>  
 
 ¹Work performed under USGS contract 140G0121D0001 for NASA contract NNG14HH33I.  
