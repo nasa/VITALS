@@ -8,8 +8,9 @@ After completing the [prerequisites](prerequisites.md) you will have access to t
 
 After signing in you will be prompted for some server options:
 
-<p align="left">
-  <img src="../img/2i2c_server_selection.png" width=100%/>
+<p float="left">
+  <img src="../img/2i2c_username_pass.png" width="600" height="500"/>
+  <img src="../img/2i2c_server_selection.png" width="600" height="500"/>
 </p>
 
 Be sure to select the radio button for **Python** and a size of **14.8 GB RAM and up to 3.75 CPUs**.
@@ -47,6 +48,7 @@ If you elect to try this on your own data/ROI, you may need to select a larger s
 Email: <LPDAAC@usgs.gov>  
 Voice: +1-866-573-3222  
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
-Website: <https://www.earthdata.nasa.gov/centers/lp-daac>   
+Website: <https://www.earthdata.nasa.gov/centers/lp-daac>  
+
 
 ¹Work performed under USGS contract 140G0121D0001 for NASA contract NNG14HH33I. 
