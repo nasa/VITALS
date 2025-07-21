@@ -1,4 +1,4 @@
-> **2025 SBG TIM VITALS Workshop**  
+> **2025 VSWIR-TIR Fundamentals to use Hyperspectral and Thermal NASA Earth Observations Workshop**  
 >
 > Please view the [web-book](https://nasa.github.io/VITALS/) for workshop details. **Resources in the VITALS repository have been developed using the Openscapes 2i2c JupyterHub cloud workspace. For local python environment setup instructions please see the [Setup Instructions](setup/setup_instructions.md).
 

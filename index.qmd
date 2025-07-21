@@ -1,16 +1,108 @@
 ---
-title: "Surface Biology and Geology 2025 LP DAAC Workshop: Finding Coincident Airborne and Orbital Data"
+title: "Fundamentals to use Hyperspectral and Thermal NASA Earth Observations"
 ---
+## Overview
 
-This workshop is focused on preparing users to work with data from the Surface Biology and Geology (SBG) mission by equipping the community with resources to effectively find and access  precursor datasets.The notebook presented focuses on airborne and spaceborne VSWIR and TIR datasets, specifically EMIT, ECOSTRESS, and AVIRIS-3.
-The International Space Station is a critical asset for the Earth science community — both for advancing critical science and applications priorities, and as a platform for technology demonstrations/pathfinder missions. This is exemplified by the success of instruments like ECOSTRESS, a multispectral thermal radiometer, and EMIT, a visible to short wave infrared imaging spectrometer with best-in-class signal to noise. Operating at field-scale resolutions (<70 m), these instruments located on the ISS provide complementary datasets with overlapping fields of view that enable rich analyses across several applications. These instruments, as well as airborne VSWIR and TIR data from campaigns like the Surface Biology and Geology High-Frequency Time Series ([SHIFT](https://www.jpl.nasa.gov/news/california-field-campaign-helping-scientists-protect-diverse-ecosystems/)) and Biodiversity Survey of the Cape ([BioSCape](https://www.bioscape.io/)) provide a unique opportunity to explore the synergistic value of combined thermal and imaging spectroscopy data, and refine algorithms before the launch of the SBG-TIR and SBG-VSWIR missions.
-The overarching goal of this workshop is to engage and empower the SBG data user community by facilitating data discovery and access, and enabling scaling studies that are key for SBG algorithm development. The main focus will be demonstrating how to locate and work with concurrent EMIT and ECOSTRESS observations that align with existing airborne data, enabling participants to build integrated workflows and prepare for future SBG mission data.
+The new generation of NASA Earth Observations (EO) is bringing unprecedented spectral and temporal 
+resolution, marking a new era for satellite remote sensing. This advancement promises to greatly benefit 
+society by providing richer information on Earth's resources and environmental changes.
+This two-day webinar is designed for researchers, scientists, and data analysts eager to leverage this 
+wealth of information. We will cover the fundamentals necessary to work with NASA's high-spectral 
+resolution EO data, spanning the Visible to Short-Wavelength Infrared (VSWIR) and Long-Wavelength 
+Infrared (LWIR) parts of the electromagnetic spectrum. The webinar will delve into: measurement 
+acquisition, standard preprocessing methods, and data discovery and handling for key datasets like the 
+Earth Surface Mineral Dust Source Investigation (EMIT), ECOsystem Spaceborne Thermal Radiometer 
+Experiment on Space Station (ECOSTRESS), and Plankton, Aerosol, Cloud, Ocean Ecosystem (PACE) 
+missions. We will also include tutorials on how to synergistically use these EO datasets. These hands-on 
+exercises will utilize open-source code and cloud platforms, specifically Python in JupyterHub cloud 
+infrastructure and JavaScript in Google Earth Engine (GEE).
 
-This workshop is hosted by NASA [Land Processes Distributed Active Archive Center(LP DAAC)](https://www.earthdata.nasa.gov/centers/lp-daac) and [NASA Jet Propulsion Laboratory (JPL)](https://www.jpl.nasa.gov/) with support from the NASA [Openscapes](https://nasa-openscapes.github.io/) project. 
+This workshop is hosted by [NASA Marshall Space Flight Center](https://www.nasa.gov/marshall/), [NASA Land Processes Distributed Active Archive Center(LP DAAC)](https://www.earthdata.nasa.gov/centers/lp-daac), [NASA Jet Propulsion Laboratory (JPL)](https://www.jpl.nasa.gov/), and [NASA Goddard Space Flight Center](https://www.nasa.gov/goddard/) with support from the NASA [Openscapes](https://nasa-openscapes.github.io/) project. 
 Hands-on exercises will be executed from a [Jupyter Hub on the Openscapes 2i2c cloud instance](https://workshop.openscapes.2i2c.cloud/). Enter your username and password to login and select `14.8 GB RAM, upto 3.75 CPUs` Python Resource Allocation. 
 
-<iframe src="https://docs.google.com/presentation/d/1Rg3Qgjh52Qcc8GJEWkiIVP9lGDJusH1P/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="445" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+## Agenda
 
+### July 21, 2025
+
+|Time (EDT)|Description|Lead / Instructor|Slides|
+|---|---|---|---|---|
+|1:00 pm – 1:20 pm|Introduction, overview, learning objectives, and logistics of the webinar|Africa Flores-Anderson|<a href="https://docs.google.com/presentation/d/1YIV2_sesUhjNnMudM54NDxah48ITgNds/embed?start=false&loop=false&delayms=3000" target="_blank" rel="noopener">View</a> [Download](https://drive.google.com/uc?export=download&id=1YIV2_sesUhjNnMudM54NDxah48ITgNds)|
+|1:25 pm – 1:50 pm|EMIT and ECOSTRESS Applications|Christine Lee, Dana Chadwick|<a href="https://docs.google.com/presentation/d/1A-pUBOe2Ree_2q5tROrCIw4T4SNmbbFR/embed?start=false&loop=false&delayms=3000" target="_blank" rel="noopener">View</a> [Download](https://drive.google.com/uc?export=download&id=1A-pUBOe2Ree_2q5tROrCIw4T4SNmbbFR)|
+|1:50 pm – 2:20 pm|PACE Mission Overview and Applications|Morgaine McKibben||
+|2:20 pm – 2:35 pm|Questions/Answers(break)|||
+|2:35 pm – 3:20 pm|Introduction to Visible-Shortwave Infrared Imaging Spectroscopy|David Thompson|[Download](https://drive.google.com/uc?export=download&id=1rf_OgUdr0_B-hTV1O3UCGMuNU0B3OXNh)|
+|3:20 pm – 4:05 pm|Fundamentals of Thermal InfraRed (TIR) Remote Sensing: Theory, Retrievals, Science|Glynn Hulley|<a href="https://docs.google.com/presentation/d/13BH7QG15JtTQYP3HGU7Q7vU6sT3c3Vbw/embed?start=false&loop=false&delayms=3000" target="_blank" rel="noopener">View</a> [Download](https://drive.google.com/uc?export=download&id=13BH7QG15JtTQYP3HGU7Q7vU6sT3c3Vbw)|
+|4:05 pm – 4:35 pm|NASA Earthdata, Data Access, and Openscapes Cloud Intro|Erik Bolch||
+|4:35 pm – 5:00 pm|GEE Platform Overview|Emil Cherrington|<a href="https://docs.google.com/presentation/d//1LNE0rgdrsFTEIcHdWcR5zM2NkvvvZ3syxLBnnkybRcU/embed?start=false&loop=false&delayms=3000" target="_blank" rel="noopener">View</a> [Download](https://drive.google.com/uc?export=download&id=1LNE0rgdrsFTEIcHdWcR5zM2NkvvvZ3syxLBnnkybRcU)|
+
+### July 22, 2025
+
+|Time (EDT)|Description|Lead / Instructor|
+|---|---|---|---|
+|1:00 pm – 1:20 pm|[Cloud Workspace Setup](setup/workshop_setup.html)|Erik Bolch, Emil Cherrington||
+|1:20 pm - 1:30 pm|Review of satellite datasets to use|Africa Flores-Anderson||
+|1:30 pm – 2:00 pm|[Exploring ECOSTRESS L2T Land Surface Temperature](python/Exploring_ECOSTRESS_L2T_LSTE.html)|Ayia Lindquist, Erik Bolch, Mahsa Jami||
+|2:00 pm – 2:45 pm|[Exploring EMIT L2A Surface Reflectance](python/Exploring_EMIT_L2A_RFL.html)|Erik Bolch, Mahsa Jami, Ayia Lindquist||
+|2:45 pm – 2:50 pm|Break|||
+|2:50 pm – 3:30 pm|[Exploring PACE OCI L2 Surface Reflectance](python/Exploring_PACE_OCI_L2_SFRFL.html)|Africa Flores-Anderson, Erik Bolch, Mahsa Jami||
+|3:30 pm - 3:35 pm|Recap and Transitioning Cloud Environments|Africa Flores-Anderson||
+|3:35 pm - 4:30 pm|Overview of [PACE processing Hyperspectral Toolkit in GEE](https://bit.ly/gee_repo_pace_oci) - Land:EMIT/PACE/AVIRIS|Emil Cherrington||
+|4:30 pm – 4:55 pm|EMIT and PACE Tutorial and Application Example Over Land|Africa Flores-Anderson||
+|4:55 pm – 5:00 pm|Final Remarks|Africa Flores-Anderson, Jennifer Brennan||
+
+## Learning Outcomes:
+
+- Imaging Spectroscopy and thermal measurements 101, the electromagnetic spectrum and sensor specific considerations
+- How to access EMIT, PACE and ECOSTRESS data
+- Data Preprocessing and Exploratory Analysis
+- How to manipulate, compare, and visualize EMIT, PACE and ECOSTRESS data
+
+### Learning Focus:
+
+- Practical Skills for Science
+- Knowledge and Career Level:
+Beginner, Intermediate
+
+### Target Audience:
+
+- Earth and Planetary Surface Processes
+- Global Environmental Change
+- Ocean Sciences
+- Science and Society
+- Biogeosciences
+
+## Additional Resources
+- [NASA Earthdata Website](https://www.earthdata.nasa.gov/)
+- [NASA Earthdata Search](https://search.earthdata.nasa.gov/search) - Find and Access NASA Earthdata datasets
+- [LP DAAC Website](https://www.earthdata.nasa.gov/centers/lp-daac) - Land Processes Distributed Active Archive Center
+- [OB DAAC Website](https://www.earthdata.nasa.gov/centers/ob-daac) - Ocean Biology Distributed Active Archive Center
+
+### ECOSTRESS
+- [ECOSTRESS Mission Website](https://ecostress.jpl.nasa.gov/)
+- [ECOSTRESS Collections](https://www.earthdata.nasa.gov/data/catalog?keyword=%22ECOSTRESS%22) - List of Available EMIT Collections and Details
+- [ECOSTRESS-Data-Resources](https://github.com/nasa/ECOSTRESS-Data-Resources) - Tutorials and Scripts for Accessing and Working with ECOSTRESS Data
+- [JPL ECOSTRESS Tutorials](https://ecostress.jpl.nasa.gov/tutorials) - Additional ECOSTRESS Tutorials
+- [AppEEARS Tool](https://appeears.earthdatacloud.nasa.gov/) - Easily search, subset, and transform ECOSTRESS data
+
+
+### EMIT
+- [EMIT Mission Website](https://earth.jpl.nasa.gov/emit/)
+- [EMIT Collections](https://www.earthdata.nasa.gov/data/catalog?keyword=%22EMIT%22) - List of Available EMIT Collections and Details
+- [VISIONS Data Portal](https://earth.jpl.nasa.gov/emit/data/data-portal/coverage-and-forecasts/) - Browse Coverage and Forecasts
+- [EMIT-Data-Resources](https://github.com/nasa/EMIT-Data-Resources) - Tutorials and Scripts for Accessing and Working with ECOSTRESS Data
+- [Previous Webinars](https://www.youtube.com/playlist?list=PLO2yB4LGNlWrC5NdxeHMxyAxdwQhSypXe) - YouTube playlist of previous EMIT webinars
+- [AppEEARS Tool](https://appeears.earthdatacloud.nasa.gov/) - Easily search, subset, and transform EMIT data
+
+### PACE
+- [PACE Mission Website](https://pace.oceansciences.org/)
+- [PACE Collections](https://www.earthdata.nasa.gov/data/catalog?keyword=%22PACE%22) - List of Available EMIT Collections and Details
+- [PACE Data Tutorials](https://www.earthdata.nasa.gov/news/new-pace-data-tutorials) - A series of Jupyter notebook tutorials show how to retrieve and use data from NASA's Plankton, Aerosol, Cloud, ocean Ecosystem (PACE) mission
+- [Reprojecting and Formatting PACE Tutorial](https://github.com/skyecaplan/pace_tutorials/blob/main/oci_project_and_format.ipynb)([video](https://youtu.be/hOu8rPd_x6I?t=961)) - Project PACE data from swath to grid and save as cloud-optimized geotiffs
+- [PACE OCI Toolkit](https://github.com/BzGEO/pace_oci_toolkit) - Google Earth Engine (GEE) JavaScript-based tools for working with NASA PACE OCI data
+- [About SeaDAS Tool](https://www.earthdata.nasa.gov/news/feature-articles/data-tool-focus-seadas) - NASA article about the SeaDAS tool.
+    - [Software download](https://seadas.gsfc.nasa.gov/downloads/)
+    - [Setup instructions](https://github.com/seadas/seadas-toolbox/wiki/SeaDAS-8.x-Download,-Installation-and-Run-Instructions)
+    - [Video tutorials](https://seadas.gsfc.nasa.gov/tutorials/video_tutorials/)
 
 ## Contact Info  
 

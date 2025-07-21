@@ -32,8 +32,10 @@ website:
     contents:
       - section: "Welcome"
         contents:
-        - text: "2025 SBG Workshop"
+        - text: "VSWIR-TIR Fundamentals"
           href: index.qmd
+        - text: "2025 SBG Workshop"
+          href: "2025_sbg_workshop.qmd"
         - text: "2024 SBG Workshop"
           href: 2024_sbg_workshop.qmd
         - text: "2023 AGU Workshop"
@@ -50,6 +52,12 @@ website:
           href: setup/setup_instructions.md
       - section: "Python Notebooks"            
         contents: 
+          - text: "Exploring ECOSTRESS L2T LSTE"
+            href: python/Exploring_ECOSTRESS_L2T_LSTE.ipynb
+          - text: "Exploring EMIT L2A RFL"
+            href: python/Exploring_EMIT_L2A_RFL.ipynb
+          - text: "Exploring PACE OCI L2 SFRFL"
+            href: python/Exploring_PACE_OCI_L2_SFRFL.ipynb
           - text: "Finding Coincident Airborne and Orbital Data"
             href: python/Finding_Coincident_Airborne_and_Orbital_Data.ipynb
           - text: "1 Finding Concurrent Data"
