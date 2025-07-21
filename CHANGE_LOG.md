@@ -5,6 +5,22 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 _________________________________________________________________________
 
+## 2025-07-20
+
+### Summary
+>
+> - Added VSWIR-TIR Handbook Workshop Contents
+>   - `Exploring_ECOSTRESS_L2T_LSTE.ipynb`
+>   - `Exploring_EMIT_L2A_RFL.ipynb`
+>   - `Exploring_PACE_OCI_L2_SFRFL.ipynb`
+> - Updated quarto files
+>   - `vitals.qmd`
+>   - `_quarto.yml`
+>   - `index.qmd`
+>   - `2025_sbg_workshop.qmd`
+> - Updated readme
+> 
+
 ## 2025-05-19
 
 ### Summary
