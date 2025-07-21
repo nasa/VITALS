@@ -1,0 +1,22 @@
+---
+title: "Surface Biology and Geology 2025 LP DAAC Workshop: Finding Coincident Airborne and Orbital Data"
+---
+
+This workshop is focused on preparing users to work with data from the Surface Biology and Geology (SBG) mission by equipping the community with resources to effectively find and access  precursor datasets.The notebook presented focuses on airborne and spaceborne VSWIR and TIR datasets, specifically EMIT, ECOSTRESS, and AVIRIS-3.
+The International Space Station is a critical asset for the Earth science community — both for advancing critical science and applications priorities, and as a platform for technology demonstrations/pathfinder missions. This is exemplified by the success of instruments like ECOSTRESS, a multispectral thermal radiometer, and EMIT, a visible to short wave infrared imaging spectrometer with best-in-class signal to noise. Operating at field-scale resolutions (<70 m), these instruments located on the ISS provide complementary datasets with overlapping fields of view that enable rich analyses across several applications. These instruments, as well as airborne VSWIR and TIR data from campaigns like the Surface Biology and Geology High-Frequency Time Series ([SHIFT](https://www.jpl.nasa.gov/news/california-field-campaign-helping-scientists-protect-diverse-ecosystems/)) and Biodiversity Survey of the Cape ([BioSCape](https://www.bioscape.io/)) provide a unique opportunity to explore the synergistic value of combined thermal and imaging spectroscopy data, and refine algorithms before the launch of the SBG-TIR and SBG-VSWIR missions.
+The overarching goal of this workshop is to engage and empower the SBG data user community by facilitating data discovery and access, and enabling scaling studies that are key for SBG algorithm development. The main focus will be demonstrating how to locate and work with concurrent EMIT and ECOSTRESS observations that align with existing airborne data, enabling participants to build integrated workflows and prepare for future SBG mission data.
+
+This workshop is hosted by NASA [Land Processes Distributed Active Archive Center(LP DAAC)](https://www.earthdata.nasa.gov/centers/lp-daac) and [NASA Jet Propulsion Laboratory (JPL)](https://www.jpl.nasa.gov/) with support from the NASA [Openscapes](https://nasa-openscapes.github.io/) project. 
+Hands-on exercises will be executed from a [Jupyter Hub on the Openscapes 2i2c cloud instance](https://workshop.openscapes.2i2c.cloud/). Enter your username and password to login and select `14.8 GB RAM, upto 3.75 CPUs` Python Resource Allocation. 
+
+<iframe src="https://docs.google.com/presentation/d/1Rg3Qgjh52Qcc8GJEWkiIVP9lGDJusH1P/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="445" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+
+## Contact Info  
+
+Email: <LPDAAC@usgs.gov>  
+Voice: +1-866-573-3222  
+Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
+Website: <https://www.earthdata.nasa.gov/centers/lp-daac>  
+
+¹Work performed under USGS contract 140G0121D0001 for NASA contract NNG14HH33I.
