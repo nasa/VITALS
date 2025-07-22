@@ -389,10 +389,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="setup" class="level4">
 <h4 class="anchored" data-anchor-id="setup">Setup</h4>
-<div id="bb5daa5b-3525-4fb0-8b95-b9174057b4b6" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}">
+<div id="bb5daa5b-3525-4fb0-8b95-b9174057b4b6" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda install cf_xarray <span class="op">-</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="dcf11f93-1bbf-4be3-ae1c-af2fdf885ae6" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}">
+<div id="dcf11f93-1bbf-4be3-ae1c-af2fdf885ae6" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import required libraries</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
@@ -426,19 +426,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="searching-for-collections">Searching for Collections</h2>
 <p>The PACE mission produces several collections or datasets available via the NASA Earthdata cloud archive.</p>
 <p>To view what’s available, we can use the <code>search_datasets</code> function and with the <code>keyword</code> argument.</p>
-<div id="0f3ad80a" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}">
+<div id="0f3ad80a" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve Collections</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> earthaccess.search_datasets(keyword<span class="op">=</span><span class="st">'PACE Surface Reflectance'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print Quantity of Results</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Collections found: </span><span class="sc">{</span><span class="bu">len</span>(collections)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you print the <code>collections</code> object you can explore all of the json metadata.</p>
-<div id="30c60d4b" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-scrolled="true">
+<div id="30c60d4b" class="cell" data-scrolled="true">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Print collections</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># collections</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can also create a list of the <code>short-name</code>, <code>concept-id</code>, and <code>version</code> of each result collection using list comprehension. These fields are important for specifying and searching for data within collections.</p>
-<div id="1f87b5ef" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}">
+<div id="1f87b5ef" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>collections_info <span class="op">=</span> [</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'short_name'</span>: c.summary()[<span class="st">'short-name'</span>],</span>
@@ -499,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>For this example we will search for the <strong>PACE OCI Level-2 Regional Surface Reflectance Data</strong> using a bounding box and temporal parameters, and add a <code>cloud_cover</code> parameter. Note that not all datasets have cloud cover information, so this parameter may not work for all datasets.</p>
-<div id="093dfcd2-231c-4340-b703-f985baddb641" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}">
+<div id="093dfcd2-231c-4340-b703-f985baddb641" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tspan <span class="op">=</span> (<span class="st">"2025-03-01"</span>, <span class="st">"2025-03-20"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>bbox <span class="op">=</span> (<span class="op">-</span><span class="fl">86.512</span>, <span class="fl">31.70</span>, <span class="op">-</span><span class="fl">86.512</span>, <span class="fl">34.938</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a> </span>
@@ -547,7 +547,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>datatree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>It will be easier to work with the data if we create a single dataset, which we can do by merging the data and coordinate variables we need from different groups. Longitude and latitude appear as data variables, in the group <code>navigation_data</code>, they need to be explicitly set as coordinates. Note the group <code>geophysical_data</code> and its data variables: <code>rhos</code> and <code>l2_flags</code>. The <code>rhos</code> variable are surface reflectances, and the <code>l2_flags</code> are quality flags as defined by the Ocean Biology Processing Group (OBPG).</p>
-<div id="cdc767f7" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-scrolled="true">
+<div id="cdc767f7" class="cell" data-scrolled="true">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.merge(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    (</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        datatree.ds,</span>
@@ -565,7 +565,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Note that “wavelength_3d” is an indexed coordinate, which allows us to subset the dataset by slicing or choosing individual wavelengths. The method=“nearest” argument lets us select one wavelength without knowning its exact value.</p>
 <p>Hence, we can select one wavelength even if it does not represent an exact value in the “wavelength_3d” array and plot it using the method=“nearest” argument.</p>
-<div id="bca93c87-e4f6-4c29-a54f-b0dd7d5a3d99" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}">
+<div id="bca93c87-e4f6-4c29-a54f-b0dd7d5a3d99" class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>rhos_860 <span class="op">=</span> ds[<span class="st">"rhos"</span>].sel({<span class="st">"wavelength_3d"</span>: <span class="dv">860</span>}, method<span class="op">=</span><span class="st">"nearest"</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>), subplot_kw<span class="op">=</span>{<span class="st">"projection"</span>: cartopy.crs.PlateCarree()})</span>
@@ -597,7 +597,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply mask, creating new dataset</span></span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>rhos <span class="op">=</span> ds[<span class="st">"rhos"</span>].where(cldwater_mask)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="27e034e2-7a59-4499-9cc0-874d7c44feea" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}">
+<div id="27e034e2-7a59-4499-9cc0-874d7c44feea" class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot a band of masked data</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>rhos_860 <span class="op">=</span> rhos.sel({<span class="st">"wavelength_3d"</span>: <span class="dv">860</span>}, method<span class="op">=</span><span class="st">"nearest"</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -622,12 +622,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sr_src <span class="op">=</span> rhos.transpose(<span class="st">"wavelength_3d"</span>, ...)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>sr_src</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="94108984-122e-4b54-8b87-d50bc97d643a" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}" data-scrolled="true">
+<div id="94108984-122e-4b54-8b87-d50bc97d643a" class="cell" data-scrolled="true">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set spatial dimensions and swath CRS</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sr_src <span class="op">=</span> sr_src.rio.set_spatial_dims(<span class="st">"pixels_per_line"</span>, <span class="st">"number_of_lines"</span>).rio.write_crs(<span class="st">"epsg:4326"</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>sr_src</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e34ea4f9-b1b0-4a63-8124-1f18b4ed11f4" class="cell" data-jupyter="{&quot;source_hidden&quot;:true}">
+<div id="e34ea4f9-b1b0-4a63-8124-1f18b4ed11f4" class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid the data using rioxarray and rename dimensions</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sr_dst <span class="op">=</span> sr_src.rio.reproject(</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    dst_crs<span class="op">=</span>sr_src.rio.crs,</span>
