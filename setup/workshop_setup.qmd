@@ -4,7 +4,7 @@ title: Cloud Workspace Setup
 
 > If you plan to use this repository with the **Openscapes 2i2c JupyterHub Cloud Workspace** there are no additional setup requirements for the Python environment. All packages needed are included unless specified within a notebook, in which case a cell will be dedicated to installing the necessary Python libraries using the appropriate package manager.
 
-After completing the [prerequisites](prerequisites.md) you will have access to the Openscapes 2i2c JupyterHub cloud workspace. [Click here to start JupyterLab](https://workshop.openscapes.2i2c.cloud/). Use your email and the provided password to sign in. This password will be provided in the workshop. If you're interested in using the 2i2c cloud workspace outside of the workshop, please [contact us](#contact-info).
+After completing the [prerequisites](prerequisites.md) you will have access to the Openscapes 2i2c JupyterHub cloud workspace. [Click here to start JupyterLab](https://workshop.openscapes.2i2c.cloud/). Use your email and the provided password to sign in. This password will be provided in the workshop.  
 
 After signing in you will be prompted for some server options:
 
