@@ -13,7 +13,7 @@ Hands-on exercises will be executed from a [Jupyter Hub on the Openscapes 2i2c c
 
 ## Slides
 
-<iframe src="https://docs.google.com/presentation/d/1-XXW_FkcZuA3jxJN4EX_wpZ8Q8886nZqkhF9LaPhVEU/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="445" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/1tixwYRHA5PszO-wgdlnh5A_OFsdvLV_2/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="445" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 ## Agenda
 
@@ -57,6 +57,5 @@ Email: <LPDAAC@usgs.gov>
 Voice: +1-866-573-3222  
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
 Website: <https://www.earthdata.nasa.gov/centers/lp-daac>  
-Date last modified: 12-05-2023  
 
 ¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.

@@ -61,15 +61,15 @@ website:
           - text: "Finding Coincident Airborne and Orbital Data"
             href: python/Finding_Coincident_Airborne_and_Orbital_Data.ipynb
           - text: "1 Finding Concurrent Data"
-            href: python/01_Finding_Concurrent_Data.ipynb
+            href: python/EMIT_ECOSTRESS/01_Finding_Concurrent_Data.ipynb
           - text: "2 EMIT Reflectance and ECOSTRESS LST"
-            href: python/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.ipynb
+            href: python/EMIT_ECOSTRESS/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.ipynb
           - text: "3 Canopy Water Content"
-            href: python/03_EMIT_CWC_from_Reflectance.ipynb
+            href: python/EMIT_ECOSTRESS/03_EMIT_CWC_from_Reflectance.ipynb
           - text: "4 Dangermond Land Cover"
-            href: python/04_Dangermond_Land_Cover.ipynb
+            href: python/EMIT_ECOSTRESS/04_Dangermond_Land_Cover.ipynb
           - text: "5 Santa Barbara Vineyards"
-            href: python/05_SB_Vineyards.ipynb
+            href: python/EMIT_ECOSTRESS/05_SB_Vineyards.ipynb
       - section: "Contributing"
         contents:
           - href: CONTRIBUTING.md
