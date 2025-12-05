@@ -7,7 +7,7 @@ The International Space Station is a critical asset for the Earth science commun
 This workshop is hosted by NASA [Land Processes Distributed Active Archive Center(LP DAAC)](https://lpdaac.usgs.gov/) and [NASA Jet Propulsion Laboratory (JPL)](https://www.jpl.nasa.gov/) with support from the NASA [Openscapes](https://nasa-openscapes.github.io/) project.  
 Hands-on exercises will be executed from a [Jupyter Hub on the Openscapes 2i2c cloud instance](https://workshop.openscapes.2i2c.cloud/).
 
-<iframe src="https://docs.google.com/presentation/d/1XrdG9P5rLNR8C1TeLpf80YZUCtqdmUev/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="445" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/1TdK-uW1ECUCycnX0Bhobuslxt3dJa7M2/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="445" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 ## Agenda
 
@@ -28,7 +28,6 @@ Hands-on exercises will be executed from a [Jupyter Hub on the Openscapes 2i2c c
 Email: <LPDAAC@usgs.gov>  
 Voice: +1-866-573-3222  
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
-Website: <https://lpdaac.usgs.gov/>  
-Date last modified: 05-21-2024
+Website: <https://www.earthdata.nasa.gov/centers/lp-daac>  
 
 ¹Work performed under USGS contract 140G0121D0001 for NASA contract NNG14HH33I.

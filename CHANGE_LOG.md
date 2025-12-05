@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 _________________________________________________________________________
+## 2025-12-05
+
+### Summary
+>
+> - Moved EMIT + NEON notebooks and supporting files out of community_contributed directory
+> - Moved EMIT + ECOSTRESS into new directory
+> - Updated filepaths in notebooks to reflect new directory structure
+> - Updated workshop powerpoint links to new google docs locations
+> - Update PACE_OCI_L2_SFRFL search to version 3.1 in `Exploring_PACE_OCI_L2_SFRFL.ipynb`
 
 ## 2025-07-20
 
