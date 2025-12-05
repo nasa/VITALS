@@ -9,7 +9,7 @@ The overarching goal of this workshop is to engage and empower the SBG data user
 This workshop is hosted by NASA [Land Processes Distributed Active Archive Center(LP DAAC)](https://www.earthdata.nasa.gov/centers/lp-daac) and [NASA Jet Propulsion Laboratory (JPL)](https://www.jpl.nasa.gov/) with support from the NASA [Openscapes](https://nasa-openscapes.github.io/) project. 
 Hands-on exercises will be executed from a [Jupyter Hub on the Openscapes 2i2c cloud instance](https://workshop.openscapes.2i2c.cloud/). Enter your username and password to login and select `14.8 GB RAM, upto 3.75 CPUs` Python Resource Allocation. 
 
-<iframe src="https://docs.google.com/presentation/d/1Rg3Qgjh52Qcc8GJEWkiIVP9lGDJusH1P/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="445" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/1xBx3UQqggxBiQll4XzjjbY7qNDEUEuWk/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="445" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 
 ## Contact Info  
