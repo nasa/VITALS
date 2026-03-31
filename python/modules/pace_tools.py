@@ -29,7 +29,7 @@ def open_l2(fpath):
     Returns:
         ds - xarray dataset
     """
-    dt = xr.open_datatree(fpath, decode_timedelta=False)
+    dt = xr.open_datatree(fpath)
     try:
         ds = xr.merge((
             dt.ds,
@@ -38,7 +38,8 @@ def open_l2(fpath):
             dt["navigation_data"].ds.set_coords(("longitude", "latitude")).coords,
             )
         )
-        ds = ds.set_xindex(("latitude", "longitude"), xr.indexes.NDPointIndex)
+        # Commenting out because only available in xarray>=2026.01.0
+        #ds = ds.set_xindex(("latitude", "longitude"), xr.indexes.NDPointIndex)
     except:
         ds = xr.merge((
             dt.ds,
@@ -46,7 +47,7 @@ def open_l2(fpath):
             dt["navigation_data"].ds.set_coords(("longitude", "latitude")).coords,
             )
         )
-        ds = ds.set_xindex(("latitude", "longitude"), xr.indexes.NDPointIndex)
+        #ds = ds.set_xindex(("latitude", "longitude"), xr.indexes.NDPointIndex)
     return ds
 
 def mask_ds(ds, flag="CLDICE", reverse=False):
