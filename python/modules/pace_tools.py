@@ -3,22 +3,22 @@ This file contains functions for working with PACE data, including opening, grid
     etc. Xarray and rasterio are heavily used to process PACE data. 
 
 Author: Skye Caplan (NASA, SSAI)
-Last updated: 02/26/2026
+Last updated: 03/31/2026
 
 TODO: 
 - Figure out better way to get aligned pixels but individual granule boundaries
 """
 # Packages
-import xarray as xr 
-import numpy as np 
 import cartopy
-import cartopy.crs as ccrs
-import cf_xarray  # noqa: F401
-import matplotlib.pyplot as plt
 import rasterio
+import cf_xarray  # noqa: F401
+import numpy as np
+import pandas as pd
+import xarray as xr
 import rioxarray as rio
-from rasterio.enums import Resampling
+import cartopy.crs as ccrs
 from rasterio.crs import CRS
+from rasterio.enums import Resampling
 
 def open_l2(fpath):
     """ 
@@ -98,7 +98,7 @@ def grid_data(src, resolution=None, dst_transform=None, dst_crs="epsg:4326", src
     Returns:
         dst - projected xr dataset
     """
-    # Get names of dims
+    # Get names of dimensions
     wvl_var, x_dim, y_dim = None, None, None
     for dim in list(src.dims):
         if np.all([wvl_var, x_dim, y_dim]):
