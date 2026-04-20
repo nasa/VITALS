@@ -25,7 +25,8 @@ from modules.emit_tools import emit_xarray, ortho_xr
 def calc_ewt(
     filepath: str,
     outdir: str,
-    n_cpu: int = (cpu_count() - 1),
+    k_wi_path: str = None,
+    n_cpu: int = None,
     ewt_detection_limit: float = 0.5,
     return_cwc: bool = False,
 ) -> None:
@@ -33,6 +34,10 @@ def calc_ewt(
     This function will calculate the equivalent water thickness (EWT) or canopy water content (CWC) from an EMIT .nc reflectance
     file using `ray` for parallelization,orthorectify if necessary, and write a cloud-optimized geotiff output.
     """
+    # Default to all CPUs minus one to leave one free for other tasks
+    if n_cpu is None:
+        n_cpu = cpu_count() - 1
+
     # Get number of rows to break up in parallel
     emit_ds = xr.open_dataset(filepath, decode_coords="all")
 
@@ -55,14 +60,21 @@ def calc_ewt(
     # Also, jacobian estimates get more accurate and lead to better convergence w/ higher precision
     wvl = np.float64(emit_ds["wavelengths"].data)
 
-    # Initialize Ray Cluster
-    # init_rfl = np.nan_to_num(emit_ds.reflectance.data[0,0,:].copy(),nan=-9999)
-    # res_0, abs_co_w = invert_liquid_water(init_rfl, wvl, return_abs_co=True)
+    # Pre-compute absorption coefficients once for the whole scene
+    if k_wi_path is None:
+        k_wi_path = os.path.join(os.path.dirname(filepath), "k_liquid_water_ice.csv")
+    k_wi = pd.read_csv(k_wi_path)
+    wl_water, k_water = get_refractive_index(k_wi=k_wi, a=0, b=982, col_wvl="wvl_6", col_k="T = 20°C")
+    lw_feature_left = np.argmin(abs(850 - wvl))
+    lw_feature_right = np.argmin(abs(1100 - wvl))
+    wl_sel = wvl[lw_feature_left : lw_feature_right + 1]
+    kw = np.interp(x=wl_sel, xp=wl_water, fp=k_water)
+    abs_co_w = 4 * np.pi * kw / wl_sel
 
     ray.init(num_cpus=n_cpu)
 
-    # Set up Line Breaks for parallel
-    line_breaks = np.linspace(0, n_rows, n_cpu, dtype=int)
+    # Set up Line Breaks for parallel (n_cpu + 1 points → n_cpu chunks)
+    line_breaks = np.linspace(0, n_rows, n_cpu + 1, dtype=int)
     line_breaks = [
         (line_breaks[n], line_breaks[n + 1]) for n in range(len(line_breaks) - 1)
     ]
@@ -74,6 +86,7 @@ def calc_ewt(
             wvl,
             line_breaks[n],
             ewt_detection_limit,
+            abs_co_w,
         )
         for n in range(len(line_breaks))
     ]
@@ -114,7 +127,7 @@ def calc_ewt(
     ] = "EMIT Estimated Equivalent Water Thickness (EWT) / Canopy Water Content (CWC)"
 
     # Create Data Vars - Squeeze bands dim
-    data_vars = {"cwc": (list(emit_ds.dims.keys())[0:2], cwc.squeeze())}
+    data_vars = {"cwc": (list(emit_ds.sizes.keys())[0:2], cwc.squeeze())}
 
     ds_cwc = xr.Dataset(data_vars=data_vars, coords=coords, attrs=output_metadata)
     ds_cwc.cwc.attrs = {
@@ -129,7 +142,7 @@ def calc_ewt(
 
     # Create output cog
     ds_cwc.rio.to_raster(
-        raster_path=f"{outdir}{filepath.split('/')[-1].split('.')[0]}_cwc.tif",
+        raster_path=os.path.join(outdir, f"{os.path.splitext(os.path.basename(filepath))[0]}_cwc.tif"),
         driver="COG",
     )
 
@@ -143,6 +156,7 @@ def run_lines(
     wl: np.array,
     startstop: tuple,
     ewt_detection_limit: float,
+    abs_co_w: np.array,
 ) -> None:
     start_line, stop_line = startstop
 
@@ -160,7 +174,7 @@ def run_lines(
             if np.all(meas < 0):
                 continue
             output_cwc[r, c, 0] = invert_liquid_water(
-                meas, wl, ewt_detection_limit=ewt_detection_limit
+                meas, wl, ewt_detection_limit=ewt_detection_limit, abs_co_w=abs_co_w
             )
         logging.info(f"CWC writing line {r}")
     return output_cwc
@@ -179,6 +193,7 @@ def invert_liquid_water(
     lw_bounds: tuple = ([0, 0.5], [0, 1.0], [-0.0004, 0.0004]),
     ewt_detection_limit: float = 0.5,
     return_abs_co: bool = False,
+    abs_co_w: np.array = None,
 ):
     """Given a reflectance estimate, fit a state vector including liquid water path length
     based on a simple Beer-Lambert surface model.
@@ -207,24 +222,15 @@ def invert_liquid_water(
         lw_bounds[0][1] = ewt_detection_limit
 
     # load imaginary part of liquid water refractive index and calculate wavelength dependent absorption coefficient
-    # __file__ should live at isofit/isofit/inversion/
-
-    data_dir_path = "../data/"
-    path_k = os.path.join(data_dir_path, "k_liquid_water_ice.csv")
-
-    # isofit_path = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-    # path_k = os.path.join(isofit_path, "data", "iop", "k_liquid_water_ice.xlsx")
-
-    # k_wi = pd.read_excel(io=path_k, sheet_name="Sheet1", engine="openpyxl")
-    # wl_water, k_water = get_refractive_index(
-    #     k_wi=k_wi, a=0, b=982, col_wvl="wvl_6", col_k="T = 20°C"
-    # )
-    k_wi = pd.read_csv(path_k)
-    wl_water, k_water = get_refractive_index(
-        k_wi=k_wi, a=0, b=982, col_wvl="wvl_6", col_k="T = 20°C"
-    )
-    kw = np.interp(x=wl_sel, xp=wl_water, fp=k_water)
-    abs_co_w = 4 * np.pi * kw / wl_sel
+    if abs_co_w is None:
+        data_dir_path = "../data/"
+        path_k = os.path.join(data_dir_path, "k_liquid_water_ice.csv")
+        k_wi = pd.read_csv(path_k)
+        wl_water, k_water = get_refractive_index(
+            k_wi=k_wi, a=0, b=982, col_wvl="wvl_6", col_k="T = 20°C"
+        )
+        kw = np.interp(x=wl_sel, xp=wl_water, fp=k_water)
+        abs_co_w = 4 * np.pi * kw / wl_sel
 
     rfl_meas_sel = rfl_meas[lw_feature_left : lw_feature_right + 1]
 
