@@ -2,6 +2,7 @@ name: lpdaac_vitals
 channels:
   - conda-forge
 dependencies:
+  - cf_xarray
   - dask
   - earthaccess
   - fiona
@@ -12,14 +13,16 @@ dependencies:
   - h5py
   - harmony-py
   - hvplot
+  - ipykernel
   - jupyter
   - jupyter_bokeh
   - jupyterlab
   - libgdal-hdf4
   - odc-stac
+  - neonutilities
   - pyresample
   - pystac-client
-  - python=3.12
+  - python=3.13
   - rasterio
   - ray-default
   - rioxarray
