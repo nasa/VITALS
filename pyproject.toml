@@ -8,11 +8,11 @@ dynamic = ["version"]
 dependencies = [
     "earthaccess",
     "fsspec",
+    "gdal",
     "geopandas",
     "geoviews",
     "matplotlib",
     "netCDF4",
-    "osgeo",
     "ray",
     "rioxarray",
     "scipy",
