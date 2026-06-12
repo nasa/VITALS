@@ -18,7 +18,7 @@ from multiprocessing import cpu_count
 import numpy as np
 from osgeo import gdal
 
-from modules.emit_tools import emit_xarray, ortho_xr
+from .emit_tools import emit_xarray, ortho_xr
 
 
 # Modified from

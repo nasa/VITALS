@@ -29,3 +29,5 @@ dependencies:
   - scikit-image
   - seaborn
   - spectral
+  - pip:
+      - "--editable ."
