@@ -2,8 +2,9 @@ name: lpdaac_vitals
 channels:
   - conda-forge
 dependencies:
+  - cf_xarray
   - dask
-  - earthaccess
+  - earthaccess<0.18
   - fiona
   - gdal
   - geopandas
@@ -16,6 +17,7 @@ dependencies:
   - jupyter_bokeh
   - jupyterlab
   - libgdal-hdf4
+  - neonutilities
   - odc-stac
   - pyresample
   - pystac-client
