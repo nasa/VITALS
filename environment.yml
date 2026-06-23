@@ -4,7 +4,7 @@ channels:
 dependencies:
   - cf_xarray
   - dask
-  - earthaccess
+  - earthaccess<0.18
   - fiona
   - gdal
   - geopandas
@@ -18,8 +18,8 @@ dependencies:
   - jupyter_bokeh
   - jupyterlab
   - libgdal-hdf4
-  - odc-stac
   - neonutilities
+  - odc-stac
   - pyresample
   - pystac-client
   - python=3.13
@@ -29,3 +29,5 @@ dependencies:
   - scikit-image
   - seaborn
   - spectral
+  - pip:
+      - "--editable ."

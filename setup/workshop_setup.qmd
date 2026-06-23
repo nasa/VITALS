@@ -29,6 +29,12 @@ To clone the repository, navigate to the directory where you want to store the r
 git clone https://github.com/nasa/VITALS.git
 ```
 
+The repository contains Python tools which the notebooks can "import" once they've been installed as follows:
+
+```cmd
+pip install --editable VITALS
+```
+
 ## Troubleshooting
 
 We recommend *Shutting down all kernels* after running each notebook. This will clear the memory used by the previous notebook, and is necessary to run some of the more memory intensive notebooks. 

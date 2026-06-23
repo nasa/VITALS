@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=80", "setuptools-scm>=9.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vitals"
+dynamic = ["version"]
+dependencies = [
+    "earthaccess",
+    "fsspec",
+    "gdal",
+    "geopandas",
+    "geoviews",
+    "matplotlib",
+    "netCDF4",
+    "ray",
+    "rioxarray",
+    "scipy",
+    "scikit-image",
+    "spectral",
+    "xarray",
+]
+
+[tool.setuptools_scm]
+# see https://github.com/pypa/setuptools-scm/issues/1385
+git_describe_command = "git describe --dirty --tags --long --abbrev=40 --match '*[vV][0-9]*'"
