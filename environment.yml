@@ -4,7 +4,7 @@ channels:
 dependencies:
   - cf_xarray
   - dask
-  - earthaccess<0.18
+  - earthaccess
   - fiona
   - gdal
   - geopandas
@@ -20,6 +20,7 @@ dependencies:
   - libgdal-hdf4
   - neonutilities
   - odc-stac
+  - pip
   - pyresample
   - pystac-client
   - python=3.13
