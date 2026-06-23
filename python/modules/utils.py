@@ -1,5 +1,8 @@
 import earthaccess
 import warnings
+import cartopy
+import cartopy.crs as ccrs
+import matplotlib.pyplot as plt
 import pandas as pd
 import xarray as xr 
 from shapely import geometry
