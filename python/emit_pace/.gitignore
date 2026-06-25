@@ -1,2 +1,3 @@
-data/
-subset_data/
+data/*.nc
+ts_data/*.nc
+subset_data/*.nc
