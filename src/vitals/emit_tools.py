@@ -48,6 +48,8 @@ def emit_xarray(filepath, ortho=False, qmask=None, unpacked_bmask=None):
         granule_id = filepath.info()["name"].split("/", -1)[-1].split(".", -1)[0]
     elif type(filepath) == HTTPFile:
         granule_id = filepath.path.split("/", -1)[-1].split(".", -1)[0]
+    elif hasattr(filepath, 'path'):
+        granule_id = filepath.path.split("/", -1)[-1].split(".", -1)[0]
     else:
         granule_id = os.path.splitext(os.path.basename(filepath))[0]
 

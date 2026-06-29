@@ -11,13 +11,17 @@ These Python Environments will work for all of the guides, how-to's, and tutoria
 1. Using your preferred command line interface (command prompt, terminal, cmder, etc.) navigate to your local copy of the repository, then type the following to create a compatible Python environment. It should work for both Windows and MacOS.
 
     ```
-    mamba create -n lpdaac_vitals -c conda-forge --yes python=3.12 gdal fiona hvplot geoviews rioxarray rasterio jupyter geopandas earthaccess jupyter_bokeh h5py h5netcdf spectral scikit-image jupyterlab seaborn dask ray-default pystac-client odc-stac pyresample libgdal-hdf4 harmony-py
-    ```
-
-    Alternatively, you can use the `environment.yml` present in the `setup` directory.
-
-    ```
     mamba env create -f setup/environment.yml
+    ```
+
+    Alternatively, you can create the environment manually following below by navigating to the repository directory and running the following two lines:
+
+    ```
+    mamba create -n lpdaac_vitals -c conda-forge --yes python=3.13 gdal fiona hvplot geoviews rioxarray rasterio jupyter geopandas earthaccess jupyter_bokeh h5py h5netcdf spectral scikit-image jupyterlab seaborn dask ray-default pystac-client odc-stac pyresample libgdal-hdf4 harmony-py neonutilities cf_xarray ipykernel
+    ```
+    
+    ```
+    pip install -e .
     ```
 
 2. Next, activate the Python Environment that you just created.

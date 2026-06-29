@@ -48,6 +48,8 @@ def open_l2(fpath):
             )
         )
         #ds = ds.set_xindex(("latitude", "longitude"), xr.indexes.NDPointIndex)
+        ds.load()
+        dt.close()
     return ds
 
 def mask_ds(ds, flag="CLDICE", reverse=False):
