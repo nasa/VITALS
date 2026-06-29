@@ -2,8 +2,6 @@
 title: Cloud Workspace Setup
 ---
 
-> If you plan to use this repository with the **Openscapes 2i2c JupyterHub Cloud Workspace** there are no additional setup requirements for the Python environment. All packages needed are included unless specified within a notebook, in which case a cell will be dedicated to installing the necessary Python libraries using the appropriate package manager.
-
 After completing the [prerequisites](prerequisites.md) you will have access to the Openscapes 2i2c JupyterHub cloud workspace. [Click here to start JupyterLab](https://workshop.openscapes.2i2c.cloud/). Use your email and the provided password to sign in. This password will be provided in the workshop.  
 
 After signing in you will be prompted for some server options:
@@ -13,7 +11,7 @@ After signing in you will be prompted for some server options:
   <img src="../img/2i2c_server_selection.png" width="600" height="500"/>
 </p>
 
-Be sure to select the radio button for **Python** and a size of **14.8 GB RAM and up to 3.75 CPUs**.
+Be sure to select the radio button for **Python** and a size of **14.8 GB RAM and up to 3.75 CPUs**. Note that the available sizes can change slightly, pick the closest available.
 
 At this point you can use the terminal to clone the repository.
 
@@ -29,10 +27,14 @@ To clone the repository, navigate to the directory where you want to store the r
 git clone https://github.com/nasa/VITALS.git
 ```
 
-The repository contains Python tools which the notebooks can "import" once they've been installed as follows:
+The repository contains Python tools which the notebooks use that need to be installed in the existing environment. **This needs to be done each time you launch a JupyterLab instance.** These can "import" once they've been installed. After cloning the repository, change directories and install them using the following in the terminal: 
 
 ```cmd
-pip install --editable VITALS
+cd VITALS
+```
+
+```cmd
+pip install --editable .
 ```
 
 ## Troubleshooting
@@ -46,6 +48,8 @@ We recommend *Shutting down all kernels* after running each notebook. This will 
 No single notebook exceeds roughly the limit using the provided data, but **if you choose to use your own data in the notebook, or have 2 notebooks open and do not shut down the kernel, you may get an out of memory error.**  
 
 If you elect to try this on your own data/ROI, you may need to select a larger server size. This will often happen if you are using the last EMIT scene from an orbit. In some cases those can be almost double the size of a normal scene. Please select the smallest possible. 
+
+If you are getting an import failure for `vitals.emit_tools` or another `vitals` library, run the following from the 
 
 ---
 
