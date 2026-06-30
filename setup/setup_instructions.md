@@ -14,10 +14,10 @@ These Python Environments will work for all of the guides, how-to's, and tutoria
     mamba create -n lpdaac_vitals -c conda-forge --yes python=3.12 gdal fiona hvplot geoviews rioxarray rasterio jupyter geopandas earthaccess jupyter_bokeh h5py h5netcdf spectral scikit-image jupyterlab seaborn dask ray-default pystac-client odc-stac pyresample libgdal-hdf4 harmony-py
     ```
 
-    Alternatively, you can use the `environment.yml` present in the `setup` directory.
+    Alternatively, you can use the `environment.yml` present in the main directory.
 
     ```
-    mamba env create -f setup/environment.yml
+    mamba env create -f environment.yml
     ```
 
 2. Next, activate the Python Environment that you just created.
