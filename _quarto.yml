@@ -52,26 +52,40 @@ website:
           href: setup/workshop_setup.qmd
         - text: "Local Python Environment Setup"
           href: setup/setup_instructions.md
-      - section: "Python Notebooks"            
-        contents: 
+      - section: "Python Notebooks"
+        contents:
+          - section: "EMIT & ECOSTRESS Tutorials"
+            contents:
+              - text: "1 Finding Concurrent Data"
+                href: python/emit_ecostress/01_Finding_Concurrent_Data.ipynb
+              - text: "2 EMIT Reflectance and ECOSTRESS LST"
+                href: python/emit_ecostress/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.ipynb
+              - text: "3 Canopy Water Content"
+                href: python/emit_ecostress/03_EMIT_CWC_from_Reflectance.ipynb
+              - text: "4 Dangermond Land Cover"
+                href: python/emit_ecostress/04_Dangermond_Land_Cover.ipynb
+              - text: "5 Santa Barbara Vineyards"
+                href: python/emit_ecostress/05_SB_Vineyards.ipynb
+          - section: "EMIT & NEON Tutorials"
+            contents:
+              - text: "1 Finding Co-located NEON EMIT Data"
+                href: python/emit_neon/01_Finding_Co-located_NEON_EMIT_Data_NIWO.ipynb
+              - text: "2 Exploring NEON and EMIT Reflectance Data"
+                href: python/emit_neon/02_Exploring_NEON_and_EMIT_Reflectance_Data_NIWO.ipynb
+          - section: "PACE & EMIT Tutorials"
+            contents:
+              - text: "1 Colocate PACE EMIT Data"
+                href: python/emit_pace/01_Colocate_PACE_EMIT_Data.ipynb
+              - text: "2 Process PACE EMIT Data"
+                href: python/emit_pace/02_Process_PACE_EMIT_Data.ipynb
+          - text: "Finding Coincident Airborne and Orbital Data"
+            href: python/Finding_Coincident_Airborne_and_Orbital_Data.ipynb
           - text: "Exploring ECOSTRESS L2T LSTE"
             href: python/Exploring_ECOSTRESS_L2T_LSTE.ipynb
           - text: "Exploring EMIT L2A RFL"
             href: python/Exploring_EMIT_L2A_RFL.ipynb
           - text: "Exploring PACE OCI L2 SFRFL"
             href: python/Exploring_PACE_OCI_L2_SFRFL.ipynb
-          - text: "Finding Coincident Airborne and Orbital Data"
-            href: python/Finding_Coincident_Airborne_and_Orbital_Data.ipynb
-          - text: "1 Finding Concurrent Data"
-            href: python/EMIT_ECOSTRESS/01_Finding_Concurrent_Data.ipynb
-          - text: "2 EMIT Reflectance and ECOSTRESS LST"
-            href: python/EMIT_ECOSTRESS/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.ipynb
-          - text: "3 Canopy Water Content"
-            href: python/EMIT_ECOSTRESS/03_EMIT_CWC_from_Reflectance.ipynb
-          - text: "4 Dangermond Land Cover"
-            href: python/EMIT_ECOSTRESS/04_Dangermond_Land_Cover.ipynb
-          - text: "5 Santa Barbara Vineyards"
-            href: python/EMIT_ECOSTRESS/05_SB_Vineyards.ipynb
       - section: "Contributing"
         contents:
           - href: CONTRIBUTING.md

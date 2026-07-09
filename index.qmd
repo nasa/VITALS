@@ -29,7 +29,7 @@ Clone or download the [VITALS repository](https://github.com/nasa/VITALS).
 | **[Exploring PACE OCI L2 Surface Reflectance](/python/Exploring_PACE_OCI_L2_SFRFL.ipynb)** | Jupyter Notebook | Search, access, and work with PACE OCI L2 Surface Reflectance data |
 | **[Finding Coincident Airborne and Orbital Data](/python/Finding_Coincident_Airborne_and_Orbital_Data.ipynb)** | Jupyter Notebook | Find spatially and temporally coincident airborne and orbital data (EMIT, ECOSTRESS, AVIRIS-3) |
 | **EMIT & ECOSTRESS Tutorials** | | |
-| **[1. Finding Concurrent Data](/python/EMIT_ECOSTRESS/01_Finding_Concurrent_Data.ipynb)** | Jupyter Notebook | Search and filter for concurrent EMIT and ECOSTRESS data |
+| **[1. Finding Concurrent Data](/python/emit_ecostress/01_Finding_Concurrent_Data.ipynb)** | Jupyter Notebook | Search and filter for concurrent EMIT and ECOSTRESS data |
 | **[2. Working with EMIT Reflectance and ECOSTRESS LST](/python/emit_ecostress/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.ipynb)** | Jupyter Notebook | Streaming, Downloading and Co-Registering concurrent EMIT and ECOSTRESS data |
 | **[3. EMIT CWC from Reflectance](/python/emit_ecostress/03_EMIT_CWC_from_Reflectance.ipynb)** | Jupyter Notebook | Calculate Canopy Water Content from EMIT reflectance |
 | **[4. Dangermond Land Cover](/python/emit_ecostress/04_Dangermond_Land_Cover.ipynb)** | Jupyter Notebook | Canopy Water Content and Land Surface Temperature of Invasive Plants at Dangermond Preserve |
@@ -38,22 +38,24 @@ Clone or download the [VITALS repository](https://github.com/nasa/VITALS).
 | **[1. Finding Co-located NEON EMIT Data](/python/emit_neon/01_Finding_Co-located_NEON_EMIT_Data_NIWO.ipynb)** | Jupyter Notebook | Find co-located NEON and EMIT reflectance data at Niwot Ridge |
 | **[2. Exploring NEON and EMIT Reflectance Data](/python/emit_neon/02_Exploring_NEON_and_EMIT_Reflectance_Data_NIWO.ipynb)** | Jupyter Notebook | Explore and compare NEON and EMIT reflectance data |
 | **PACE & EMIT Tutorials (Community Contributed)** | | |
-| **[1. Colocate PACE EMIT Data](/community_contributed/emit_pace/01_Colocate_PACE_EMIT_Data.ipynb)** | Jupyter Notebook | Find concurrent PACE and EMIT data |
-| **[2. Align PACE EMIT Grids](/community_contributed/emit_pace/02_Align_PACE_EMIT_Grids.ipynb)** | Jupyter Notebook | Align and resample PACE and EMIT data grids |
+| **[1. Colocate PACE EMIT Data](/python/emit_pace/01_Colocate_PACE_EMIT_Data.ipynb)** | Jupyter Notebook | Find concurrent PACE and EMIT data |
+| **[2. Process PACE EMIT Data](/python/emit_pace/02_Process_PACE_EMIT_Data.ipynb)** | Jupyter Notebook | Align, resample, and process PACE and EMIT data |
 
 ## Citation
 This repository is the product of a collaborative effort from several teams including the NASA Land Processes Distributed Active Archive Center (DAAC), NASA Jet Propulsion Laboratory, the National Ecological Observatory Network (NEON), NASA Ocean Biology DAAC, and NASA Oak Ridge National Laboratory DAAC. If you use this resource or an associated data product for your research, we appreciate a citation.
 
-[![Cite this repo](https://img.shields.io/badge/Cite-VITALS-blue)](https://github.com/nasa/VITALS/blob/main/CITATION.cff)
+<a href="https://github.com/nasa/VITALS/blob/main/CITATION.cff"><img src="https://img.shields.io/badge/Cite-VITALS-blue" alt="Cite this repo"></a>
 
 For each data product used, you can retrieve a citation in your desired format from the product pages below.
 
 |Product|Product Page|Collection Shortname|
 |:---|:---|:---|
-|EMIT L2A Estimated Surface Reflectance and Uncertainty and Masks|https://doi.org/10.5067/EMIT/EMITL2ARFL.001|EMITL2ARFL|
-|ECOSTRESS Tiled Land Surface Temperature and Emissivity Instantaneous L2 Global 70 m|https://doi.org/10.5067/ECOSTRESS/ECO_L2T_LSTE.002|ECO_L2T_LSTE|
-|ECOSTRESS Tiled Evapotranspiration Instantaneous and Daytime L3 Global 70 m|https://doi.org/10.5067/ECOSTRESS/ECO_L3T_JET.002|ECO_L3T_JET|
-|PACE OCI Level-2 Regional Surface Reflectance Data|https://doi.org/10.5067/PACE/OCI/L2/SFREFL/3.1|PACE_OCI_L2_SFREFL|
+|EMIT L2A Estimated Surface Reflectance and Uncertainty and Masks|[https://doi.org/10.5067/EMIT/EMITL2ARFL.001](https://doi.org/10.5067/EMIT/EMITL2ARFL.001)|EMITL2ARFL|
+|ECOSTRESS Tiled Land Surface Temperature and Emissivity Instantaneous L2 Global 70 m|[https://doi.org/10.5067/ECOSTRESS/ECO_L2T_LSTE.002](https://doi.org/10.5067/ECOSTRESS/ECO_L2T_LSTE.002)|ECO_L2T_LSTE|
+|ECOSTRESS Tiled Evapotranspiration Instantaneous and Daytime L3 Global 70 m|[https://doi.org/10.5067/ECOSTRESS/ECO_L3T_JET.002](https://doi.org/10.5067/ECOSTRESS/ECO_L3T_JET.002)|ECO_L3T_JET|
+|PACE OCI Level-2 Regional Surface Reflectance Data|[https://doi.org/10.5067/PACE/OCI/L2/SFREFL/3.1](https://doi.org/10.5067/PACE/OCI/L2/SFREFL/3.1)|PACE_OCI_L2_SFREFL|
+|AVIRIS-3 L2A Orthocorrected Surface Reflectance, Facility Instrument Collection|[https://doi.org/10.3334/ORNLDAAC/2357](https://doi.org/10.3334/ORNLDAAC/2357)|AV3_L2A_RFL_2357|
+|NEON Spectrometer Orthorectified Surface Bidirectional Reflectance - Mosaic|[https://data.neonscience.org/data-products/DP3.30006.002](https://data.neonscience.org/data-products/DP3.30006.002)|DP3.30006.002|
 
 
 ## Related Resources
@@ -84,4 +86,4 @@ Voice: +1-866-573-3222
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
 Website: <https://www.earthdata.nasa.gov/centers/lp-daac>  
 
-¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.
+¹Work performed under USGS contract 140G0126D0001 for NASA contract NNG14HH33I.
