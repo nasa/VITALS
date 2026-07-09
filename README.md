@@ -38,7 +38,7 @@ Clone or download the [VITALS repository](https://github.com/nasa/VITALS).
 | **EMIT & NEON Tutorials** | | |
 | **[1. Finding Co-located NEON EMIT Data](/python/emit_neon/01_Finding_Co-located_NEON_EMIT_Data_NIWO.ipynb)** | Jupyter Notebook | Find co-located NEON and EMIT reflectance data at Niwot Ridge |
 | **[2. Exploring NEON and EMIT Reflectance Data](/python/emit_neon/02_Exploring_NEON_and_EMIT_Reflectance_Data_NIWO.ipynb)** | Jupyter Notebook | Explore and compare NEON and EMIT reflectance data |
-| **PACE & EMIT Tutorials (Community Contributed)** | | |
+| **PACE & EMIT Tutorials** | | |
 | **[1. Colocate PACE EMIT Data](/python/emit_pace/01_Colocate_PACE_EMIT_Data.ipynb)** | Jupyter Notebook | Find concurrent PACE and EMIT data |
 | **[2. Process PACE EMIT Data](/python/emit_pace/02_Process_PACE_EMIT_Data.ipynb)** | Jupyter Notebook | Align, resample, and process PACE and EMIT data |
 
