@@ -32,4 +32,4 @@ Voice: +1-866-573-3222
 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹  
 Website: <https://www.earthdata.nasa.gov/centers/lp-daac>  
 
-¹Work performed under USGS contract G15PD00467 for NASA contract NNG14HH33I.
+¹Work performed under USGS contract 140G0126D0001 for NASA contract NNG14HH33I.
