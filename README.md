@@ -1,7 +1,7 @@
 # VITALS
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Python](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![Python](https://img.shields.io/badge/python-3.13-blue.svg)](https://www.python.org/downloads/)
 [![Cite this repo](https://img.shields.io/badge/Cite-VITALS-blue)](https://github.com/nasa/VITALS/blob/main/CITATION.cff)
 
 Welcome to the **VSWIR Imaging and Thermal Applications, Learning, and Science** Repository! This repository provides Python Jupyter notebooks to help users work with visible to short-wave infrared imaging spectroscopy data, thermal infrared data, and other related products from the Earth Surface Mineral Dust Source Investigation (EMIT) instrument, ECOsystem Spaceborne Thermal Radiometer Experiment on Space Station (ECOSTRESS) instrument, Plankton, Aerosol, Cloud, ocean Ecosystem (PACE) instrument, Airborne Visible InfraRed Imaging Spectromerter (AVIRIS-3) instrument, and the National Ecologial Observation Network (NEON) Imaging Spectrometer. 
