@@ -11,7 +11,7 @@ These Python Environments will work for all of the guides, how-to's, and tutoria
 1. Using your preferred command line interface (command prompt, terminal, cmder, etc.) navigate to your local copy of the repository, then type the following to create a compatible Python environment. It should work for both Windows and MacOS.
 
     ```
-    mamba env create -f setup/environment.yml
+    mamba env create -f environment.yml
     ```
 
     Alternatively, you can create the environment manually following below by navigating to the repository directory and running the following two lines:
