@@ -18,7 +18,7 @@ dependencies:
   - jupyter_bokeh
   - jupyterlab
   - libgdal-hdf4
-  - neonutilities
+  - neonutilities>=2.0.1
   - odc-stac
   - pip
   - pyresample
