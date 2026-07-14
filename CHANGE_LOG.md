@@ -4,6 +4,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 _________________________________________________________________________
+## 2026-07-14
+
+### Summary
+>
+> - Repository restructured into an installable Python package (`vitals`) via `pyproject.toml`, in addition to the existing standalone notebooks
+> - Added new PACE & EMIT tutorial series
+> - Various fixes and improvements to shared Python modules, notebooks, and documentation
+
+### Added
+
+> - `pyproject.toml` for building/installing the repository as the `vitals` package
+> - PACE & EMIT Tutorials
+>   - `01_Colocate_PACE_EMIT_Data.ipynb`
+>   - `02_Process_PACE_EMIT_Data.ipynb`
+> - `src/vitals/pace_tools.py` and `src/vitals/utils.py` modules
+> - `citation.cff`
+> - Static figures for interactive plots across notebooks
+> - Sample output data from interactive visualizations (e.g. `clicked_values.csv`, `dangermond_default_polygons.geojson`)
+
+### Changed
+
+> - Moved shared Python modules from `python/modules/` to `src/vitals/` and renamed `python/EMIT_NEON/` to `python/emit_neon/`
+> - Replaced `earthaccess.collection_query` with `earthaccess.search_datasets` and removed pinned `earthaccess` version (fixes #59)
+> - Improved `merge_emit` granule ID retrieval when `earthaccess` file handlers are passed to `emit_xarray` in `emit_tools.py`
+> - Updated NEON notebooks for new filepaths, token handling, and `neonutilities` version
+> - Updated README with a full table of contents, citation guidance, and related resources
+> - Updated setup instructions, `environment.yml`, and web-book Quarto files (`_quarto.yml`, `index.qmd`)
+> - Updated contract numbers in notebook footers where applicable
+
 ## 2025-12-05
 
 ### Summary
