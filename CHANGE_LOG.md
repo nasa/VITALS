@@ -173,4 +173,4 @@ _________________________________________________________________________
 >
 > ### Added
 >
-> - [Finding Concurrent Data Notebook](python/01_Finding_Concurrent_Data.ipynb)
+> - [Finding Concurrent Data Notebook](python/emit_ecostress/01_Finding_Concurrent_Data.ipynb)
