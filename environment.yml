@@ -5,7 +5,7 @@ dependencies:
   - cf_xarray
   - cartopy<0.26 
   - dask
-  - earthaccess
+  - earthaccess>=0.19.0
   - fiona
   - gdal
   - geopandas
@@ -24,6 +24,7 @@ dependencies:
   - pip
   - pyresample
   - pystac-client
+  - proj<9.8
   - python=3.13
   - rasterio
   - ray-default

@@ -36,6 +36,8 @@ website:
           href: index.qmd
       - section: "Workshops"
         contents:
+        - text: "2026 Critical Mineral Workshop"
+          href: workshops/2026_critical_minerals.qmd
         - text: "VSWIR-TIR Fundamentals"
           href: workshops/2025_VSWIR_TIR_Fundamentals.qmd
         - text: "2025 SBG Workshop"
@@ -54,6 +56,10 @@ website:
           href: setup/setup_instructions.md
       - section: "Python Notebooks"
         contents:
+          - section: "EMIT & AVIRIS Tutorials"
+            contents:
+              - text: "1 Alunite Temportal Aggregation"
+                href: python/emit_aviris/critical_minerals/01_alunite_temporal_aggregation.ipynb
           - section: "EMIT & ECOSTRESS Tutorials"
             contents:
               - text: "1 Finding Concurrent Data"

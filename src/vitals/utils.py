@@ -32,7 +32,7 @@ def get_shapely_object(result:earthaccess.results.DataGranule):
 
 # Retrieve png browse image if it exists or first jpg in list of urls
 def get_png(result:earthaccess.results.DataGranule):
-    https_links = [link for link in result.dataviz_links() if 'https' in link]
+    https_links = [link for link in result.dataviz_links if 'https' in link]
     if len(https_links) == 1:
         browse = https_links[0]
     elif len(https_links) == 0:

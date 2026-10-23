@@ -1,0 +1,29 @@
+---
+title: "Remote Sensing and Critical Mineral Discovery Workshop 2026: Advanced Python Tutorial for Analysis and Visualization"
+---
+
+The [Workshop on Remote Sensing and Critical Mineral Discovery](https://atmos.utah.edu/critical_minerals_imaging_workshop/index.php) was held at the University of Utah on September 29, 2026. In the afternoon session, NASA LP DAAC, NASA JPL, ORNL DAAC, and the Utah Geological Survey (UGS) presented an advanced Python tutorial on analysis and visualization of imaging spectroscopy data for mineral mapping.
+
+## Tutorial Overview
+
+The tutorial, [Temporal Aggregation of EMIT Mineralogy vs. Ground Alunite Geochemistry](https://github.com/nasa/VITALS/blob/main/python/emit_aviris/critical_minerals/01_alunite_temporal_aggregation.ipynb), walks through a complete workflow for mapping alunite in southwestern Utah (Beaver and Iron Counties). Using the `earthaccess` Python library, users search for and stream EMIT L2B Mineral Identification, Band Depth and Uncertainty granules, retain scenes that fully cover the study area, and apply per-pixel quality masks. They then group Tetracorder mineral identifications into five indicator classes (alunite, pyrophyllite, kaolinite, dickite, and white mica), align the scenes to a common grid, and aggregate them through time to calculate the number of valid observations, the most frequently detected minerals, alunite persistence, and mean alunite band depth. Finally, the aggregated results are compared with surface geochemical samples from the UGS to evaluate how well the EMIT-derived patterns match ground measurements. The tutorial can still be run locally by following the [setup instructions](https://github.com/nasa/VITALS/blob/main/setup/setup_instructions.md).
+
+## Study Area Background
+
+The slides below provided background on the study area and its geologic setting.
+
+<iframe src="https://docs.google.com/presentation/d/1arji8yFI8fH-_W-wxr6ZieSJKA5zGnTgHf6RiD9ULQ0/embed?start=false&loop=false&delayms=3000" frameborder="0" width="750" height="445" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+## Datasets
+
+- **EMIT L2A Masks 60 m V002**: [https://doi.org/10.5067/EMIT/EMITL2AMASK.002](https://doi.org/10.5067/EMIT/EMITL2AMASK.002)
+- **EMIT L2B Estimated Mineral Identification and Band Depth and Uncertainty 60 m V001**: [https://doi.org/10.5067/EMIT/EMITL2BMIN.001](https://doi.org/10.5067/EMIT/EMITL2BMIN.001)
+
+## Contact Info
+
+Email: <LPDAAC@usgs.gov>
+Voice: +1-866-573-3222
+Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹
+Website: <https://www.earthdata.nasa.gov/centers/lp-daac>
+
+¹Work performed under USGS contract 140G0126D0001 for NASA contract NNG14HH33I.
