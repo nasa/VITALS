@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>notes – VITALS</title>
+<title>Remote Sensing and Critical Mineral Discovery Workshop 2026: Advanced Python Tutorial for Analysis and Visualization – VITALS</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,64 +23,31 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-574f58f4068bb8f43535e6e9c10c5508.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-c77f0973c5ee3c0e027469eecd6de74b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-574f58f4068bb8f43535e6e9c10c5508.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../workshops/2025_VSWIR_TIR_Fundamentals.html" rel="next">
+<link href="../index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-0926e2f2e2d929bfb7b0aa8eeb7ef89e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1a9d67460721088ed46849c7b9cb0ae0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0926e2f2e2d929bfb7b0aa8eeb7ef89e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -110,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -278,61 +245,359 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshops/2026_critical_minerals.html">Workshops</a></li><li class="breadcrumb-item"><a href="../workshops/2026_critical_minerals.html">2026 Critical Mineral Workshop</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../img/lp_jpl_vitals_light.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../img/lp_jpl_vitals_light.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">VITALS</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://nasa.github.io/VITALS/" title="VITALS Website" class="quarto-navigation-tool px-1" aria-label="VITALS Website"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/nasa/VITALS" title="VITALS Repository" class="quarto-navigation-tool px-1" aria-label="VITALS Repository"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Welcome</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Repository Description</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Workshops</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/2026_critical_minerals.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2026 Critical Mineral Workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/2025_VSWIR_TIR_Fundamentals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">VSWIR-TIR Fundamentals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/2025_sbg_workshop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2025 SBG Workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/2024_sbg_workshop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2024 SBG Workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/2023_agu_workshop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2023 AGU Workshop</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Setup Instructions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/prerequisites.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prerequisites</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/workshop_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloud Workspace Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../setup/setup_instructions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Local Python Environment Setup</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Python Notebooks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">EMIT &amp; AVIRIS Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/emit_aviris/critical_minerals/01_alunite_temporal_aggregation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 Alunite Temporal Aggregation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">EMIT &amp; ECOSTRESS Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/emit_ecostress/01_Finding_Concurrent_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 Finding Concurrent Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/emit_ecostress/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 EMIT Reflectance and ECOSTRESS LST</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/emit_ecostress/03_EMIT_CWC_from_Reflectance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 Canopy Water Content</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/emit_ecostress/04_Dangermond_Land_Cover.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 Dangermond Land Cover</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/emit_ecostress/05_SB_Vineyards.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 Santa Barbara Vineyards</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">EMIT &amp; NEON Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/emit_neon/01_Finding_Co-located_NEON_EMIT_Data_NIWO.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 Finding Co-located NEON EMIT Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/emit_neon/02_Exploring_NEON_and_EMIT_Reflectance_Data_NIWO.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 Exploring NEON and EMIT Reflectance Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">PACE &amp; EMIT Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/emit_pace/01_Colocate_PACE_EMIT_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 Colocate PACE EMIT Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/emit_pace/02_Process_PACE_EMIT_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 Process PACE EMIT Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/Finding_Coincident_Airborne_and_Orbital_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Finding Coincident Airborne and Orbital Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/Exploring_ECOSTRESS_L2T_LSTE.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploring ECOSTRESS L2T LSTE</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/Exploring_EMIT_L2A_RFL.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploring EMIT L2A RFL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python/Exploring_PACE_OCI_L2_SFRFL.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploring PACE OCI L2 SFRFL</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Contributing</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../CONTRIBUTING.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributing to this Repository</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../CODE_OF_CONDUCT.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Code of Conduct</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#emit_pace-notebook-notes" id="toc-emit_pace-notebook-notes" class="nav-link active" data-scroll-target="#emit_pace-notebook-notes">emit_pace Notebook Notes</a>
-  <ul class="collapse">
-  <li><a href="#interactive-plot-rendering-for-github-pages" id="toc-interactive-plot-rendering-for-github-pages" class="nav-link" data-scroll-target="#interactive-plot-rendering-for-github-pages">Interactive Plot Rendering for GitHub Pages</a>
-  <ul class="collapse">
-  <li><a href="#recommended-fix-choose-one" id="toc-recommended-fix-choose-one" class="nav-link" data-scroll-target="#recommended-fix-choose-one">Recommended fix (choose one):</a></li>
-  <li><a href="#recommended-approach" id="toc-recommended-approach" class="nav-link" data-scroll-target="#recommended-approach">Recommended approach</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#tutorial-overview" id="toc-tutorial-overview" class="nav-link active" data-scroll-target="#tutorial-overview">Tutorial Overview</a></li>
+  <li><a href="#study-area-background" id="toc-study-area-background" class="nav-link" data-scroll-target="#study-area-background">Study Area Background</a></li>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
+  <li><a href="#contact-info" id="toc-contact-info" class="nav-link" data-scroll-target="#contact-info">Contact Info</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshops/2026_critical_minerals.html">Workshops</a></li><li class="breadcrumb-item"><a href="../workshops/2026_critical_minerals.html">2026 Critical Mineral Workshop</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Remote Sensing and Critical Mineral Discovery Workshop 2026: Advanced Python Tutorial for Analysis and Visualization</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
-<section id="emit_pace-notebook-notes" class="level1">
-<h1>emit_pace Notebook Notes</h1>
-<section id="interactive-plot-rendering-for-github-pages" class="level2">
-<h2 class="anchored" data-anchor-id="interactive-plot-rendering-for-github-pages">Interactive Plot Rendering for GitHub Pages</h2>
-<p>The hover spectra plot in <code>02_Process_PACE_EMIT_Data.ipynb</code> (cell 29) uses hvplot/Bokeh with a <code>DynamicMap</code> + <code>PointerXY</code> stream. This embeds the full dataset as inline JSON, which can produce large HTML output and may render as a blank/errored cell on GitHub Pages.</p>
-<section id="recommended-fix-choose-one" class="level3">
-<h3 class="anchored" data-anchor-id="recommended-fix-choose-one">Recommended fix (choose one):</h3>
-<p><strong>Option A — Static PNG (simplest)</strong></p>
-<p>Save a representative static image and display it instead for the published site:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>hv.save(plot, NB_DIR <span class="op">/</span> <span class="st">"outputs/spectra_comparison.png"</span>, fmt<span class="op">=</span><span class="st">"png"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Image(NB_DIR <span class="op">/</span> <span class="st">"outputs/spectra_comparison.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Option B — Suppress output on GitHub Pages using Quarto cell tags</strong></p>
-<p>Add the tag <code>remove-output</code> to hide only the output (keeps the code visible), or <code>remove-cell</code> to hide both code and output. Add to the cell’s metadata:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="st">"tags"</span><span class="er">:</span> <span class="ot">[</span><span class="st">"remove-output"</span><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Quarto respects these tags natively — no extra config needed in <code>_quarto.yml</code>.</p>
-<p><strong>Option C — CDN resources (smaller HTML, requires internet)</strong></p>
-<p>Load Bokeh JS from CDN rather than embedding inline (~1-2 MB savings):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>hv.save(plot, <span class="st">"plot.html"</span>, resources<span class="op">=</span><span class="st">"cdn"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Not recommended for GitHub Pages since it requires an active internet connection to view.</p>
+</header>
+
+
+<p>The <a href="https://atmos.utah.edu/critical_minerals_imaging_workshop/index.php">Workshop on Remote Sensing and Critical Mineral Discovery</a> was held at the University of Utah on September 29, 2026. In the afternoon session, NASA LP DAAC, NASA JPL, ORNL DAAC, and the Utah Geological Survey (UGS) presented an advanced Python tutorial on analysis and visualization of imaging spectroscopy data for mineral mapping.</p>
+<section id="tutorial-overview" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial-overview">Tutorial Overview</h2>
+<p>The tutorial, <a href="../python/emit_aviris/critical_minerals/01_alunite_temporal_aggregation.html">Temporal Aggregation of EMIT Mineralogy vs.&nbsp;Ground Alunite Geochemistry</a>, walks through a complete workflow for mapping alunite in southwestern Utah (Beaver and Iron Counties). Using the <code>earthaccess</code> Python library, users search for and stream EMIT L2B Mineral Identification, Band Depth and Uncertainty granules, retain scenes that fully cover the study area, and apply per-pixel quality masks. They then group Tetracorder mineral identifications into five indicator classes (alunite, pyrophyllite, kaolinite, dickite, and white mica), align the scenes to a common grid, and aggregate them through time to calculate the number of valid observations, the most frequently detected minerals, alunite persistence, and mean alunite band depth. Finally, the aggregated results are compared with surface geochemical samples from the UGS to evaluate how well the EMIT-derived patterns match ground measurements. The tutorial can still be run locally by following the <a href="https://github.com/nasa/VITALS/blob/main/setup/setup_instructions.md">setup instructions</a>.</p>
 </section>
-<section id="recommended-approach" class="level3">
-<h3 class="anchored" data-anchor-id="recommended-approach">Recommended approach</h3>
-<p>Use <strong>Option A</strong> for the published site — a static PNG of a representative pre/post fire spectra comparison communicates the same information without Bokeh bundle overhead or risk of a blank cell. Keep the interactive version available when running the notebook locally or in JupyterLab.</p>
+<section id="study-area-background" class="level2">
+<h2 class="anchored" data-anchor-id="study-area-background">Study Area Background</h2>
+<p>The slides below provided background on the study area and its geologic setting.</p>
+<iframe src="https://docs.google.com/presentation/d/1arji8yFI8fH-_W-wxr6ZieSJKA5zGnTgHf6RiD9ULQ0/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="750" height="445" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+</iframe>
+</section>
+<section id="datasets" class="level2">
+<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
+<ul>
+<li><strong>EMIT L2A Masks 60 m V002</strong>: <a href="https://doi.org/10.5067/EMIT/EMITL2AMASK.002">https://doi.org/10.5067/EMIT/EMITL2AMASK.002</a></li>
+<li><strong>EMIT L2B Estimated Mineral Identification and Band Depth and Uncertainty 60 m V001</strong>: <a href="https://doi.org/10.5067/EMIT/EMITL2BMIN.001">https://doi.org/10.5067/EMIT/EMITL2BMIN.001</a></li>
+</ul>
+</section>
+<section id="contact-info" class="level2">
+<h2 class="anchored" data-anchor-id="contact-info">Contact Info</h2>
+<p>Email: <a href="mailto:LPDAAC@usgs.gov" class="email">LPDAAC@usgs.gov</a> Voice: +1-866-573-3222 Organization: Land Processes Distributed Active Archive Center (LP DAAC)¹ Website: <a href="https://www.earthdata.nasa.gov/centers/lp-daac" class="uri">https://www.earthdata.nasa.gov/centers/lp-daac</a></p>
+<p>¹Work performed under USGS contract 140G0126D0001 for NASA contract NNG14HH33I.</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -749,6 +1014,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../index.html" class="pagination-link" aria-label="Repository Description">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Repository Description</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../workshops/2025_VSWIR_TIR_Fundamentals.html" class="pagination-link" aria-label="VSWIR-TIR Fundamentals">
+        <span class="nav-page-text">VSWIR-TIR Fundamentals</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
