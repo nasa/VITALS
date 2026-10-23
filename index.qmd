@@ -28,6 +28,8 @@ Clone or download the [VITALS repository](https://github.com/nasa/VITALS).
 | **[Exploring ECOSTRESS L2T LSTE](/python/Exploring_ECOSTRESS_L2T_LSTE.ipynb)** | Jupyter Notebook | Search, access, and work with ECOSTRESS L2T Land Surface Temperature and Emissivity data |
 | **[Exploring PACE OCI L2 Surface Reflectance](/python/Exploring_PACE_OCI_L2_SFRFL.ipynb)** | Jupyter Notebook | Search, access, and work with PACE OCI L2 Surface Reflectance data |
 | **[Finding Coincident Airborne and Orbital Data](/python/Finding_Coincident_Airborne_and_Orbital_Data.ipynb)** | Jupyter Notebook | Find spatially and temporally coincident airborne and orbital data (EMIT, ECOSTRESS, AVIRIS-3) |
+| **EMIT & AVIRIS Tutorials** | | |
+| **[1. Alunite Temporal Aggregation](/python/emit_aviris/critical_minerals/01_alunite_temporal_aggregation.ipynb)** | Jupyter Notebook | Aggregate EMIT L2B Mineral Identification data over time and compare against UGS alunite geochemistry |
 | **EMIT & ECOSTRESS Tutorials** | | |
 | **[1. Finding Concurrent Data](/python/emit_ecostress/01_Finding_Concurrent_Data.ipynb)** | Jupyter Notebook | Search and filter for concurrent EMIT and ECOSTRESS data |
 | **[2. Working with EMIT Reflectance and ECOSTRESS LST](/python/emit_ecostress/02_Working_with_EMIT_Reflectance_and_ECOSTRESS_LST.ipynb)** | Jupyter Notebook | Streaming, Downloading and Co-Registering concurrent EMIT and ECOSTRESS data |

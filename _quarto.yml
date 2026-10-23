@@ -58,7 +58,7 @@ website:
         contents:
           - section: "EMIT & AVIRIS Tutorials"
             contents:
-              - text: "1 Alunite Temportal Aggregation"
+              - text: "1 Alunite Temporal Aggregation"
                 href: python/emit_aviris/critical_minerals/01_alunite_temporal_aggregation.ipynb
           - section: "EMIT & ECOSTRESS Tutorials"
             contents:
